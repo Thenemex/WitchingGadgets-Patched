@@ -3,66 +3,82 @@ buildscript {
         mavenCentral()
         maven {
             name = "forge"
-            url = "http://files.minecraftforge.net/maven"
-        }
-        maven {
-            name = "sonatype"
-            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+            url = "https://maven.minecraftforge.net/"
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        classpath ('com.anatawa12.forge:ForgeGradle:1.2-1.1.+') {
+            changing = true
+        }
     }
 }
 
 apply plugin: 'forge'
+apply plugin: 'java'
+compileJava {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
 
 version = "1.1.10"
-group= "blusunrize"
-archivesBaseName = "WitchingGadgets-1.7.10"
+/* A.B.C.D
+    A = Major version
+    B = Adding content or researches/recipes
+    C = Recipes tweaks or edits
+    D = Bug patches
+    E = Forgotten things/typos
+*/
+group= "com.thenemex.witchinggadgetspatched"
+archivesBaseName = "WitchingGadgetsPatched"
+
+// +SETTINGS
+def domain = 'com.thenemex.witchinggadgetspatched' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+def modid = 'modid'
+def mcversion = '1.7.10'
+// -SETTINGS
+
+group = "${domain}.${modid}"
+archivesBaseName = "[${mcversion}] WitchingGadgetsPatched" // add Minecraft version to jar for better user friendliness
 
 minecraft {
-    version = "1.7.10-10.13.4.1448-1.7.10"
-	replace '${version}', project.version
-    assetDir = "eclipse/assets"
+    version = "1.7.10-10.13.4.1614-1.7.10"
+    runDir = "eclipse"
 }
-jar {
-        manifest {
-        attributes 'FMLCorePlugin': 'witchinggadgets.asm.WitchingGadgetsCoreLoader',
-                   'FMLCorePluginContainsFMLMod': 'true'
+
+apply plugin: 'idea'
+idea {
+    module {
+        inheritOutputDirs = true
     }
 }
-
-dependencies {
-    // you may put jars on which you depend on in ./libs
-    // or you may define them like so..
-    //compile "some.group:artifact:version:classifier"
-    //compile "some.group:artifact:version"
-      
-    // real examples
-    //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
-    //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
-
-    // for more info...
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
+subprojects {
+    apply plugin: 'idea'
 }
 
-processResources
-{
-    // this will ensure that this task is redone when the versions change.
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
+task prepareAssets(type: Copy) {
+    group = 'build'
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
 
+        // replace version and mcversion
+        expand 'version':project.version, 'mcversion':mcversion
+    }
+    from project.file('src/main/resources')
+    into project.file('build/classes/java/main')
+}
+
+classes.dependsOn(prepareAssets)
+
+// replace values in mcmod.info before packing in jar
+processResources {
     // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-                
+
         // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+        expand 'version':project.version, 'mcversion':mcversion
     }
-        
+
     // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'

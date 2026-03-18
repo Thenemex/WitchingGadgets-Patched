@@ -1,6 +1,7 @@
 /.git
 /.gradle
 /.settings
+/.idea
 /asm
 /bin
 /build
@@ -38,3 +39,4 @@ ReCubed.dat
 servers.dat
 config.cfg
 minetweaker.log
+/.idea/.gitignore
