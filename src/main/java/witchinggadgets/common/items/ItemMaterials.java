@@ -342,11 +342,11 @@ public class ItemMaterials extends Item
 					if(te!=null && te instanceof TilePedestal)
 					{
 						symmetry += 2;
-						if( ((TilePedestal)te).getStackInSlot(0) != null)
+						if( ((TilePedestal) te).func_70301_a(0) != null)
 						{
 							symmetry += 1;
 							items = true;
-							components.add(((TilePedestal)te).getStackInSlot(0));
+							components.add(((TilePedestal) te).func_70301_a(0));
 						}
 					}
 					int xx = targetX + dx;
@@ -355,7 +355,7 @@ public class ItemMaterials extends Item
 					if(te!=null && te instanceof TilePedestal)
 					{
 						symmetry -= 2;
-						if( ((TilePedestal)te).getStackInSlot(0)!=null)
+						if( ((TilePedestal) te).func_70301_a(0)!=null)
 						{
 							if(items)
 								symmetry -= 1;
@@ -388,8 +388,8 @@ public class ItemMaterials extends Item
 				ItemStack central = null;
 				TileEntity te = world.getTileEntity(targetX,targetY-2,targetZ);
 				if(te instanceof TilePedestal)
-					if(((TilePedestal)te).getStackInSlot(0) != null)
-						central = ((TilePedestal)te).getStackInSlot(0).copy();
+					if(((TilePedestal) te).func_70301_a(0) != null)
+						central = ((TilePedestal) te).func_70301_a(0).copy();
 				if(central!=null)
 				{
 					InfusionRecipe infRecipe = ThaumcraftCraftingManager.findMatchingInfusionRecipe(components, central, player);
