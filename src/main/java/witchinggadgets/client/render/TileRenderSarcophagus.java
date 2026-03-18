@@ -13,8 +13,8 @@ import witchinggadgets.common.blocks.tiles.TileEntitySarcophagus;
 
 public class TileRenderSarcophagus extends TileEntitySpecialRenderer
 {
-	static ModelSkeleton modelSkel = new ModelSkeleton();
-	static ModelRobe modelRobe = new ModelRobe(.0625f);
+	static final ModelSkeleton modelSkel = new ModelSkeleton();
+	static final ModelRobe modelRobe = new ModelRobe(.0625f);
 	static{
 		modelRobe.isChild = false;
 	}

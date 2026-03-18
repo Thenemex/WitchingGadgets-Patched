@@ -12,7 +12,7 @@ public class EtherealWallMaster
 
 	public EtherealWallMaster()
 	{
-		this.tileMap = new ArrayList<TileEntityEtherealWall>();
+		this.tileMap = new ArrayList<>();
 	}
 
 	public boolean isAnyTileInNetPowered()
@@ -41,7 +41,7 @@ public class EtherealWallMaster
 	/**
 	 * Disbands Net and sets every Tile's master to null.
 	 * Allows Tiles to form new nets.
-	 * Used to allow an Net to be split.
+	 * Used to allow a Net to be split.
 	 */
 	public void freeSlaves()
 	{
@@ -49,7 +49,7 @@ public class EtherealWallMaster
 		{
 			tile.master = null;
 		}
-		this.tileMap = new ArrayList<TileEntityEtherealWall>();
+		this.tileMap = new ArrayList<>();
 	}
 
 	public void checkNetIntegrity(TileEntityEtherealWall tile)

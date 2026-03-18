@@ -12,11 +12,11 @@ import witchinggadgets.common.util.Utilities;
 
 public class ContainerCloak extends Container
 {
-	private World worldObj;
-	public IInventory input = new InventoryCloak(this);
-	ItemStack cloak = null;
-	EntityPlayer player = null;
-	private int pouchSlotAmount = 27;
+	private final World worldObj;
+	public final IInventory input = new InventoryCloak(this);
+	final ItemStack cloak;
+	final EntityPlayer player;
+	private final int pouchSlotAmount = 27;
 
 	public ContainerCloak(InventoryPlayer iinventory, World world, ItemStack cloak)
 	{

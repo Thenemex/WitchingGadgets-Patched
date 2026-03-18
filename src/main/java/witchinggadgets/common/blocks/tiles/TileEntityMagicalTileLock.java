@@ -16,12 +16,8 @@ public class TileEntityMagicalTileLock extends TileEntityWGBase
 	{
 		super();
 	}
-	@Override
-	public boolean canUpdate()
-	{
-		return true;
-	}
-	@Override
+
+    @Override
 	public void updateEntity()
 	{
 		if(unlocked && tick>=0)

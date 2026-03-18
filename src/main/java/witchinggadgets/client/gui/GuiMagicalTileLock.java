@@ -16,7 +16,7 @@ import witchinggadgets.common.util.network.message.MessageTileUpdate;
 
 public class GuiMagicalTileLock extends GuiScreen
 {
-	List<Integer> stored = new ArrayList();
+	final List<Integer> stored = new ArrayList();
 	public static final HashMap<String,int[]> presets = new HashMap();
 	static{
 		presets.put("0,7,6,2,4,3,5,1", new int[]{7,4,5,7,4,6,3,5,6,4,7,2,1,6,2,7,4,2,7,1,6,7,2,3,5,2,3,4,1,3,4,1});
@@ -37,14 +37,14 @@ public class GuiMagicalTileLock extends GuiScreen
 		presets.put("3,7,0,6,4,1,5,2", new int[]{5,4,1,0,3,1,0,2,4,0,7,5,0,4,2,7,1,6,5,1,4,2,7,4,2,0,1,2,4,7,0,1});
 		//										 2,5,6,4,7,0,1,2,5,7,4,3,0,1,2,5,
 	}
-	ResourceLocation texture = new ResourceLocation("witchinggadgets:textures/gui/tileLock.png");
+	final ResourceLocation texture = new ResourceLocation("witchinggadgets:textures/gui/tileLock.png");
 
-	boolean unlocked = false;
+	boolean unlocked;
 	int step = -1;
-	int[] solving = new int[0];
+	final int[] solving = new int[0];
 	public static GuiButtonMagicTile currentTile = null;
 	TileEntityMagicalTileLock tileentity;
-	int xSize = 128;
+	final int xSize = 128;
 	int ySize = 128;
 
 	public GuiMagicalTileLock(TileEntityMagicalTileLock tileentity)
@@ -76,7 +76,7 @@ public class GuiMagicalTileLock extends GuiScreen
 		int guiLeft = (this.width-xSize)/2;
 		int guiTop= (this.height-xSize)/2;
 		this.mc.getTextureManager().bindTexture(texture);
-		this.drawTexturedModalRect(guiLeft+0,guiTop+0, 0,0, xSize,xSize);
+		this.drawTexturedModalRect(guiLeft, guiTop, 0,0, xSize,xSize);
 		if(!unlocked)
 			GL11.glColor3f(.1f, 0, .2f);
 		this.drawTexturedModalRect(guiLeft+19,guiTop+19, 128,30, 90,90);

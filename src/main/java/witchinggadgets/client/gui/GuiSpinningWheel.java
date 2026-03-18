@@ -11,7 +11,7 @@ import witchinggadgets.common.gui.ContainerSpinningWheel;
 
 public class GuiSpinningWheel extends GuiContainer
 {
-	private TileEntitySpinningWheel tile;
+	private final TileEntitySpinningWheel tile;
 
 	public GuiSpinningWheel (InventoryPlayer inventoryPlayer,
 			TileEntitySpinningWheel tileEntity) {
@@ -21,12 +21,7 @@ public class GuiSpinningWheel extends GuiContainer
 		this.ySize=233;
 	}
 
-	@Override
-	protected void drawGuiContainerForegroundLayer(int param1, int param2)
-	{
-	}
-
-	@Override
+    @Override
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
 	{
 		//draw your Gui here, only thing you need to change is the path

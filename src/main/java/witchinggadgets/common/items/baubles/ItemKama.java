@@ -87,7 +87,7 @@ public class ItemKama extends ItemCloak implements IBauble
 		{
 			ItemStack cosmetic = getCosmeticItem(stack);
 			if(cosmetic != null)
-				list.add( String.format(StatCollector.translateToLocal("botaniamisc.hasCosmetic"), cosmetic.getDisplayName()).replaceAll("&","\u00a7") );
+				list.add( String.format(StatCollector.translateToLocal("botaniamisc.hasCosmetic"), cosmetic.getDisplayName()).replaceAll("&","§") );
 		}
 	}
 	

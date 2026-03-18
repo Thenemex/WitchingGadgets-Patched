@@ -79,35 +79,28 @@ public class ItemRenderMaterial implements IItemRenderer
 		{
 			ScanResult scan = Utilities.readScanResultFromNBT(stack.getTagCompound().getCompoundTag("scanResult"), entityclientplayermp.worldObj);
 			AspectList scanAspects = new AspectList();
-			if(scan!=null)
-			{
-				switch(scan.type)
-				{
-				case 1:
-					scanStack = new ItemStack(Item.getItemById(scan.id), 1, scan.meta);
-					scanAspects = ThaumcraftCraftingManager.getObjectTags(scanStack);
-					scanAspects = ThaumcraftCraftingManager.getBonusTags(scanStack, scanAspects);
-					break;
-				case 2:
-					if ((scan.entity instanceof EntityItem))
-					{
-						scanStack = new ItemStack(((EntityItem)scan.entity).getEntityItem().getItem(), 1, ((EntityItem)scan.entity).getEntityItem().getItemDamage());
-						scanAspects = ThaumcraftCraftingManager.getObjectTags(scanStack);
-						scanAspects = ThaumcraftCraftingManager.getBonusTags(scanStack, scanAspects);
-					}
-					else
-					{
-						scanEntity = scan.entity;
-						scanAspects = ScanManager.generateEntityAspects(scan.entity);
-					}
-					break;
-				case 3:
-					if(scan.phenomena.startsWith("NODE"))
-						scanAspects = Utilities.generateNodeAspects(entityclientplayermp.worldObj, scan.phenomena.replace("NODE", ""));
-					break;
-				}
-			}
-			if(scanAspects!=null)
+            switch (scan.type) {
+                case 1:
+                    scanStack = new ItemStack(Item.getItemById(scan.id), 1, scan.meta);
+                    scanAspects = ThaumcraftCraftingManager.getObjectTags(scanStack);
+                    scanAspects = ThaumcraftCraftingManager.getBonusTags(scanStack, scanAspects);
+                    break;
+                case 2:
+                    if ((scan.entity instanceof EntityItem)) {
+                        scanStack = new ItemStack(((EntityItem) scan.entity).getEntityItem().getItem(), 1, ((EntityItem) scan.entity).getEntityItem().getItemDamage());
+                        scanAspects = ThaumcraftCraftingManager.getObjectTags(scanStack);
+                        scanAspects = ThaumcraftCraftingManager.getBonusTags(scanStack, scanAspects);
+                    } else {
+                        scanEntity = scan.entity;
+                        scanAspects = ScanManager.generateEntityAspects(scan.entity);
+                    }
+                    break;
+                case 3:
+                    if (scan.phenomena.startsWith("NODE"))
+                        scanAspects = Utilities.generateNodeAspects(entityclientplayermp.worldObj, scan.phenomena.replace("NODE", ""));
+                    break;
+            }
+            if(scanAspects!=null)
 			{
 				int asp = entityclientplayermp.ticksExisted % (68*scanAspects.size()) / 68;
 				aspectColour = scanAspects.getAspectsSorted()[asp].getColor();
@@ -136,11 +129,11 @@ public class ItemRenderMaterial implements IItemRenderer
 			float f9;
 			float f10;
 			float f11;
-			float f12 = 0.8F;
+			float f12;
 
 
 			int i = mc.theWorld.getLightBrightnessForSkyBlocks(MathHelper.floor_double(entityclientplayermp.posX), MathHelper.floor_double(entityclientplayermp.posY), MathHelper.floor_double(entityclientplayermp.posZ), 0);
-			int k = i / 65536;
+			int k;
 			//
 			Render render;
 			RenderPlayer renderplayer;
@@ -219,10 +212,10 @@ public class ItemRenderMaterial implements IItemRenderer
 			//		tessellator.draw();
 			IIcon ic = stack.getIconIndex();
 			ClientUtilities.bindTexture(mc.getTextureManager().getResourceLocation(stack.getItemSpriteNumber()).getResourceDomain()+":"+mc.getTextureManager().getResourceLocation(stack.getItemSpriteNumber()).getResourcePath());
-			tessellator.addVertexWithUV(0   - b0, 128 + b0, 0.0D, ic.getMinU(), ic.getMaxV());
+			tessellator.addVertexWithUV(-b0, 128 + b0, 0.0D, ic.getMinU(), ic.getMaxV());
 			tessellator.addVertexWithUV(128 + b0, 128 + b0, 0.0D, ic.getMaxU(), ic.getMaxV());
-			tessellator.addVertexWithUV(128 + b0, 0   - b0, 0.0D, ic.getMaxU(), ic.getMinV());
-			tessellator.addVertexWithUV(0   - b0, 0   - b0, 0.0D, ic.getMinU(), ic.getMinV());
+			tessellator.addVertexWithUV(128 + b0, -b0, 0.0D, ic.getMaxU(), ic.getMinV());
+			tessellator.addVertexWithUV(-b0, -b0, 0.0D, ic.getMinU(), ic.getMinV());
 			tessellator.draw();
 		}
 		else
@@ -241,17 +234,17 @@ public class ItemRenderMaterial implements IItemRenderer
 
 		if(type==ItemRenderType.EQUIPPED_FIRST_PERSON)
 		{
-			GL11.glColor4f((aspectColour>>16&255)/255f, (aspectColour>>8&255)/255f,(aspectColour&255)/255f, (aspectColour>>32&255)/255f);
+			GL11.glColor4f((aspectColour>>16&255)/255f, (aspectColour>>8&255)/255f,(aspectColour&255)/255f, (aspectColour&255)/255f);
 			IIcon ic = stack.getItem().getIconFromDamageForRenderPass(stack.getItemDamage(), 99);
 			ClientUtilities.bindTexture(mc.getTextureManager().getResourceLocation(stack.getItemSpriteNumber()).getResourceDomain()+":"+mc.getTextureManager().getResourceLocation(stack.getItemSpriteNumber()).getResourcePath());
 
 			byte b0 = 7;
 			Tessellator tessellator = Tessellator.instance;
 			tessellator.startDrawingQuads();
-			tessellator.addVertexWithUV(0   - b0, 128 + b0, 0.0D, ic.getMinU(), ic.getMaxV());
+			tessellator.addVertexWithUV(-b0, 128 + b0, 0.0D, ic.getMinU(), ic.getMaxV());
 			tessellator.addVertexWithUV(128 + b0, 128 + b0, 0.0D, ic.getMaxU(), ic.getMaxV());
-			tessellator.addVertexWithUV(128 + b0, 0   - b0, 0.0D, ic.getMaxU(), ic.getMinV());
-			tessellator.addVertexWithUV(0   - b0, 0   - b0, 0.0D, ic.getMinU(), ic.getMinV());
+			tessellator.addVertexWithUV(128 + b0, -b0, 0.0D, ic.getMaxU(), ic.getMinV());
+			tessellator.addVertexWithUV(-b0, -b0, 0.0D, ic.getMinU(), ic.getMinV());
 			tessellator.draw();
 			GL11.glColor4d(1,1,1,1);
 			GL11.glDisable(3042);
@@ -296,7 +289,7 @@ public class ItemRenderMaterial implements IItemRenderer
 			{
 				GL11.glPushMatrix();
 				int col = scanStack.getItem().getColorFromItemStack(scanStack, p);
-				GL11.glColor4f((col>>16&255)/255f, (col>>8&255)/255f,(col&255)/255f, (col>>32&255)/255f);
+				GL11.glColor4f((col>>16&255)/255f, (col>>8&255)/255f,(col&255)/255f, (col&255)/255f);
 				ir.renderItem(entityclientplayermp, scanStack, p, ItemRenderType.INVENTORY);
 				GL11.glPopMatrix();
 			}

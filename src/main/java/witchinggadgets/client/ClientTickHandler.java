@@ -16,8 +16,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ClientTickHandler
 {
-	public static HashMap<ChunkCoordinates, Integer> oreHighlightMap = new HashMap();
-	public static HashMap<ChunkCoordinates, Object> oreHighlightBeamMap = new HashMap();
+	public static final HashMap<ChunkCoordinates, Integer> oreHighlightMap = new HashMap();
+	public static final HashMap<ChunkCoordinates, Object> oreHighlightBeamMap = new HashMap();
 	static int highlight;
 
 	@SideOnly(Side.CLIENT)
@@ -27,10 +27,9 @@ public class ClientTickHandler
 		if(!(Minecraft.getMinecraft().renderViewEntity instanceof EntityPlayer))
 			return;
 		EntityPlayer player = (EntityPlayer)Minecraft.getMinecraft().renderViewEntity;
-		if(player==null || oreHighlightMap.isEmpty())
+		if(oreHighlightMap.isEmpty())
 		{
-			oreHighlightMap.clear();
-			oreHighlightBeamMap.clear();
+            oreHighlightBeamMap.clear();
 			highlight = 0;
 			return;
 		}

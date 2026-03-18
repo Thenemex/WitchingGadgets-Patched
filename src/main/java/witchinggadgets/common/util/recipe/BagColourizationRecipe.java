@@ -16,7 +16,7 @@ public class BagColourizationRecipe implements IRecipe
 	public boolean matches(InventoryCrafting par1InventoryCrafting, World par2World)
 	{
 		ItemStack itemstack = null;
-		ArrayList<ItemStack> arraylist = new ArrayList<ItemStack>();
+		ArrayList<ItemStack> arraylist = new ArrayList<>();
 
 		for(int i = 0; i < par1InventoryCrafting.getSizeInventory(); i++)
 		{
@@ -35,7 +35,7 @@ public class BagColourizationRecipe implements IRecipe
 				}
 				else
 				{
-					if(!Utilities.isDye(itemstack1))
+					if(Utilities.isDye(itemstack1))
 						return false;
 					arraylist.add(itemstack1);
 				}
@@ -82,7 +82,7 @@ public class BagColourizationRecipe implements IRecipe
 				}
 				else
 				{
-					if(!Utilities.isDye(itemstack1))
+					if(Utilities.isDye(itemstack1))
 						return null;
 
 					if(revert)
@@ -112,7 +112,7 @@ public class BagColourizationRecipe implements IRecipe
 		int k = aint[0] / j;
 		int l1 = aint[1] / j;
 		int l = aint[2] / j;
-		float f = i / j;
+		float f = (float) i / j;
 		float f1 = Math.max(k, Math.max(l1, l));
 		k = (int)(k * f / f1);
 		l1 = (int)(l1 * f / f1);

@@ -39,8 +39,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockWGWoodenDevice extends BlockContainer implements IWandable
 {
-	public static String[] subNames = {"spinningWheel","snowGen","cobbleGen","cuttingTable","saunaStove","labelLibrary"};
-	IIcon[] icons = new IIcon[subNames.length];
+	public static final String[] subNames = {"spinningWheel","snowGen","cobbleGen","cuttingTable","saunaStove","labelLibrary"};
+	final IIcon[] icons = new IIcon[subNames.length];
 	IIcon saunaTop;
 
 	public BlockWGWoodenDevice()
@@ -399,15 +399,13 @@ public class BlockWGWoodenDevice extends BlockContainer implements IWandable
 	{
 		if(md == 1)
 		{
-			ForgeDirection dir = player.isSneaking() ? ForgeDirection.getOrientation(side).getOpposite() : ForgeDirection.getOrientation(side);
-			((TileEntitySnowGen)world.getTileEntity(x,y,z)).facing = dir; 
+            ((TileEntitySnowGen)world.getTileEntity(x,y,z)).facing = player.isSneaking() ? ForgeDirection.getOrientation(side).getOpposite() : ForgeDirection.getOrientation(side);
 			player.worldObj.playSound(x + 0.5D, y + 0.5D, z + 0.5D, "thaumcraft:tool", 0.3F, 1.9F + player.worldObj.rand.nextFloat() * 0.2F, false);
 			player.swingItem();
 		}
 		if(md == 2)
 		{
-			ForgeDirection dir = player.isSneaking() ? ForgeDirection.getOrientation(side).getOpposite() : ForgeDirection.getOrientation(side);
-			((TileEntityCobbleGen)world.getTileEntity(x,y,z)).facing = dir; 
+            ((TileEntityCobbleGen)world.getTileEntity(x,y,z)).facing = player.isSneaking() ? ForgeDirection.getOrientation(side).getOpposite() : ForgeDirection.getOrientation(side);
 			player.worldObj.playSound(x + 0.5D, y + 0.5D, z + 0.5D, "thaumcraft:tool", 0.3F, 1.9F + player.worldObj.rand.nextFloat() * 0.2F, false);
 			player.swingItem();
 		}

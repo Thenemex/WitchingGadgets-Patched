@@ -17,7 +17,7 @@ import witchinggadgets.common.blocks.tiles.TileEntitySpinningWheel;
 public class TileRenderSpinningWheel extends TileEntitySpecialRenderer
 {
 
-	static ModelSpinningWheel model = new ModelSpinningWheel();
+	static final ModelSpinningWheel model = new ModelSpinningWheel();
 
 	public void renderTileEntityAt(TileEntitySpinningWheel tile, double x, double y, double z, float f)
 	{
@@ -58,11 +58,10 @@ public class TileRenderSpinningWheel extends TileEntitySpecialRenderer
 
 	static class ModelSpinningWheel extends ModelBase
 	{
-		List<ModelRenderer> parts  = new ArrayList();
+		final List<ModelRenderer> parts  = new ArrayList();
 		public ModelSpinningWheel()
 		{
-			parts.clear();
-			ModelRenderer temp;
+            ModelRenderer temp;
 			
 			//LEG 1
 			temp = new ModelRenderer(this, 0, 0);

@@ -5,10 +5,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.imageio.ImageIO;
@@ -44,13 +42,13 @@ import witchinggadgets.WitchingGadgets;
  */
 public class ClientUtilities
 {
-	public static int colour_CloakBlue = 2041173;
+	public static final int colour_CloakBlue = 2041173;
 	public static int colour_CloakNil = 14737632;
 	public static int colour_CloakRaven = 3487288;
 	public static int colour_CloakStorage = Aspect.VOID.getColor();
 
-	public static String[] nodeTypeChatColour = {"7","2","8","5","4","f"};
-	public static String[] nodeModifierChatColour = {"f","7","8"};
+	public static final String[] nodeTypeChatColour = {"7","2","8","5","4","f"};
+	public static final String[] nodeModifierChatColour = {"f","7","8"};
 
 	private static Minecraft mc()
 	{
@@ -338,15 +336,12 @@ public class ClientUtilities
 		GL11.glDisable(2896);
 		GL11.glDisable(2929);
 		int k = minimalWidth;
-		Iterator iterator = list.iterator();
-		while (iterator.hasNext())
-		{
-			String s = (String)iterator.next();
-			int l = font.getStringWidth(s);
-			if (l > k) {
-				k = l;
-			}
-		}
+        for (String s : list) {
+            int l = font.getStringWidth(s);
+            if (l > k) {
+                k = l;
+            }
+        }
 		int i1 = x + 12;
 		int j1 = y - 12;
 		int k1 = 8;
@@ -396,7 +391,7 @@ public class ClientUtilities
 	{
 		for (int iS = 0; iS < list.size(); iS++)
 		{
-			String s1 = (String)list.get(iS);
+			String s1 = list.get(iS);
 			font.drawStringWithShadow(s1, x, y, -1);
 			if (iS == 0) {
 				y += 2;
@@ -421,11 +416,11 @@ public class ClientUtilities
 		GL11.glShadeModel(GL11.GL_SMOOTH);
 		Tessellator.instance.startDrawingQuads();
 		Tessellator.instance.setColorRGBA_F(f1, f2, f3, f);
-		Tessellator.instance.addVertex((double)par3, (double)par2, (double)500);
-		Tessellator.instance.addVertex((double)par1, (double)par2, (double)500);
+		Tessellator.instance.addVertex(par3, par2, 500);
+		Tessellator.instance.addVertex(par1, par2, 500);
 		Tessellator.instance.setColorRGBA_F(f5, f6, f7, f4);
-		Tessellator.instance.addVertex((double)par1, (double)par4, (double)500);
-		Tessellator.instance.addVertex((double)par3, (double)par4, (double)500);
+		Tessellator.instance.addVertex(par1, par4, 500);
+		Tessellator.instance.addVertex(par3, par4, 500);
 		Tessellator.instance.draw();
 		GL11.glShadeModel(GL11.GL_FLAT);
 		GL11.glDisable(GL11.GL_BLEND);
@@ -452,8 +447,8 @@ public class ClientUtilities
 	}
 
 
-	static HashMap<String,IModelCustom> modelMap = new HashMap<String,IModelCustom>();
-	static HashMap<String,ResourceLocation> textureMap = new HashMap<String,ResourceLocation>();
+	static final HashMap<String,IModelCustom> modelMap = new HashMap<>();
+	static final HashMap<String,ResourceLocation> textureMap = new HashMap<>();
 
 	public static void bindTexture(String path)
 	{
@@ -647,7 +642,7 @@ public class ClientUtilities
 	public static int getAverageItemColour(ItemStack stack)
 	{
 		List<Integer> col = ClientUtilities.getItemColours(stack);
-		if(col!=null && col.size()>0)
+		if(!col.isEmpty())
 		{
 			int rgb = 0xffffff;
 			for(int rgb2 : col)
@@ -663,9 +658,8 @@ public class ClientUtilities
 		List<Integer> colourSet = new ArrayList();
 		int[] data = new int[image.getWidth()*image.getHeight()];
 		image.getRGB(0,0, image.getWidth(),image.getHeight(), data, 0, image.getWidth());
-		for(int i=0; i<data.length; i++)
-			colourSet.add(data[i]);
-		Collections.sort(colourSet, new ColourBrightnessComparator());
+        for (int datum : data) colourSet.add(datum);
+		colourSet.sort(new ColourBrightnessComparator());
 		return colourSet;
 	}
 
@@ -704,8 +698,7 @@ public class ClientUtilities
 		int modifierG = c.getGreen()>c.getRed()&&c.getGreen()>c.getBlue()?0xff: c.getGreen()<c.getRed()&&c.getGreen()<c.getBlue()?0x88: 0xbb;
 		int modifierB = c.getBlue()>c.getGreen()&&c.getBlue()>c.getRed()?0xff: c.getBlue()<c.getGreen()&&c.getBlue()<c.getRed()?0x88: 0xbb;
 		int modifier = (modifierR<<16)+(modifierG<<8)+(modifierB);
-		Color cV = ClientUtilities.blendColours(c, modifier);
-		return cV;
+        return ClientUtilities.blendColours(c, modifier);
 	}
 
 

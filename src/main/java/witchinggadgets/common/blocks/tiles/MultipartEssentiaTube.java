@@ -1,7 +1,7 @@
 package witchinggadgets.common.blocks.tiles;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 
 import net.minecraft.block.Block;
@@ -62,7 +62,7 @@ implements IEssentiaTransport, IWandable, TSlottedPart
 
 	int count = 0;
 	static final int freq = 5;
-	int ventColor = 0;
+	final int ventColor = 0;
 
 	public MultipartEssentiaTube(int meta)
 	{
@@ -195,7 +195,7 @@ implements IEssentiaTransport, IWandable, TSlottedPart
 		}
 		else if(this.venting > 0)
 		{
-			Random r = new Random(hashCode() * 4);
+			Random r = new Random(hashCode() * 4L);
 			float rp = r.nextFloat() * 360.0F;
 			float ry = r.nextFloat() * 360.0F;
 			double fx = -MathHelper.sin(ry / 180.0F * 3.141593F) * MathHelper.cos(rp / 180.0F * 3.141593F);
@@ -247,7 +247,7 @@ implements IEssentiaTransport, IWandable, TSlottedPart
 					}
 
 			}
-			catch (Exception e) {}
+			catch (Exception ignored) {}
 		}
 	}
 	void checkVenting()
@@ -276,7 +276,7 @@ implements IEssentiaTransport, IWandable, TSlottedPart
 					}
 				}
 			}
-			catch (Exception e) {}
+			catch (Exception ignored) {}
 		}
 	}
 
@@ -320,7 +320,7 @@ implements IEssentiaTransport, IWandable, TSlottedPart
 					}
 				}
 			}
-			catch (Exception e) {}
+			catch (Exception ignored) {}
 		}
 	}
 
@@ -474,7 +474,7 @@ implements IEssentiaTransport, IWandable, TSlottedPart
 	@Override
 	public Iterable<ItemStack> getDrops()
 	{
-		return Arrays.asList(new ItemStack(getBlock(),1,meta));
+		return Collections.singletonList(new ItemStack(getBlock(), 1, meta));
 	}
 	@Override
 	public ItemStack pickItem(MovingObjectPosition hit)

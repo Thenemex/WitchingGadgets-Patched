@@ -21,7 +21,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemRelic extends Item
 {
-	public IIcon[] icon = new IIcon[64];
+	public final IIcon[] icon = new IIcon[64];
 
 	private final static String[] subNames = {
 		"hourglass", "dawnStone", "duskStone", "homewardBone"

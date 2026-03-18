@@ -35,8 +35,8 @@ public class GuiPrimordialGlove extends GuiContainer
 	String tx_c_p = "textures/misc/node_core_pure.png";
 	String tx_c_h = "textures/misc/node_core_hungry.png";
 
-	InventoryPlayer invPlayer;
-	EntityPlayer player;
+	final InventoryPlayer invPlayer;
+	final EntityPlayer player;
 	protected Slot theSlot;
 
 	public GuiPrimordialGlove(InventoryPlayer inventoryPlayer, World world, int x, int y, int z)
@@ -64,16 +64,16 @@ public class GuiPrimordialGlove extends GuiContainer
 				NodeType type = NodeType.values()[nodeTag.getInteger("type")];
 				NodeModifier modifier = NodeModifier.values()[nodeTag.getInteger("modifier")];
 				aspects.readFromNBT(nodeTag);
-				ArrayList<String> nodeInfo = new ArrayList<String>();
-				String s = "\u00A7"+ClientUtilities.nodeTypeChatColour[type.ordinal()]+StatCollector.translateToLocal("nodetype." + type + ".name")+"\u00A77";
+				ArrayList<String> nodeInfo = new ArrayList<>();
+				String s = "§"+ClientUtilities.nodeTypeChatColour[type.ordinal()]+StatCollector.translateToLocal("nodetype." + type + ".name")+"§7";
 				if(modifier != null)
-					s = s+", \u00A7"+ClientUtilities.nodeModifierChatColour[modifier.ordinal()]+StatCollector.translateToLocal("nodemod." + modifier + ".name")+"\u00A7r";
+					s = s+", §"+ClientUtilities.nodeModifierChatColour[modifier.ordinal()]+StatCollector.translateToLocal("nodemod." + modifier + ".name")+"§r";
 				nodeInfo.add(s);
-				nodeInfo.add("  \u00A75"+StatCollector.translateToLocal("wg.gui.visSize")+": "+aspects.visSize());
+				nodeInfo.add("  §5"+StatCollector.translateToLocal("wg.gui.visSize")+": "+aspects.visSize());
 
 				if(Keyboard.isKeyDown(Keyboard.KEY_RSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
 					for(Aspect a: aspects.getAspects())
-						nodeInfo.add("   "+a.getName()+" "+aspects.getAmount(a)+"\u00A7r");
+						nodeInfo.add("   "+a.getName()+" "+aspects.getAmount(a)+"§r");
 				else
 					nodeInfo.add("  "+StatCollector.translateToLocal("wg.gui.shiftForAspectList"));
 
@@ -107,7 +107,7 @@ public class GuiPrimordialGlove extends GuiContainer
 
 				Tessellator tes = Tessellator.instance;
 				int count = 0;
-				float average = aspects.visSize()/(aspects.size()>0?aspects.size():1);
+				float average = (float) aspects.visSize() /(aspects.size()>0?aspects.size():1);
 				for(Aspect a : aspects.aspects.keySet())
 				{
 					//float radius = 16* (aspects.getAmount(a)/average)  * ((.5f-1)+((System.currentTimeMillis()%64)/64f));
@@ -122,10 +122,10 @@ public class GuiPrimordialGlove extends GuiContainer
 
 					tes.startDrawingQuads();
 					tes.setColorRGBA_I(a.getColor(), 64);
-					tes.addVertexWithUV(k+88-radius, l+39+radius, zLevel, (perm+0)*.03125, 1/32f);
+					tes.addVertexWithUV(k+88-radius, l+39+radius, zLevel, (perm)*.03125, 1/32f);
 					tes.addVertexWithUV(k+88+radius, l+39+radius, zLevel, (perm+1)*.03125, 1/32f);
 					tes.addVertexWithUV(k+88+radius, l+39-radius, zLevel, (perm+1)*.03125, 0);
-					tes.addVertexWithUV(k+88-radius, l+39-radius, zLevel, (perm+0)*.03125, 0);
+					tes.addVertexWithUV(k+88-radius, l+39-radius, zLevel, (perm)*.03125, 0);
 					tes.draw();
 
 					GL11.glDisable(3042);
@@ -144,10 +144,10 @@ public class GuiPrimordialGlove extends GuiContainer
 				int overl = nodeType==2?6: nodeType==3?2: nodeType==4?5: nodeType==5?4: nodeType==6?3: 1;
 
 				tes.startDrawingQuads();
-				tes.addVertexWithUV(k+88-radius, l+39+radius, zLevel+100, (perm+0)*.03125, (overl+1)*.03125);
+				tes.addVertexWithUV(k+88-radius, l+39+radius, zLevel+100, (perm)*.03125, (overl+1)*.03125);
 				tes.addVertexWithUV(k+88+radius, l+39+radius, zLevel+100, (perm+1)*.03125, (overl+1)*.03125);
-				tes.addVertexWithUV(k+88+radius, l+39-radius, zLevel+100, (perm+1)*.03125, (overl+0)*.03125);
-				tes.addVertexWithUV(k+88-radius, l+39-radius, zLevel+100, (perm+0)*.03125, (overl+0)*.03125);
+				tes.addVertexWithUV(k+88+radius, l+39-radius, zLevel+100, (perm+1)*.03125, (overl)*.03125);
+				tes.addVertexWithUV(k+88-radius, l+39-radius, zLevel+100, (perm)*.03125, (overl)*.03125);
 				tes.draw();
 
 				GL11.glDisable(3042);

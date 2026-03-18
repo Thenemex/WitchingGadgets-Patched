@@ -27,13 +27,7 @@ public class WGEnchantUnveiling extends Enchantment
 	    return getMinEnchantability(lvl) + 20;
 	}
 
-	@Override
-	public int getMaxLevel()
-	{
-		return 1;
-	}
-
-	@Override
+    @Override
 	public boolean canApply(ItemStack stack)
 	{
 		return stack!=null && stack.getItem() instanceof ItemArmor && ((ItemArmor)stack.getItem()).armorType==0 && (stack.getItem() instanceof IRevealer || stack.getItem() instanceof IGoggles);

@@ -23,8 +23,8 @@ public class NEIInfernalBlastfurnaceHandler extends TemplateRecipeHandler
 {
 	public class CachedInfernalBlastfurnaceRecipe extends CachedRecipe
 	{
-		PositionedStack input;
-		PositionedStack output;
+		final PositionedStack input;
+		final PositionedStack output;
 		PositionedStack bonus;
 		public CachedInfernalBlastfurnaceRecipe(InfernalBlastfurnaceRecipe recipe)
 		{
@@ -70,7 +70,7 @@ public class NEIInfernalBlastfurnaceHandler extends TemplateRecipeHandler
 	@Override
 	public void loadCraftingRecipes(String outputId, Object... results)
 	{
-		if(outputId == getOverlayIdentifier())
+		if(outputId.equals(getOverlayIdentifier()))
 		{
 			for(InfernalBlastfurnaceRecipe recipe : InfernalBlastfurnaceRecipe.recipes)
 				if (recipe != null && recipe.getOutput() != null)

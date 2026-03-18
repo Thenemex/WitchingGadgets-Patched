@@ -32,15 +32,12 @@ public class PacketClientNotifier extends AbstractPacket
 	@Override
 	public void handleClientSide(EntityPlayer player)
 	{
-		switch(packetid)
-		{
-		case 0:
-			if(ThaumcraftApiHelper.isResearchComplete(player.getCommandSenderName(), "WGFAKEELDRITCHMINOR"))
-				ResearchCategories.researchCategories.get("WITCHGADG").background = WGResearch.wgbackgrounds[1];
-			else
-				ResearchCategories.researchCategories.get("WITCHGADG").background = WGResearch.wgbackgrounds[0];
-			break;
-		}
+        if (packetid == 0) {
+            if (ThaumcraftApiHelper.isResearchComplete(player.getCommandSenderName(), "WGFAKEELDRITCHMINOR"))
+                ResearchCategories.researchCategories.get("WITCHGADG").background = WGResearch.wgbackgrounds[1];
+            else
+                ResearchCategories.researchCategories.get("WITCHGADG").background = WGResearch.wgbackgrounds[0];
+        }
 	}
 
 	@Override

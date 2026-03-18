@@ -42,7 +42,7 @@ import cpw.mods.fml.common.registry.VillagerRegistry.IVillageCreationHandler;
 
 public class VillageComponentPhotoshop extends StructureVillagePieces.Village
 {
-	static ChestGenHooks chestContents = new ChestGenHooks("WG:PHOTOWORKSHOP", new WeightedRandomChestContent[]{new WeightedRandomChestContent(Items.paper, 0, 2, 7, 10), new WeightedRandomChestContent(Items.dye, 0, 2, 7, 10), new WeightedRandomChestContent(ConfigItems.itemResource,10, 1, 1, 1)}, 3,9);
+	static final ChestGenHooks chestContents = new ChestGenHooks("WG:PHOTOWORKSHOP", new WeightedRandomChestContent[]{new WeightedRandomChestContent(Items.paper, 0, 2, 7, 10), new WeightedRandomChestContent(Items.dye, 0, 2, 7, 10), new WeightedRandomChestContent(ConfigItems.itemResource,10, 1, 1, 1)}, 3,9);
 
 	public VillageComponentPhotoshop()
 	{
@@ -271,7 +271,7 @@ public class VillageComponentPhotoshop extends StructureVillagePieces.Village
 		@Override
 		public PieceWeight getVillagePieceWeight(Random random, int i)
 		{
-			return new StructureVillagePieces.PieceWeight(VillageComponentPhotoshop.class, 15, MathHelper.getRandomIntegerInRange(random, 0 + i, 1 + i));
+			return new StructureVillagePieces.PieceWeight(VillageComponentPhotoshop.class, 15, MathHelper.getRandomIntegerInRange(random, i, 1 + i));
 		}
 		@Override
 		public Class<?> getComponentClass()

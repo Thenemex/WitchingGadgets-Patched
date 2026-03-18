@@ -25,8 +25,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBag extends Item
 {
-	String[] subNames = {"normal","void","ender","hungry"};
-	IIcon[] overlayIcons = new IIcon[subNames.length];
+	final String[] subNames = {"normal","void","ender","hungry"};
+	final IIcon[] overlayIcons = new IIcon[subNames.length];
 
 	public ItemBag()
 	{
@@ -141,7 +141,7 @@ public class ItemBag extends Item
 				if(stack.getTagCompound().getString("Owner").equalsIgnoreCase(player.getCommandSenderName()) && player.isSneaking())
 				{
 					stack.getTagCompound().setBoolean("unlocked", !stack.getTagCompound().getBoolean("unlocked"));
-					player.addChatComponentMessage(new ChatComponentTranslation(Lib.CHAT+"bag"+(stack.getTagCompound().getBoolean("unlocked")?"un":"")+"locked",new Object[0]));
+					player.addChatComponentMessage(new ChatComponentTranslation(Lib.CHAT+"bag"+(stack.getTagCompound().getBoolean("unlocked")?"un":"")+"locked"));
 					return stack;
 				}
 			}
@@ -193,7 +193,7 @@ public class ItemBag extends Item
 				NBTTagCompound tag = inv.getCompoundTagAt(i);
 				int slot = tag.getByte("Slot") & 0xFF;
 
-				if ((slot >= 0) && (slot < stackList.length))
+				if (slot < stackList.length)
 				{
 					stackList[slot] = ItemStack.loadItemStackFromNBT(tag);
 				}

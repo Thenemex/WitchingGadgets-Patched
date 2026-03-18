@@ -179,18 +179,17 @@ public class ItemRenderPrimordialGauntlet implements IItemRenderer
 
 			ClientUtilities.bindTexture("witchinggadgets:textures/models/white.png");
 			ItemStack[] gems = ItemPrimordialGlove.getSetGems(stack);//{ItemInfusedGem.createGem(Aspect.FIRE,GemCut.OVAL,true),ItemInfusedGem.createGem(Aspect.WATER,GemCut.OVAL,true),ItemInfusedGem.createGem(Aspect.EARTH,GemCut.OVAL,true),ItemInfusedGem.createGem(Aspect.AIR,GemCut.OVAL,true),ItemInfusedGem.createGem(Aspect.ORDER,GemCut.OVAL,true)};//ItemPrimordialGlove.getSetGems(stack);
-			if(gems!=null)
-				for(int g=0;g<gems.length;g++)
-					if(gems[g]!= null)
-					{
-						Color col = new Color(gems[g].getItem().getColorFromItemStack(gems[g], 0));
-						if(gems[g].getItemDamage()==0)
-							GL11.glColor3d(col.getRed()/255.0, col.getGreen()/255.0, col.getBlue()/255.0);
-						else
-							GL11.glColor3d(col.getRed()/511.0, col.getGreen()/511.0, col.getBlue()/511.0);
-						ClientProxy.gauntletModel.renderPart("Gem0"+g+"_oval0"+g);
-						GL11.glColor3d(1,1,1);
-					}
+            for(int g=0;g<gems.length;g++)
+                if(gems[g]!= null)
+                {
+                    Color col = new Color(gems[g].getItem().getColorFromItemStack(gems[g], 0));
+                    if(gems[g].getItemDamage()==0)
+                        GL11.glColor3d(col.getRed()/255.0, col.getGreen()/255.0, col.getBlue()/255.0);
+                    else
+                        GL11.glColor3d(col.getRed()/511.0, col.getGreen()/511.0, col.getBlue()/511.0);
+                    ClientProxy.gauntletModel.renderPart("Gem0"+g+"_oval0"+g);
+                    GL11.glColor3d(1,1,1);
+                }
 
 			GL11.glPopMatrix();
 			if(type == ItemRenderType.EQUIPPED_FIRST_PERSON)
@@ -280,7 +279,7 @@ public class ItemRenderPrimordialGauntlet implements IItemRenderer
 					}
 				}
 
-				float nodeScale = 0.0F;
+				float nodeScale;
 				int count = 0;
 				float bscale = 0.25F;
 				float average = 0.0F;
@@ -297,9 +296,8 @@ public class ItemRenderPrimordialGauntlet implements IItemRenderer
 					GL11.glBlendFunc(770, aspect.getBlend());
 					nodeScale = MathHelper.sin(ticksExisted / (14.0F - count)) * bscale + bscale * 2.0F;
 					nodeScale = 0.2F + nodeScale * (nodeAspects.getAmount(aspect) / 50.0F);
-					nodeScale *= size;
 
-					float mod = 2f * (((System.currentTimeMillis()+count*512)%4096)/4096f);
+                    float mod = 2f * (((System.currentTimeMillis()+count*512)%4096)/4096f);
 					if(mod>1)
 						mod = 2-mod;
 					float radius = .075f + .05f *mod*(nodeAspects.getAmount(aspect)/average);
@@ -328,9 +326,8 @@ public class ItemRenderPrimordialGauntlet implements IItemRenderer
 				GL11.glPushMatrix();
 				GL11.glEnable(3042);
 				nodeScale = 0.1F + average / 150.0F;
-				nodeScale *= size;
 
-				if(nodeType!=0)
+                if(nodeType!=0)
 					GL11.glBlendFunc(770, nodeType==3||nodeType==4?771 : 1);
 
 				int perm = (int) ((System.currentTimeMillis()/64)%32);
@@ -341,8 +338,8 @@ public class ItemRenderPrimordialGauntlet implements IItemRenderer
 				tessellator.startDrawingQuads();
 				tessellator.addVertexWithUV(-0.0825, 0.0825, -count*.001, uMin, (overl+1)*.03125);
 				tessellator.addVertexWithUV( 0.0825, 0.0825, -count*.001, uMax, (overl+1)*.03125);
-				tessellator.addVertexWithUV( 0.0825,-0.0825, -count*.001, uMax, (overl+0)*.03125);
-				tessellator.addVertexWithUV(-0.0825,-0.0825, -count*.001, uMin, (overl+0)*.03125);
+				tessellator.addVertexWithUV( 0.0825,-0.0825, -count*.001, uMax, (overl)*.03125);
+				tessellator.addVertexWithUV(-0.0825,-0.0825, -count*.001, uMin, (overl)*.03125);
 				tessellator.draw();
 
 				GL11.glDisable(3042);

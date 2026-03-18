@@ -20,7 +20,7 @@ public class TileEntityCuttingTable extends TileEntityWGBase implements IInvento
 {
 	int tick = 0;
 	int tickMax = 20*20;
-	ItemStack[] inventory = new ItemStack[5];
+	final ItemStack[] inventory = new ItemStack[5];
 	public int facing = 2;
 	public byte targetGemCut = 0;
 
@@ -88,7 +88,7 @@ public class TileEntityCuttingTable extends TileEntityWGBase implements IInvento
 				if(Arrays.asList(InfusedGemHandler.getNaturalAffinities(inventory[0])).contains(aspect))
 				{
 					if(amplifier-brittle>0)
-					stack.addEnchantment(WGContent.enc_gemstonePotency, amplifier-brittle);
+						stack.addEnchantment(WGContent.enc_gemstonePotency, amplifier-brittle);
 				}
 				else
 				{
@@ -116,7 +116,7 @@ public class TileEntityCuttingTable extends TileEntityWGBase implements IInvento
 		return l.getAspectsSortedAmount()[0];
 	}
 
-	static Set<Aspect> acceptedAspects = new HashSet();
+	static final Set<Aspect> acceptedAspects = new HashSet();
 	static{
 		acceptedAspects.add(Aspect.AIR);
 		acceptedAspects.add(Aspect.EARTH);

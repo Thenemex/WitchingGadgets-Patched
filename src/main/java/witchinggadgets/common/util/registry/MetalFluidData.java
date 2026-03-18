@@ -4,8 +4,8 @@ import java.util.HashMap;
 
 public class MetalFluidData
 {
-	static HashMap<String, String> oreFluidName = new HashMap();
-	static HashMap<String, Integer> oreFluidTemp = new HashMap();
+	static final HashMap<String, String> oreFluidName = new HashMap();
+	static final HashMap<String, Integer> oreFluidTemp = new HashMap();
 
 	static{
 		addOreFluid("Aluminum", "aluminum.molten", 350);

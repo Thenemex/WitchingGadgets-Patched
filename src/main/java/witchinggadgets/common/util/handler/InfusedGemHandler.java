@@ -8,8 +8,8 @@ import witchinggadgets.common.util.Utilities;
 
 public class InfusedGemHandler
 {
-	public static HashMap<String, Aspect[]> naturalAffinities = new HashMap<String, Aspect[]>();
-	public static HashMap<String, Aspect[]> naturalAversions = new HashMap<String, Aspect[]>();
+	public static final HashMap<String, Aspect[]> naturalAffinities = new HashMap<>();
+	public static final HashMap<String, Aspect[]> naturalAversions = new HashMap<>();
 
 	static{
 		registerAffinities("gemDiamond", Aspect.ORDER,Aspect.ENTROPY);

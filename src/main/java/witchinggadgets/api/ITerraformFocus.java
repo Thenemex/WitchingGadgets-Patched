@@ -11,8 +11,8 @@ import thaumcraft.api.aspects.Aspect;
  */
 public interface ITerraformFocus
 {
-	public Aspect requiredAspect(int metadata);
-	public Aspect requiredAspect(World world, int x, int y, int z);
-	public BiomeGenBase getCreatedBiome(World world, int x, int y, int z);
-	public ItemStack getDisplayedBlock(World world, int x, int y, int z);
+	Aspect requiredAspect(int metadata);
+	Aspect requiredAspect(World world, int x, int y, int z);
+	BiomeGenBase getCreatedBiome(World world, int x, int y, int z);
+	ItemStack getDisplayedBlock(World world, int x, int y, int z);
 }

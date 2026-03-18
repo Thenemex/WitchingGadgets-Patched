@@ -57,12 +57,7 @@ public class TileEntityEtherealWall extends TileEntityWGBase
 		else if(masterXmin != null)masterOV = masterXmin;
 		else if(masterXmax != null)masterOV = masterXmax;
 		//unify where necessary
-		if(masterYmin != null && masterYmin!= masterOV)
-		{
-			masterOV.integrateOtherNet(masterYmin);
-			((TileEntityEtherealWall)worldObj.getTileEntity(xCoord, yCoord-1, zCoord)).master = masterOV;
-		}
-		if(masterYmax != null && masterYmax!= masterOV)
+        if(masterYmax != null && masterYmax!= masterOV)
 		{
 			masterOV.integrateOtherNet(masterYmax);
 			((TileEntityEtherealWall)worldObj.getTileEntity(xCoord, yCoord+1, zCoord)).master = masterOV;

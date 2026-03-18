@@ -10,8 +10,8 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelKama extends ModelBiped
 {
-	int colour;
-	static ResourceLocation texBelt = new ResourceLocation("witchinggadgets:textures/models/magicalBaubles.png");
+	final int colour;
+	static final ResourceLocation texBelt = new ResourceLocation("witchinggadgets:textures/models/magicalBaubles.png");
 	public ModelKama(int colour)
 	{
 		this.colour = colour;

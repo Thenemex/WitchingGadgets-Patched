@@ -13,14 +13,13 @@ import witchinggadgets.common.items.tools.ItemPrimordialGlove;
 
 public class ContainerPrimordialGlove extends Container
 {
-	private World worldObj;
-	private int blockedSlot;
-	public IInventory input = new InventoryPrimordialGlove(this);
-	ItemStack bracelet = null;
-	EntityPlayer player = null;
-	private int slotAmount = 5;
+	private final World worldObj;
+	private final int blockedSlot;
+	public final IInventory input = new InventoryPrimordialGlove(this);
+	final ItemStack bracelet;
+	final EntityPlayer player;
 
-	public static HashMap<Integer, ContainerPrimordialGlove> map = new HashMap();
+    public static final HashMap<Integer, ContainerPrimordialGlove> map = new HashMap();
 
 	public ContainerPrimordialGlove(InventoryPlayer iinventory, World world, int x, int y, int z)
 	{
@@ -29,8 +28,8 @@ public class ContainerPrimordialGlove extends Container
 		this.bracelet = iinventory.getCurrentItem();
 		this.blockedSlot = (iinventory.currentItem + 45);
 
-		this.addSlotToContainer(new SlotInfusedGem(this.input, 0, 60, 06));
-		this.addSlotToContainer(new SlotInfusedGem(this.input, 1,100, 06));
+		this.addSlotToContainer(new SlotInfusedGem(this.input, 0, 60, 6));
+		this.addSlotToContainer(new SlotInfusedGem(this.input, 1,100, 6));
 
 		this.addSlotToContainer(new SlotInfusedGem(this.input, 2, 57, 42));
 		this.addSlotToContainer(new SlotInfusedGem(this.input, 3, 80, 53));
@@ -72,7 +71,8 @@ public class ContainerPrimordialGlove extends Container
 			ItemStack stackInSlot = slotObject.getStack();
 			stack = stackInSlot.copy();
 
-			if (slot < slotAmount) {
+            int slotAmount = 5;
+            if (slot < slotAmount) {
 				if (!this.mergeItemStack(stackInSlot, slotAmount, this.inventorySlots.size(), true))
 				{
 					return null;

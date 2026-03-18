@@ -18,13 +18,13 @@ public class PhotoDevelopingRecipe extends ShapelessArcaneRecipe
 
 	public PhotoDevelopingRecipe()
 	{
-		super("SCANCAMERA", new ItemStack(WGContent.ItemMaterial,1,10), new AspectList().add(Aspect.AIR,5).add(Aspect.WATER,5).add(Aspect.ORDER,5), new Object[]{new ItemStack(WGContent.ItemMaterial,1,9),"dyeBlack",Items.paper});
+		super("SCANCAMERA", new ItemStack(WGContent.ItemMaterial,1,10), new AspectList().add(Aspect.AIR,5).add(Aspect.WATER,5).add(Aspect.ORDER,5), new ItemStack(WGContent.ItemMaterial,1,9),"dyeBlack",Items.paper);
 	}
 
 	@Override
 	public AspectList getAspects(IInventory iinventoryCrafting)
 	{
-		ArrayList<ItemStack> paper = new ArrayList<ItemStack>();
+		ArrayList<ItemStack> paper = new ArrayList<>();
 
 		for (int i = 0; i < iinventoryCrafting.getSizeInventory(); i++)
 		{
@@ -43,7 +43,7 @@ public class PhotoDevelopingRecipe extends ShapelessArcaneRecipe
 	public ItemStack getCraftingResult(IInventory iinventoryCrafting)
 	{
 		ItemStack photoplate = null;
-		ArrayList<ItemStack> paper = new ArrayList<ItemStack>();
+		ArrayList<ItemStack> paper = new ArrayList<>();
 
 		for (int i = 0; i < iinventoryCrafting.getSizeInventory(); i++)
 		{
@@ -67,8 +67,8 @@ public class PhotoDevelopingRecipe extends ShapelessArcaneRecipe
 	public boolean matches(IInventory iinventoryCrafting, World world, EntityPlayer player)
 	{
 		ItemStack photoplate = null;
-		ArrayList<ItemStack> paper = new ArrayList<ItemStack>();
-		ArrayList<ItemStack> ink = new ArrayList<ItemStack>();
+		ArrayList<ItemStack> paper = new ArrayList<>();
+		ArrayList<ItemStack> ink = new ArrayList<>();
 
 		for (int i = 0; i < iinventoryCrafting.getSizeInventory(); i++)
 		{

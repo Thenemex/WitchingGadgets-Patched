@@ -107,7 +107,7 @@ public class BlockWallMirror extends BlockContainer
 	@Override
 	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
 	{
-		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+		ArrayList<ItemStack> ret = new ArrayList<>();
 		TileEntityWallMirror tile = (TileEntityWallMirror)world.getTileEntity(x,y,z);
 
 		if(tile != null && !tile.isDummy)

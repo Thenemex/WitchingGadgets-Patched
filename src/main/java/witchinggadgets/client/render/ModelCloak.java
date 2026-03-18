@@ -12,10 +12,10 @@ import witchinggadgets.common.WGConfig;
 
 public class ModelCloak extends ModelBiped
 {
-	private double[] circPos = new double[32]; // Circle Position
+	private final double[] circPos = new double[32]; // Circle Position
 
-	public boolean doAnimation = true;
-	int colour;
+	public final boolean doAnimation = true;
+	final int colour;
 	
 	public ModelCloak(int colour)
 	{
@@ -96,10 +96,8 @@ public class ModelCloak extends ModelBiped
 		
 		for(int i=0;i<15;i++)
 		{
-			int it0 = i;
-			int it1 = it0+1;
-			if(it1 > 31)it1-=31;
-			int it2 = i+24;
+            int it1 = i +1;
+            int it2 = i+24;
 			if(it2 > 31)it2-=31;
 			int it3 = it2+1;
 			if(it3 > 31)it3-=31;
@@ -107,15 +105,14 @@ public class ModelCloak extends ModelBiped
 
 			for(int j=0; j < 8;j++)
 			{
-				int jt0 = j;
-				int jt1 = jt0+1;
-				double h0 = (circPos[jt0]*circPos[jt0])*7;
+                int jt1 = j +1;
+				double h0 = (circPos[j]*circPos[j])*7;
 				double h1 = (circPos[jt1]*circPos[jt1])*7;
-				double dividerA[] = {0.3,0.725,0.75,0.8,0.825,0.9,1.0,1.1};
+				double[] dividerA = {0.3,0.725,0.75,0.8,0.825,0.9,1.0,1.1};
 				//double dividerA[] = {1.1,1.0,0.9,0.825,0.8,0.75,0.725,0.3};
 				double divider = dividerA[j];
 
-				double d0 = circPos[it0]*1.5*divider;
+				double d0 = circPos[i]*1.5*divider;
 				double d1 = circPos[it1]*1.5*divider;
 				double d2 = circPos[it2]*1.5*divider;
 				double d3 = circPos[it3]*1.5*divider;
@@ -175,103 +172,7 @@ public class ModelCloak extends ModelBiped
 		}
 
 
-		if(drawHood)
-		{
-			GL11.glTranslated(0, 1.4, 0);
-
-			if(bipedHead.rotateAngleZ * (180F / (float)Math.PI) != 0)
-				GL11.glRotatef(bipedHead.rotateAngleZ * (180F / (float)Math.PI) , 0F, 1F, 0F);
-			if(bipedHead.rotateAngleY * (180F / (float)Math.PI) != 0)
-				GL11.glRotatef(bipedHead.rotateAngleY * (180F / (float)Math.PI) , 0F, 1F, 0F);
-			if(bipedHeadwear.rotateAngleX * (180F / (float)Math.PI) != 0)
-				GL11.glRotatef(bipedHeadwear.rotateAngleX * (180F / (float)Math.PI) * -1F, 1F, 0F, 0F);
-
-			GL11.glTranslated(0, 0, 0.3);
-
-			GL11.glScaled(1, 1, 1.6);
-
-			for(int i=0;i<15;i++)
-			{
-				int it0 = i;
-				int it1 = it0+1;
-				if(it1 > 31)it1-=31;
-				int it2 = i+24;
-				if(it2 > 31)it2-=31;
-				int it3 = it2+1;
-				if(it3 > 31)it3-=31;
-
-				int it0_1 = i+1;
-				int it1_1 = it0_1+1;
-				if(it1_1 > 31)it1_1-=31;
-				int it2_1 = i+24;
-				if(it2_1 > 31)it2_1-=31;
-				int it3_1 = it2_1+1;
-				if(it3_1 > 31)it3_1-=31;
-
-				for(int j=0; j < 8;j++)
-				{
-
-					int jt0 = j;
-					int jt1 = jt0+1;
-					double h0 = (circPos[jt0]*circPos[jt0])*2.75;
-					double h1 = (circPos[jt1]*circPos[jt1])*2.75;
-					double dividerA[] = {0,0.65,0.675,0.7,0.725,0.775,0.825,0.9};
-					double divider = dividerA[j];
-
-					double d0 = circPos[it0]*0.9*divider;
-					double d1 = circPos[it1]*0.9*divider;
-					double d2 = circPos[it2]*0.9*divider;
-					double d3 = circPos[it3]*0.9*divider;
-
-					double f3 = i*0.0625;//icon.getMinU();
-					double f4 = (i+1)*0.0625;//icon.getMaxU();
-					double f5 = 0.5;//1 - (j+1)*0.125;//icon.getMinV();
-					double f6 = 1;//1 - j*0.125;//icon.getMaxV();
-
-
-					if(j==2)h0*=0.975;
-					if(j==1)
-					{
-						h1*=0.975;
-						h0*=0.9;
-					}
-					if(j==0)
-					{
-						d0 *=0.25;
-						d0_1 *=0.25;
-						d1 *=0.25;
-						d1_1 *=0.25;
-						d2 *=0.25;
-						d2_1 *=0.25;
-						d3 *=0.25;
-						d3_1 *=0.25;
-						h1*=0.9;
-						h0*=0.9;
-					}
-					if(j==2||j==3||j==4)
-					{
-						d2 *= 1.25;
-						d3 *= 1.25;
-					}
-
-					GL11.glColor4d(1, 1, 1, 1);
-					tessellator.startDrawingQuads();
-					tessellator.setNormal(0.0F, 1.0F, 0.0F);
-					tessellator.addVertexWithUV(d0  , h1, d2  , f3, f6);
-					tessellator.addVertexWithUV(d0_1, h0, d2_1, f3, f6);
-					tessellator.addVertexWithUV(d1_1, h0, d3_1, f4, f5);
-					tessellator.addVertexWithUV(d1  , h1, d3  , f4, f5);
-					tessellator.draw();
-
-					d0_1 = d0;
-					d1_1 = d1;
-					d2_1 = d2;
-					d3_1 = d3;
-				}
-			}
-		}
-		
-		GL11.glColor3f(1,1,1);
+        GL11.glColor3f(1,1,1);
 		GL11.glDisable(3042);
 		//GL11.glEnable(GL11.GL_LIGHTING);
 		GL11.glPopMatrix();

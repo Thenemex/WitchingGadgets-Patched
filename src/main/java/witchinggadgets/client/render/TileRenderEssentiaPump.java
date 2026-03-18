@@ -13,7 +13,7 @@ import witchinggadgets.common.blocks.tiles.TileEntityEssentiaPump;
 
 public class TileRenderEssentiaPump extends TileEntitySpecialRenderer
 {
-	static TileBellows bellow = new TileBellows();
+	static final TileBellows bellow = new TileBellows();
 	@Override
 	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float f)
 	{

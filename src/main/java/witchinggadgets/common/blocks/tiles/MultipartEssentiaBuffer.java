@@ -1,7 +1,7 @@
 package witchinggadgets.common.blocks.tiles;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -324,7 +324,7 @@ implements IAspectContainer, IEssentiaTransport, IWandable
 	@Override
 	public Iterable<ItemStack> getDrops()
 	{
-		return Arrays.asList(new ItemStack(getBlock(),1,meta));
+		return Collections.singletonList(new ItemStack(getBlock(), 1, meta));
 	}
 	@Override
 	public ItemStack pickItem(MovingObjectPosition hit)

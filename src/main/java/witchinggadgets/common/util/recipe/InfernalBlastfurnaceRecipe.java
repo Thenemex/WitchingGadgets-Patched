@@ -17,14 +17,14 @@ public class InfernalBlastfurnaceRecipe
 	private final boolean isSpecial;
 	private ItemStack bonus;
 
-	public static List<InfernalBlastfurnaceRecipe> recipes = new ArrayList();
+	public static final List<InfernalBlastfurnaceRecipe> recipes = new ArrayList();
 
 	public InfernalBlastfurnaceRecipe(ItemStack output, Object input, int time, boolean isSpecial)
 	{
 		if(input instanceof ItemStack)
-			this.input= (ItemStack)input;
+			this.input= input;
 		else if(input instanceof OreDictStack)
-			this.input= (OreDictStack)input;
+			this.input= input;
 		else if(input instanceof String)
 			this.input=new OreDictStack((String) input, 1);
 		else

@@ -88,7 +88,7 @@ public class TileRenderCobbleGen extends TileEntitySpecialRenderer
 
 		if(tile.getWorldObj()==null || tile.getWorldObj().getBlockPowerInput(tile.xCoord, tile.yCoord, tile.zCoord)<=0 && !tile.getWorldObj().isBlockIndirectlyGettingPowered(tile.xCoord, tile.yCoord, tile.zCoord))
 		{
-			double slowTick = tick/4;
+			double slowTick = (double) tick /4;
 			double loopTick = slowTick*1.65;
 			double inc = 1.0/512.0;
 			GL11.glEnable(3042);
@@ -112,53 +112,47 @@ public class TileRenderCobbleGen extends TileEntitySpecialRenderer
 
 	public static void renderPixelBlock(Tessellator tes, double x,double y,double z,double pixelLengthX,double pixelLengthY,double pixelLengthZ,double uMin,double vMin,double uMax,double vMax)
 	{
-		double dXMin = x;
-		double dXMax = pixelLengthX;
-		double dYMin = y;
-		double dYMax = pixelLengthY;
-		double dZMin = z;
-		double dZMax = pixelLengthZ;
-		//Side YNeg
+        //Side YNeg
 		tes.startDrawingQuads();
-		tes.addVertexWithUV(dXMin, dYMin, dZMin, uMin, vMin);
-		tes.addVertexWithUV(dXMax, dYMin, dZMin, uMax, vMin);
-		tes.addVertexWithUV(dXMax, dYMin, dZMax, uMax, vMax);
-		tes.addVertexWithUV(dXMin, dYMin, dZMax, uMin, vMax);
+		tes.addVertexWithUV(x, y, z, uMin, vMin);
+		tes.addVertexWithUV(pixelLengthX, y, z, uMax, vMin);
+		tes.addVertexWithUV(pixelLengthX, y, pixelLengthZ, uMax, vMax);
+		tes.addVertexWithUV(x, y, pixelLengthZ, uMin, vMax);
 		tes.draw();
 		//Side YPos
 		tes.startDrawingQuads();
-		tes.addVertexWithUV(dXMin, dYMax, dZMin, uMin, vMin);
-		tes.addVertexWithUV(dXMin, dYMax, dZMax, uMin, vMax);
-		tes.addVertexWithUV(dXMax, dYMax, dZMax, uMax, vMax);
-		tes.addVertexWithUV(dXMax, dYMax, dZMin, uMax, vMin);
+		tes.addVertexWithUV(x, pixelLengthY, z, uMin, vMin);
+		tes.addVertexWithUV(x, pixelLengthY, pixelLengthZ, uMin, vMax);
+		tes.addVertexWithUV(pixelLengthX, pixelLengthY, pixelLengthZ, uMax, vMax);
+		tes.addVertexWithUV(pixelLengthX, pixelLengthY, z, uMax, vMin);
 		tes.draw();
 		//Side ZNeg
 		tes.startDrawingQuads();
-		tes.addVertexWithUV(dXMin, dYMin, dZMin, uMin, vMin);
-		tes.addVertexWithUV(dXMin, dYMax, dZMin, uMin, vMax);
-		tes.addVertexWithUV(dXMax, dYMax, dZMin, uMax, vMax);
-		tes.addVertexWithUV(dXMax, dYMin, dZMin, uMax, vMin);
+		tes.addVertexWithUV(x, y, z, uMin, vMin);
+		tes.addVertexWithUV(x, pixelLengthY, z, uMin, vMax);
+		tes.addVertexWithUV(pixelLengthX, pixelLengthY, z, uMax, vMax);
+		tes.addVertexWithUV(pixelLengthX, y, z, uMax, vMin);
 		tes.draw();
 		//Side ZPos
 		tes.startDrawingQuads();
-		tes.addVertexWithUV(dXMin, dYMin, dZMax, uMin, vMin);
-		tes.addVertexWithUV(dXMax, dYMin, dZMax, uMax, vMin);
-		tes.addVertexWithUV(dXMax, dYMax, dZMax, uMax, vMax);
-		tes.addVertexWithUV(dXMin, dYMax, dZMax, uMin, vMax);
+		tes.addVertexWithUV(x, y, pixelLengthZ, uMin, vMin);
+		tes.addVertexWithUV(pixelLengthX, y, pixelLengthZ, uMax, vMin);
+		tes.addVertexWithUV(pixelLengthX, pixelLengthY, pixelLengthZ, uMax, vMax);
+		tes.addVertexWithUV(x, pixelLengthY, pixelLengthZ, uMin, vMax);
 		tes.draw();
 		//Side XNeg
 		tes.startDrawingQuads();
-		tes.addVertexWithUV(dXMin, dYMin, dZMin, uMin, vMin);
-		tes.addVertexWithUV(dXMin, dYMin, dZMax, uMax, vMin);
-		tes.addVertexWithUV(dXMin, dYMax, dZMax, uMax, vMax);
-		tes.addVertexWithUV(dXMin, dYMax, dZMin, uMin, vMax);
+		tes.addVertexWithUV(x, y, z, uMin, vMin);
+		tes.addVertexWithUV(x, y, pixelLengthZ, uMax, vMin);
+		tes.addVertexWithUV(x, pixelLengthY, pixelLengthZ, uMax, vMax);
+		tes.addVertexWithUV(x, pixelLengthY, z, uMin, vMax);
 		tes.draw();
 		//Side XPos
 		tes.startDrawingQuads();
-		tes.addVertexWithUV(dXMax, dYMin, dZMin, uMin, vMin);
-		tes.addVertexWithUV(dXMax, dYMax, dZMin, uMin, vMax);
-		tes.addVertexWithUV(dXMax, dYMax, dZMax, uMax, vMax);
-		tes.addVertexWithUV(dXMax, dYMin, dZMax, uMax, vMin);
+		tes.addVertexWithUV(pixelLengthX, y, z, uMin, vMin);
+		tes.addVertexWithUV(pixelLengthX, pixelLengthY, z, uMin, vMax);
+		tes.addVertexWithUV(pixelLengthX, pixelLengthY, pixelLengthZ, uMax, vMax);
+		tes.addVertexWithUV(pixelLengthX, y, pixelLengthZ, uMax, vMin);
 		tes.draw();
 	}
 

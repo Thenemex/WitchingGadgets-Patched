@@ -59,8 +59,8 @@ public class MultipartEssentiaTube_Valve extends MultipartEssentiaTube
 		super.update();
 		if(!world().isRemote && count%5==0)
 		{
-			boolean gettingPower = world().isBlockIndirectlyGettingPowered(x(), y(), z());;
-			if(wasPoweredLastTick && !gettingPower && allowFlow!=true)
+			boolean gettingPower = world().isBlockIndirectlyGettingPowered(x(), y(), z());
+            if(wasPoweredLastTick && !gettingPower && allowFlow!=true)
 			{
 				allowFlow = true;
 				world().playSoundEffect(x()+.5, y()+.5, z()+.5, "thaumcraft:squeek", .7f, .9f+world().rand.nextFloat()*.2f);
@@ -94,7 +94,7 @@ public class MultipartEssentiaTube_Valve extends MultipartEssentiaTube
 		ClientUtilities.addBoxToBlockrender(.375,.375,.375, .625,.625,.625, ((BlockTube)ConfigBlocks.blockTube).icon[1], x(),y(),z());
 		return true;
 	}
-	static ModelTubeValve valveModel =  new ModelTubeValve();
+	static final ModelTubeValve valveModel =  new ModelTubeValve();
 	@Override
 	public void renderDynamic(Vector3 pos, float partialTickTime, int pass)
 	{

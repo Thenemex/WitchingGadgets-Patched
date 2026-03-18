@@ -34,8 +34,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockWGMetalDevice extends BlockContainer implements ITerraformFocus
 {
-	public static String[] subNames = {"essentiaPump","terraformer","tfFocusPlains","tfFocusColdTaiga","tfFocusDesert","tfFocusJungle","tfFocusHell","voidmetalBlock","tfFocusTaint","tfFocusMushroom"};
-	IIcon[] icons = new IIcon[subNames.length];
+	public static final String[] subNames = {"essentiaPump","terraformer","tfFocusPlains","tfFocusColdTaiga","tfFocusDesert","tfFocusJungle","tfFocusHell","voidmetalBlock","tfFocusTaint","tfFocusMushroom"};
+	final IIcon[] icons = new IIcon[subNames.length];
 
 	public BlockWGMetalDevice()
 	{
@@ -61,7 +61,7 @@ public class BlockWGMetalDevice extends BlockContainer implements ITerraformFocu
 	{	
 		for(int i=0;i<icons.length;i++)
 		{
-			if(i<7||i>7)
+			if(i != 7)
 				icons[i] = iconRegister.registerIcon("thaumcraft:metalbase");
 			else
 				icons[i] = iconRegister.registerIcon("witchinggadgets:"+subNames[i]);
@@ -179,12 +179,7 @@ public class BlockWGMetalDevice extends BlockContainer implements ITerraformFocu
 		return super.onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ);
 	}
 
-	@Override
-	public void onNeighborChange(IBlockAccess world, int x, int y, int z, int tileX, int tileY, int tileZ)
-	{
-	}
-
-	@Override
+    @Override
 	public int getRenderType()
 	{
 		return BlockRenderMetalDevice.renderID;

@@ -21,14 +21,14 @@ public class GemCutting
 		Object oInput = WGMinetweaker.toObject(gem);
 		if(oInput==null)
 			return;
-		ArrayList<Aspect> aspectList = new ArrayList<Aspect>();
+		ArrayList<Aspect> aspectList = new ArrayList<>();
 		for(String s : aspects)
 		{
 			Aspect a = Aspect.getAspect(s);
 			if(a!=null)
 				aspectList.add(a);
 		}
-		MineTweakerAPI.apply(new Add((byte)0, oInput, aspectList.toArray(new Aspect[aspectList.size()])));
+		MineTweakerAPI.apply(new Add((byte)0, oInput, aspectList.toArray(new Aspect[0])));
 	}
 	@ZenMethod
 	public static void removeAffinity(IIngredient gem)
@@ -42,14 +42,14 @@ public class GemCutting
 		Object oInput = WGMinetweaker.toObject(gem);
 		if(oInput==null)
 			return;
-		ArrayList<Aspect> aspectList = new ArrayList<Aspect>();
+		ArrayList<Aspect> aspectList = new ArrayList<>();
 		for(String s : aspects)
 		{
 			Aspect a = Aspect.getAspect(s);
 			if(a!=null)
 				aspectList.add(a);
 		}
-		MineTweakerAPI.apply(new Add((byte)1, oInput, aspectList.toArray(new Aspect[aspectList.size()])));
+		MineTweakerAPI.apply(new Add((byte)1, oInput, aspectList.toArray(new Aspect[0])));
 	}
 	@ZenMethod
 	public static void removeAversion(IIngredient gem)
@@ -59,9 +59,9 @@ public class GemCutting
 
 	private static class Add implements IUndoableAction
 	{
-		byte type;
-		Object key;
-		Aspect[] aspects;
+		final byte type;
+		final Object key;
+		final Aspect[] aspects;
 		public Add(byte type, Object key, Aspect... aspects)
 		{
 			this.type = type;
@@ -107,8 +107,8 @@ public class GemCutting
 	}
 	private static class Remove implements IUndoableAction
 	{
-		byte type;
-		Object key;
+		final byte type;
+		final Object key;
 		Aspect[] removedAspects;
 		public Remove(byte type, Object key)
 		{

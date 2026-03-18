@@ -158,9 +158,9 @@ public class ClientEventHandler
 			ClientUtilities.bindTexture("witchinggadgets:textures/gui/steam_overlay.png");
 			Tessellator tessellator = Tessellator.instance;
 			tessellator.startDrawingQuads();
-			tessellator.addVertexWithUV(0.0D, (double)event.resolution.getScaledHeight(), -90.0D, 0.0D, 1.0D);
-			tessellator.addVertexWithUV((double)event.resolution.getScaledWidth(), (double)event.resolution.getScaledHeight(), -90.0D, 1.0D, 1.0D);
-			tessellator.addVertexWithUV((double)event.resolution.getScaledWidth(), 0.0D, -90.0D, 1.0D, 0.0D);
+			tessellator.addVertexWithUV(0.0D, event.resolution.getScaledHeight(), -90.0D, 0.0D, 1.0D);
+			tessellator.addVertexWithUV(event.resolution.getScaledWidth(), event.resolution.getScaledHeight(), -90.0D, 1.0D, 1.0D);
+			tessellator.addVertexWithUV(event.resolution.getScaledWidth(), 0.0D, -90.0D, 1.0D, 0.0D);
 			tessellator.addVertexWithUV(0.0D, 0.0D, -90.0D, 0.0D, 0.0D);
 			tessellator.draw();
 			GL11.glDepthMask(true);
@@ -239,10 +239,10 @@ public class ClientEventHandler
 							{
 								tessellator.startDrawingQuads();
 								tessellator.setColorRGBA_I(0, 64);
-								tessellator.addVertexWithUV(ix-2+00, iy-2+20, 50, 0,1);//((f2 + (float)p5 * f4) * f), )((f3 + (float)p5) * f1));
+								tessellator.addVertexWithUV(ix - 2, iy-2+20, 50, 0,1);//((f2 + (float)p5 * f4) * f), )((f3 + (float)p5) * f1));
 								tessellator.addVertexWithUV(ix-2+20, iy-2+20, 50, 1,1);//((f2 + (float)p4 + (float)p5 * f4) * f), ((f3 + (float)p5) * f1));
-								tessellator.addVertexWithUV(ix-2+20, iy-2+00, 50, 1,0);//((f2 + (float)p4) * f), ((f3 + 0.0F) * f1));
-								tessellator.addVertexWithUV(ix-2+00, iy-2+00, 50, 0,0);//((f2 + 0.0F) * f), ((f3 + 0.0F) * f1));
+								tessellator.addVertexWithUV(ix-2+20, iy - 2, 50, 1,0);//((f2 + (float)p4) * f), ((f3 + 0.0F) * f1));
+								tessellator.addVertexWithUV(ix - 2, iy - 2, 50, 0,0);//((f2 + 0.0F) * f), ((f3 + 0.0F) * f1));
 								tessellator.draw();
 							}
 
@@ -334,7 +334,7 @@ public class ClientEventHandler
 		ItemClusters.setupClusters();
 	}
 
-	static float spectralAlpha = .5f;
+	static final float spectralAlpha = .5f;
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void setSpecialRendersLiving(RenderLivingEvent.Pre event)

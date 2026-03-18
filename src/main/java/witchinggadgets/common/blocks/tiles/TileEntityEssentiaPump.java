@@ -21,12 +21,7 @@ public class TileEntityEssentiaPump extends TileEntityWGBase implements IEssenti
 	Aspect aspect  = null;
 	int amount = 0;
 
-	@Override
-	public boolean canUpdate()
-	{
-		return true;
-	}
-	@Override
+    @Override
 	public void updateEntity()
 	{
 		if(!worldObj.isRemote)
@@ -53,7 +48,7 @@ public class TileEntityEssentiaPump extends TileEntityWGBase implements IEssenti
 
 	ArrayList<TileMirrorEssentia> getMirrors()
 	{
-		ArrayList<TileMirrorEssentia> list = new ArrayList<TileMirrorEssentia>();
+		ArrayList<TileMirrorEssentia> list = new ArrayList<>();
 		int range = 8;
 		ForgeDirection fd = facing.getOpposite();
 		for(int h=-range; h<=range; h++)
@@ -82,7 +77,7 @@ public class TileEntityEssentiaPump extends TileEntityWGBase implements IEssenti
 						zz += l*fd.offsetZ;
 					}
 					TileEntity te = worldObj.getTileEntity(xx, yy, zz);
-					if(te!=null && te instanceof TileMirrorEssentia && canSeeMirror((TileMirrorEssentia) te))
+					if(te instanceof TileMirrorEssentia && canSeeMirror((TileMirrorEssentia) te))
 						list.add((TileMirrorEssentia) te);
 				}
 		return list;

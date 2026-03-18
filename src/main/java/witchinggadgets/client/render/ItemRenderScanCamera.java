@@ -41,10 +41,10 @@ import witchinggadgets.common.util.Utilities;
 
 public class ItemRenderScanCamera implements IItemRenderer
 {
-	String goldTexture = ("thaumcraft:textures/models/scanner.png");
-	String leatherTexture = ("witchinggadgets:textures/models/cameraLeather.png");
-	String scannerTexture = ("thaumcraft:textures/models/scanscreen.png");
-	String woodTexture = ("thaumcraft:textures/blocks/planks_greatwood.png");
+	final String goldTexture = ("thaumcraft:textures/models/scanner.png");
+	final String leatherTexture = ("witchinggadgets:textures/models/cameraLeather.png");
+	final String scannerTexture = ("thaumcraft:textures/models/scanscreen.png");
+	final String woodTexture = ("thaumcraft:textures/blocks/planks_greatwood.png");
 
 	@Override
 	public boolean handleRenderType(ItemStack stack, ItemRenderType type)
@@ -137,23 +137,23 @@ public class ItemRenderScanCamera implements IItemRenderer
 				float f9;
 				float f10;
 				float f11;
-				float f12 = 0.8F;
+				float f12;
 
 				int i = mc.theWorld.getLightBrightnessForSkyBlocks(MathHelper.floor_double(player.posX), MathHelper.floor_double(player.posY), MathHelper.floor_double(player.posZ), 0);
-				int k = i / 65536;
+				int k;
 
 				Render render;
 				RenderPlayer renderplayer;
 
 				f12 = 0.8F;
-				f7 = player.getSwingProgress(timer);
-				f7 = 0;
+                player.getSwingProgress(timer);
+                f7 = 0;
 				f8 = MathHelper.sin(f7 * (float)Math.PI);
 				f6 = MathHelper.sin(MathHelper.sqrt_float(f7) * (float)Math.PI);
 				GL11.glTranslatef(-f6 * 0.4F, MathHelper.sin(MathHelper.sqrt_float(f7) * (float)Math.PI * 2.0F) * 0.2F, -f8 * 0.2F);
 				//			f7 = 1.0F - f2 / 45.0F + 0.1F;
 
-				GL11.glTranslatef(0.0F, 0.0F * f12 - (1.0F - 1.0f) * 1.2F + 0.04F, -0.9F * f12);
+				GL11.glTranslatef(0.0F, 0.0F * f12 - (0.0f) * 1.2F + 0.04F, -0.9F * f12);
 				GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
 				GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 				ClientUtilities.bindTexture(player.getLocationSkin().getResourceDomain()+":"+player.getLocationSkin().getResourcePath());
@@ -296,7 +296,7 @@ public class ItemRenderScanCamera implements IItemRenderer
 						if ((mop != null) && (mop.typeOfHit == MovingObjectType.BLOCK))
 						{
 							TileEntity tile = player.worldObj.getTileEntity(mop.blockX, mop.blockY, mop.blockZ);
-							if ((tile != null) && ((tile instanceof INode)))
+							if (((tile instanceof INode)))
 							{
 								aspects = ((INode)tile).getAspects();
 
@@ -305,7 +305,7 @@ public class ItemRenderScanCamera implements IItemRenderer
 								GL11.glBlendFunc(770, 1);
 								String t = StatCollector.translateToLocal("nodetype." + ((INode)tile).getNodeType() + ".name");
 								if (((INode)tile).getNodeModifier() != null) {
-									t = t + ", " + StatCollector.translateToLocal(new StringBuilder().append("nodemod.").append(((INode)tile).getNodeModifier()).append(".name").toString());
+									t = t + ", " + StatCollector.translateToLocal("nodemod." + ((INode) tile).getNodeModifier() + ".name");
 								}
 								int sw = mc.fontRenderer.getStringWidth(t);
 								float scale = 0.004F;
@@ -333,7 +333,7 @@ public class ItemRenderScanCamera implements IItemRenderer
 							int j = (int)(190.0F + MathHelper.sin(posX + player.ticksExisted - player.worldObj.rand.nextInt(2)) * 10.0F + 10.0F);
 							int k = j % 65536;
 							int l = j / 65536;
-							OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, k / 1.0F, l / 1.0F);
+							OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, k, l);
 							UtilsFX.drawTag(-baseX + posX * 16, -8 + posY * 16, aspect, aspects.getAmount(aspect), 0, 0.01D, 1, 1.0F, false);
 							GL11.glPopMatrix();
 							posX++;
@@ -349,7 +349,7 @@ public class ItemRenderScanCamera implements IItemRenderer
 					if (text == null) {
 						text = "?";
 					}
-					if (text.length() > 0)
+					if (!text.isEmpty())
 					{
 						GL11.glPushMatrix();
 
@@ -394,8 +394,7 @@ public class ItemRenderScanCamera implements IItemRenderer
 		Entity pointedEntity = EntityUtils.getPointedEntity(p.worldObj, p, 0.5D, 10.0D, 0.0F, true);
 		if (pointedEntity != null)
 		{
-			ScanResult sr = new ScanResult((byte)2, 0, 0, pointedEntity, "");
-			return sr;
+            return new ScanResult((byte)2, 0, 0, pointedEntity, "");
 		}
 		MovingObjectPosition mop = EntityUtils.getMovingObjectPositionFromPlayer(p.worldObj, p, true);
 		if ((mop != null) && (mop.typeOfHit == MovingObjectType.BLOCK))
@@ -403,17 +402,16 @@ public class ItemRenderScanCamera implements IItemRenderer
 			int bi = Block.getIdFromBlock(p.worldObj.getBlock(mop.blockX, mop.blockY, mop.blockZ));
 
 			TileEntity tile = p.worldObj.getTileEntity(mop.blockX, mop.blockY, mop.blockZ);
-			if ((tile != null) && ((tile instanceof INode)))
+			if (((tile instanceof INode)))
 			{
 				int md = p.worldObj.getBlock(mop.blockX, mop.blockY, mop.blockZ).getDamageValue(p.worldObj, mop.blockX, mop.blockY, mop.blockZ);
-				ScanResult sr = new ScanResult((byte)3, bi, md, null, "NODE" + ((INode)tile).getId());
-				return sr;
+                return new ScanResult((byte)3, bi, md, null, "NODE" + ((INode)tile).getId());
 			}
 			if (p.worldObj.getBlock(mop.blockX, mop.blockY, mop.blockZ) != null)
 			{
 				ItemStack is = Utilities.getPickedBlock(p.worldObj, mop.blockX, mop.blockY, mop.blockZ);
 
-				ScanResult sr = null;
+				ScanResult sr;
 				int md = p.worldObj.getBlockMetadata(mop.blockX, mop.blockY, mop.blockZ);
 				try
 				{
@@ -421,7 +419,7 @@ public class ItemRenderScanCamera implements IItemRenderer
 						is = BlockUtils.createStackedBlock(p.worldObj.getBlock(mop.blockX, mop.blockY, mop.blockZ), md);
 					}
 				}
-				catch (Exception e) {}
+				catch (Exception ignored) {}
 				if (is == null) {
 					sr = new ScanResult((byte)1, bi, md, null, "");
 				} else {

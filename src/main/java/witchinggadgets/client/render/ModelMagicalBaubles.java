@@ -52,7 +52,7 @@ public class ModelMagicalBaubles extends ModelBiped
 		}
 	}
 
-	static ModelBiped[] modelMap = new ModelBiped[ItemMagicalBaubles.subNames.length];
+	static final ModelBiped[] modelMap = new ModelBiped[ItemMagicalBaubles.subNames.length];
 	public static ModelBiped getModel(EntityLivingBase entity, ItemStack stack)
 	{
 		if(stack==null || !(stack.getItem() instanceof ITravellersGear))

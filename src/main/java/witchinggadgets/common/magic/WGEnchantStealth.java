@@ -33,8 +33,7 @@ public class WGEnchantStealth extends Enchantment
 	@Override
 	public boolean canApply(ItemStack stack)
 	{
-		boolean b = stack!=null && stack.getItem() instanceof ItemArmor && ( ((ItemArmor)stack.getItem()).armorType==2||((ItemArmor)stack.getItem()).armorType==3 );
-		return b;
+        return stack!=null && stack.getItem() instanceof ItemArmor && ( ((ItemArmor)stack.getItem()).armorType==2||((ItemArmor)stack.getItem()).armorType==3 );
 	}
 
 	@Override

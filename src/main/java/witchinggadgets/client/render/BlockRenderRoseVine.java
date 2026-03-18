@@ -14,7 +14,7 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 public class BlockRenderRoseVine implements ISimpleBlockRenderingHandler
 {
 
-	public static int renderID = RenderingRegistry.getNextAvailableRenderId();
+	public static final int renderID = RenderingRegistry.getNextAvailableRenderId();
 
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer)

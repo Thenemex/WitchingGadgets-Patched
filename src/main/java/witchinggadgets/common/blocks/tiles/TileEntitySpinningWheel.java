@@ -12,8 +12,8 @@ public class TileEntitySpinningWheel extends TileEntityWGBase implements IInvent
 	public int facing = 0;
 	public int animation = 0;
 	public int progress = 0;
-	public int maxProgress = 120;
-	public ItemStack[] inv = new ItemStack[6];
+	public final int maxProgress = 120;
+	public final ItemStack[] inv = new ItemStack[6];
 
 	public TileEntitySpinningWheel()
 	{

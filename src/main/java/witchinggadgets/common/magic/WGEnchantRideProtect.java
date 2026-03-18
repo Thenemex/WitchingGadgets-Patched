@@ -27,13 +27,7 @@ public class WGEnchantRideProtect extends Enchantment
 	    return getMinEnchantability(lvl) + 20;
 	}
 
-	@Override
-	public int getMaxLevel()
-	{
-		return 1;
-	}
-
-	@Override
+    @Override
 	public boolean canApply(ItemStack stack)
 	{
 		return stack!=null && (stack.getItem() instanceof ItemArmor || stack.getItem() instanceof IBauble || TravellersGearAPI.isTravellersGear(stack));

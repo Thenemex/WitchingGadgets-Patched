@@ -12,10 +12,10 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class SpinningRecipe 
 {
-	public static List<SpinningRecipe> recipeList = new ArrayList<SpinningRecipe>();
+	public static final List<SpinningRecipe> recipeList = new ArrayList<>();
 
-	ItemStack output;
-	Object[] input;
+	final ItemStack output;
+	final Object[] input;
 
 	public SpinningRecipe(ItemStack r_output, Object... r_recipe)
 	{
@@ -138,13 +138,10 @@ public class SpinningRecipe
 	}
 	public static SpinningRecipe getSpinningRecipe(ItemStack output)
 	{
-		Iterator<SpinningRecipe> i = recipeList.iterator();
-		while(i.hasNext())
-		{
-			SpinningRecipe s = i.next();
-			if(OreDictionary.itemMatches(s.getOutput(),output, false))
-				return s;
-		}
+        for (SpinningRecipe s : recipeList) {
+            if (OreDictionary.itemMatches(s.getOutput(), output, false))
+                return s;
+        }
 		return null;
 	}
 	public static void removeRecipe(SpinningRecipe recipe)

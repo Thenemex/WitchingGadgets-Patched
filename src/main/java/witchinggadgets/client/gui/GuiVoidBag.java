@@ -12,7 +12,7 @@ import witchinggadgets.common.gui.ContainerVoidBag;
 
 public class GuiVoidBag extends GuiContainer{
 
-	InventoryPlayer test;
+	final InventoryPlayer test;
 
 	public GuiVoidBag(InventoryPlayer inventoryPlayer, World world)
 	{

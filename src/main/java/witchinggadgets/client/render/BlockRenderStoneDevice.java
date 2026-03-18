@@ -23,7 +23,7 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 public class BlockRenderStoneDevice implements ISimpleBlockRenderingHandler
 {
 	public static int renderPass = 0;
-	public static int renderID = RenderingRegistry.getNextAvailableRenderId();
+	public static final int renderID = RenderingRegistry.getNextAvailableRenderId();
 
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer)
@@ -86,7 +86,7 @@ public class BlockRenderStoneDevice implements ISimpleBlockRenderingHandler
 				rgb[2] = f5;
 			}
 
-			boolean flag=false;
+			boolean flag;
 			switch (renderType)
 			{
 			case 0:

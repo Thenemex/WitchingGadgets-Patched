@@ -9,8 +9,8 @@ import witchinggadgets.common.blocks.tiles.TileEntitySpinningWheel;
 
 public class ContainerSpinningWheel extends Container
 {
-	protected TileEntitySpinningWheel tileEntity;
-	private int slotCount;
+	protected final TileEntitySpinningWheel tileEntity;
+	private final int slotCount;
 
 	public ContainerSpinningWheel (InventoryPlayer inventoryPlayer, TileEntitySpinningWheel te)
 	{

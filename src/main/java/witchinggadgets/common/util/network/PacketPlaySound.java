@@ -38,12 +38,12 @@ public class PacketPlaySound extends AbstractPacket
 		this.volume = buffer.readFloat();
 		this.pitch = buffer.readFloat();
 
-		String tempString = "";
+		StringBuilder tempString = new StringBuilder();
 		int charLength = buffer.readInt();
 		for(int i=0;i<charLength;i++)
 			for(char c : Character.toChars(buffer.readInt()))
-				tempString += Character.valueOf(c);
-		this.sound = tempString;
+				tempString.append(c);
+		this.sound = tempString.toString();
 	}
 
 	@Override

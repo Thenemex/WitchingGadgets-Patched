@@ -70,7 +70,7 @@ public class ItemMaterials extends Item
 		"wolfPelt", "calculator", "cuttingTools", "photoPlate", "developedPhoto",
 		"guidingString","powerlessPearl","gemstoneDust"
 	};
-	public IIcon[] icon = new IIcon[subNames.length];
+	public final IIcon[] icon = new IIcon[subNames.length];
 
 	public ItemMaterials()
 	{
@@ -87,7 +87,7 @@ public class ItemMaterials extends Item
 		return super.getItemStackLimit(stack);
 	}
 
-	HashMap<String,Object> guidingLights = new HashMap();
+	final HashMap<String,Object> guidingLights = new HashMap();
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int useTicks, boolean equipped)
 	{
@@ -171,52 +171,49 @@ public class ItemMaterials extends Item
 				if(!stack.hasTagCompound())
 					return;
 				ScanResult scan = Utilities.readScanResultFromNBT(stack.getTagCompound().getCompoundTag("scanResult"), player.worldObj);
-				if(scan!=null)
-				{
-					String name = "";
-					AspectList aspects = new AspectList();
-					switch(scan.type)
-					{
-					case 1:
-						ItemStack scanStack = new ItemStack(Item.getItemById(scan.id), 1, scan.meta);
-						name = "\u00a7" + scanStack.getRarity().rarityColor.getFormattingCode()+scanStack.getDisplayName();
-						aspects = ThaumcraftCraftingManager.getObjectTags(new ItemStack(Item.getItemById(scan.id), 1, scan.meta));
-						aspects = ThaumcraftCraftingManager.getBonusTags(new ItemStack(Item.getItemById(scan.id), 1, scan.meta), aspects);
-						break;
-					case 2:
-						if ((scan.entity instanceof EntityItem))
-						{
-							EntityItem item = (EntityItem)scan.entity;
-							name = "\u00a7" + item.getEntityItem().getRarity().rarityColor.getFormattingCode()+item.getEntityItem().getDisplayName();
-							aspects = ThaumcraftCraftingManager.getObjectTags(new ItemStack(item.getEntityItem().getItem(), 1, item.getEntityItem().getItemDamage()));
-							aspects = ThaumcraftCraftingManager.getBonusTags(new ItemStack(item.getEntityItem().getItem(), 1, item.getEntityItem().getItemDamage()), aspects);
-						}
-						else
-						{
-							name = scan.entity.getCommandSenderName();
-							aspects = ScanManager.generateEntityAspects(scan.entity);
-						}
-						break;
-					case 3:
-						if(scan.phenomena.startsWith("NODE"))
-						{
-							name = StatCollector.translateToLocal("tile.blockAiry.0.name");
-							aspects = Utilities.generateNodeAspects(player.worldObj, scan.phenomena.replace("NODE", ""));
-						}
-						break;
-					}
-					list.add(" "+name);
-					if(Keyboard.isKeyDown(Keyboard.KEY_LCONTROL)||Keyboard.isKeyDown(Keyboard.KEY_RCONTROL))
-					{
-						for(Aspect a : aspects.getAspectsSorted())
-							if(a!=null && aspects.getAmount(a)>0)
-								list.add("  \u00a77"+a.getName()+": "+aspects.getAmount(a));
-					}
-					else
-						list.add("  "+StatCollector.translateToLocal(Lib.DESCRIPTION+"ctrlForAspectList"));
-					list.add(" "+StatCollector.translateToLocal(Lib.DESCRIPTION+"scanCompleted")+": "+ScanManager.hasBeenScanned(player, scan));
-				}
-			}
+                String name = "";
+                AspectList aspects = new AspectList();
+                switch(scan.type)
+                {
+                case 1:
+                    ItemStack scanStack = new ItemStack(Item.getItemById(scan.id), 1, scan.meta);
+                    name = "§" + scanStack.getRarity().rarityColor.getFormattingCode()+scanStack.getDisplayName();
+                    aspects = ThaumcraftCraftingManager.getObjectTags(new ItemStack(Item.getItemById(scan.id), 1, scan.meta));
+                    aspects = ThaumcraftCraftingManager.getBonusTags(new ItemStack(Item.getItemById(scan.id), 1, scan.meta), aspects);
+                    break;
+                case 2:
+                    if ((scan.entity instanceof EntityItem))
+                    {
+                        EntityItem item = (EntityItem)scan.entity;
+                        name = "§" + item.getEntityItem().getRarity().rarityColor.getFormattingCode()+item.getEntityItem().getDisplayName();
+                        aspects = ThaumcraftCraftingManager.getObjectTags(new ItemStack(item.getEntityItem().getItem(), 1, item.getEntityItem().getItemDamage()));
+                        aspects = ThaumcraftCraftingManager.getBonusTags(new ItemStack(item.getEntityItem().getItem(), 1, item.getEntityItem().getItemDamage()), aspects);
+                    }
+                    else
+                    {
+                        name = scan.entity.getCommandSenderName();
+                        aspects = ScanManager.generateEntityAspects(scan.entity);
+                    }
+                    break;
+                case 3:
+                    if(scan.phenomena.startsWith("NODE"))
+                    {
+                        name = StatCollector.translateToLocal("tile.blockAiry.0.name");
+                        aspects = Utilities.generateNodeAspects(player.worldObj, scan.phenomena.replace("NODE", ""));
+                    }
+                    break;
+                }
+                list.add(" "+name);
+                if(Keyboard.isKeyDown(Keyboard.KEY_LCONTROL)||Keyboard.isKeyDown(Keyboard.KEY_RCONTROL))
+                {
+                    for(Aspect a : aspects.getAspectsSorted())
+                        if(a!=null && aspects.getAmount(a)>0)
+                            list.add("  §7"+a.getName()+": "+aspects.getAmount(a));
+                }
+                else
+                    list.add("  "+StatCollector.translateToLocal(Lib.DESCRIPTION+"ctrlForAspectList"));
+                list.add(" "+StatCollector.translateToLocal(Lib.DESCRIPTION+"scanCompleted")+": "+ScanManager.hasBeenScanned(player, scan));
+            }
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -249,7 +246,7 @@ public class ItemMaterials extends Item
 	public IIcon getIconFromDamageForRenderPass(int meta, int pass)
 	{
 		if(pass == 99)
-			return meta==9?iconPlateOverlay : iconPlateOverlay;
+			return iconPlateOverlay;
 		return getIconFromDamage(meta);
 	}
 	@Override
@@ -284,7 +281,7 @@ public class ItemMaterials extends Item
 	@Override
 	public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int targetX, int targetY, int targetZ, int side, float hitX, float hitY, float hitZ)
 	{
-		if(subNames[stack.getItemDamage()]=="calculator" && !world.isRemote)
+		if(subNames[stack.getItemDamage()].equals("calculator") && !world.isRemote)
 		{
 			if(world.getTileEntity(targetX,targetY,targetZ) instanceof INode)
 			{
@@ -311,7 +308,7 @@ public class ItemMaterials extends Item
 								int z = targetZ+zz;
 
 								TileEntity te = world.getTileEntity(x, y, z);
-								if(!skip && te!=null && te instanceof TilePedestal)
+								if(!skip && te instanceof TilePedestal)
 								{
 									if(yy>=0)
 										warnings.add(new Object[]{"pedestalHeight",x,y,z});
@@ -339,7 +336,7 @@ public class ItemMaterials extends Item
 					int dz = targetZ - cc.posZ;
 
 					TileEntity te = world.getTileEntity(cc.posX, cc.posY, cc.posZ);
-					if(te!=null && te instanceof TilePedestal)
+					if(te instanceof TilePedestal)
 					{
 						symmetry += 2;
 						if( ((TilePedestal) te).func_70301_a(0) != null)
@@ -352,7 +349,7 @@ public class ItemMaterials extends Item
 					int xx = targetX + dx;
 					int zz = targetZ + dz;
 					te = world.getTileEntity(xx, cc.posY, zz);
-					if(te!=null && te instanceof TilePedestal)
+					if(te instanceof TilePedestal)
 					{
 						symmetry -= 2;
 						if( ((TilePedestal) te).func_70301_a(0)!=null)
@@ -400,15 +397,15 @@ public class ItemMaterials extends Item
 						float essmod = 1+enchRecipe.getEssentiaMod(central);
 						if(essmod>1)
 						{
-							String plaintext = "";
+							StringBuilder plaintext = new StringBuilder();
 							Iterator<Entry<Aspect, Integer>> it = enchRecipe.aspects.aspects.entrySet().iterator();
 							while(it.hasNext())
 							{
 								Entry<Aspect, Integer> e = it.next();
-								plaintext += (int)(e.getValue()*essmod)+ " " +e.getKey().getName() + (it.hasNext()?", ":"");
+								plaintext.append((int) (e.getValue() * essmod)).append(" ").append(e.getKey().getName()).append(it.hasNext() ? ", " : "");
 							}
 							player.addChatMessage(new ChatComponentTranslation(Lib.CHAT+"infusionInfo.essentiaMod",essmod).setChatStyle(new ChatStyle().setColor(EnumChatFormatting.GREEN)) );
-							player.addChatMessage(new ChatComponentText(plaintext).setChatStyle(new ChatStyle().setColor(EnumChatFormatting.GRAY)) );
+							player.addChatMessage(new ChatComponentText(plaintext.toString()).setChatStyle(new ChatStyle().setColor(EnumChatFormatting.GRAY)) );
 						}
 					}
 					if(infRecipe!=null)
@@ -439,14 +436,13 @@ public class ItemMaterials extends Item
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
 	{
-		if(subNames[stack.getItemDamage()]=="cuttingTools" && world.getTileEntity(x, y, z) instanceof TileTable)
+		if(subNames[stack.getItemDamage()].equals("cuttingTools") && world.getTileEntity(x, y, z) instanceof TileTable)
 		{
 			world.setBlock(x, y, z, WGContent.BlockWoodenDevice,3,0x3);
 			if(world.getTileEntity(x, y, z) instanceof TileEntityCuttingTable)
 			{
 				int playerViewQuarter = MathHelper.floor_double(player.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
-				int f = playerViewQuarter==0 ? 2:playerViewQuarter==1 ? 5:playerViewQuarter==2 ? 3: 4;
-				((TileEntityCuttingTable)world.getTileEntity(x, y, z)).facing = f;
+                ((TileEntityCuttingTable)world.getTileEntity(x, y, z)).facing = playerViewQuarter==0 ? 2:playerViewQuarter==1 ? 5:playerViewQuarter==2 ? 3: 4;
 			}
 			return true;
 		}
@@ -460,7 +456,7 @@ public class ItemMaterials extends Item
 			if(stack.hasTagCompound())
 			{
 				ScanResult scan = Utilities.readScanResultFromNBT(stack.getTagCompound().getCompoundTag("scanResult"), world);
-				if(scan != null && !ScanManager.hasBeenScanned(player, scan))
+				if(!ScanManager.hasBeenScanned(player, scan))
 				{
 					if(world.isRemote && ScanManager.completeScan(player, scan, "@"))
 						PacketHandler.INSTANCE.sendToServer(new PacketScannedToServer(scan, player, "@"));

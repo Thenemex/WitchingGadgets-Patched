@@ -12,7 +12,7 @@ public class TileEntitySarcophagus extends TileEntityWGBase implements IInventor
 	public boolean open = false;
 	public boolean dummyLeft = false;
 	public boolean dummyRight = false;
-	public ItemStack[] inv = new ItemStack[6];
+	public final ItemStack[] inv = new ItemStack[6];
 
 	public TileEntitySarcophagus()
 	{

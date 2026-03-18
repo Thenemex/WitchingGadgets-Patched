@@ -21,8 +21,8 @@ public class NEISpinningWheelHandler extends TemplateRecipeHandler
 {
 	public class CachedSpinningWheelRecipe extends CachedRecipe
 	{
-		List<PositionedStack> inputs;
-		PositionedStack output;
+		final List<PositionedStack> inputs;
+		final PositionedStack output;
 		public CachedSpinningWheelRecipe(SpinningRecipe recipe)
 		{
 			inputs = new ArrayList();
@@ -50,7 +50,7 @@ public class NEISpinningWheelHandler extends TemplateRecipeHandler
 	@Override
 	public void loadCraftingRecipes(String outputId, Object... results)
 	{
-		if(outputId == getOverlayIdentifier())
+		if(outputId.equals(getOverlayIdentifier()))
 		{
 			for(SpinningRecipe recipe : SpinningRecipe.recipeList)
 				if (recipe != null && recipe.getOutput() != null)

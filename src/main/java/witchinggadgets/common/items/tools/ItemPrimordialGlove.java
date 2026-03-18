@@ -68,7 +68,7 @@ public class ItemPrimordialGlove extends Item implements IPrimordialCrafting
 		{
 			NBTTagCompound tag = list.getCompoundTagAt(i);
 			int slot = tag.getByte("Slot") & 0xFF;
-			if ((slot >= 0) && (slot < gems.length))
+			if (slot < gems.length)
 				gems[slot] = ItemStack.loadItemStackFromNBT(tag);
 		}
 		return gems;
@@ -135,7 +135,7 @@ public class ItemPrimordialGlove extends Item implements IPrimordialCrafting
 		int sel = stack.hasTagCompound()?stack.getTagCompound().getInteger("selected"):0;
 		ItemStack[] gems = getSetGems(stack);
 		boolean b = false;
-		if(gems!=null && sel>=0 && sel<gems.length && gems[sel]!=null)
+		if(sel >= 0 && sel < gems.length && gems[sel] != null)
 		{
 			ItemStack gem = gems[sel];
 			if(gem.getItem() instanceof IInfusedGem && gem.getItemDamage()+((IInfusedGem)gem.getItem()).getConsumedCharge(ItemInfusedGem.getCut(gem).toString(), ItemInfusedGem.getAspect(gem), player)<=gem.getMaxDamage())

@@ -62,30 +62,26 @@ public class WGConfig
 
 		String[] cm_allowedSpawnblocks_HilltopStones = config.getStringList("Valid generation bases: HilltopStones", "Other", new String[]{"minecraft:stone","minecraft:sand","minecraft:packed_ice","minecraft:grass","minecraft:gravel","minecraft:dirt"}, "A list of valid blocks that Thaumcraft's hilltop stones can spawn upon");
 		Set<Block> validBlocks = new HashSet();
-		for(int ss=0; ss<cm_allowedSpawnblocks_HilltopStones.length; ss++)
-		{
-			String[] ssA = cm_allowedSpawnblocks_HilltopStones[ss].split(":",2);
-			if(ssA.length>1)
-			{
-				Block b = GameRegistry.findBlock(ssA[0], ssA[1]);
-				if(b!=null)
-					validBlocks.add(b);
-			}
-		}
+        for (String cmAllowedSpawnblocksHilltopStone : cm_allowedSpawnblocks_HilltopStones) {
+            String[] ssA = cmAllowedSpawnblocksHilltopStone.split(":", 2);
+            if (ssA.length > 1) {
+                Block b = GameRegistry.findBlock(ssA[0], ssA[1]);
+                if (b != null)
+                    validBlocks.add(b);
+            }
+        }
 		coremod_worldgenValidBase_HilltopStones = validBlocks.toArray(new Block[0]);
 
 		String[] cm_allowedSpawnblocks_EldritchRing = config.getStringList("Valid generation bases: EldritchRing", "Other", new String[]{"minecraft:stone","minecraft:sand","minecraft:packed_ice","minecraft:grass","minecraft:gravel","minecraft:dirt"}, "A list of valid blocks that Thaumcraft's eldritch obelisks can spawn upon");
 		validBlocks = new HashSet();
-		for(int ss=0; ss<cm_allowedSpawnblocks_EldritchRing.length; ss++)
-		{
-			String[] ssA = cm_allowedSpawnblocks_EldritchRing[ss].split(":",2);
-			if(ssA.length>1)
-			{
-				Block b = GameRegistry.findBlock(ssA[0], ssA[1]);
-				if(b!=null)
-					validBlocks.add(b);
-			}
-		}
+        for (String string : cm_allowedSpawnblocks_EldritchRing) {
+            String[] ssA = string.split(":", 2);
+            if (ssA.length > 1) {
+                Block b = GameRegistry.findBlock(ssA[0], ssA[1]);
+                if (b != null)
+                    validBlocks.add(b);
+            }
+        }
 		coremod_worldgenValidBase_EldritchRing = validBlocks.toArray(new Block[0]);
 
 		config.save();

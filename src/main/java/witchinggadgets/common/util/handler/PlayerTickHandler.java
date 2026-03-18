@@ -63,7 +63,7 @@ public class PlayerTickHandler
 				else
 					TileEntitySaunaStove.targetedPlayers.remove(player.getEntityId());	
 			}
-			if(!player.worldObj.isRemote && player.riddenByEntity!=null && player.riddenByEntity instanceof EntityLivingBase && EnchantmentHelper.getEnchantmentLevel(WGContent.enc_rideProtect.effectId, player.getCurrentArmor(3))>0)
+			if(!player.worldObj.isRemote && player.riddenByEntity instanceof EntityLivingBase && EnchantmentHelper.getEnchantmentLevel(WGContent.enc_rideProtect.effectId, player.getCurrentArmor(3)) > 0)
 			{
 				player.riddenByEntity.attackEntityFrom(DamageSource.causePlayerDamage(player), 1);
 				player.riddenByEntity.addVelocity(player.getRNG().nextFloat()*.4f, .1f, player.getRNG().nextFloat()*.4f);

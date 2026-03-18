@@ -98,7 +98,7 @@ public class ItemRenderCapsule implements IItemRenderer
 		GL11.glEnable(3042);
 		ItemRenderer.renderItemIn2D(tes,  iicon.getMaxU(), iicon.getMinV(), iicon.getMinU(), iicon.getMaxV(), iicon.getIconWidth(), iicon.getIconHeight(), 0.0625F);
 		if(type.equals(ItemRenderType.INVENTORY))
-			GL11.glScaled(1/16,1/16,1/16);
+			GL11.glScaled((double) 1 /16, (double) 1 /16, (double) 1 /16);
 
 		GL11.glDisable(3042);
 		textureManager.bindTexture(textureManager.getResourceLocation(item.getItemSpriteNumber()));

@@ -23,13 +23,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemMagicFood extends ItemFood
 {
-	private int[] hungerHealed = {2,6,6};
-	private float[] saturation = {0.4f,1.5f,1.0f};
+	private final int[] hungerHealed = {2,6,6};
+	private final float[] saturation = {0.4f,1.5f,1.0f};
 
 	private final static String[] subNames = {
 		"sweetwart", "nethercake", "brainjerky"
 	};
-	private IIcon[] icon = new IIcon[subNames.length];
+	private final IIcon[] icon = new IIcon[subNames.length];
 
 
 	public ItemMagicFood()
@@ -74,7 +74,7 @@ public class ItemMagicFood extends ItemFood
 				Thaumcraft.proxy.playerKnowledge.addAspectPool(player.getCommandSenderName(), a, q);
 				Thaumcraft.proxy.getResearchManager();
 				ResearchManager.scheduleSave(player);
-				PacketHandler.INSTANCE.sendTo(new PacketAspectPool(a.getTag(), Short.valueOf(q), Short.valueOf(Thaumcraft.proxy.playerKnowledge.getAspectPoolFor(player.getCommandSenderName(), a))), (EntityPlayerMP)player);
+				PacketHandler.INSTANCE.sendTo(new PacketAspectPool(a.getTag(), q, Thaumcraft.proxy.playerKnowledge.getAspectPoolFor(player.getCommandSenderName(), a)), (EntityPlayerMP)player);
 			}
 		}
 	}

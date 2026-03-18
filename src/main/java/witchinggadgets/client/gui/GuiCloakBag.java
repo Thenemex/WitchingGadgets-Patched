@@ -13,7 +13,7 @@ import witchinggadgets.common.gui.ContainerCloak;
 
 public class GuiCloakBag extends GuiContainer{
 
-	InventoryPlayer test;
+	final InventoryPlayer test;
 
 	public GuiCloakBag(InventoryPlayer inventoryPlayer, World world, ItemStack cloak)
 	{

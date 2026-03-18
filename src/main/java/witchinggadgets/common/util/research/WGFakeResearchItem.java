@@ -11,7 +11,7 @@ import thaumcraft.api.research.ResearchPage;
 
 public class WGFakeResearchItem extends ResearchItem
 {
-	public ResearchItem original;
+	public final ResearchItem original;
 
 	public WGFakeResearchItem(String key, String category, String original, String originalCategory, int displayX, int displayY, ResourceLocation icon)
 	{
@@ -30,7 +30,7 @@ public class WGFakeResearchItem extends ResearchItem
 	private void setupOriginal()
 	{
 		if(this.original.siblings == null)
-			this.original.setSiblings(new String[] { this.key });
+			this.original.setSiblings(this.key);
 		else
 		{
 			String[] newSiblings = new String[this.original.siblings.length+1];

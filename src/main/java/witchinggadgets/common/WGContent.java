@@ -146,9 +146,9 @@ public class WGContent
 	public static Enchantment enc_backstab;
 	public static Enchantment enc_rideProtect;
 
-	public static ArmorMaterial armorMatSpecialRobe = EnumHelper.addArmorMaterial("WG:ADVANCEDCLOTH", 25, new int[] { 2, 4, 3, 2 }, 25);
-	public static ToolMaterial primordialTool = EnumHelper.addToolMaterial("WG:PRIMORDIALTOOL",4, 1500, 8, 6, 25);
-	public static ArmorMaterial primordialArmor = EnumHelper.addArmorMaterial("WG:PRIMORDIALARMOR", 40, new int[] {3,7,6,3}, 30);
+	public static final ArmorMaterial armorMatSpecialRobe = EnumHelper.addArmorMaterial("WG:ADVANCEDCLOTH", 25, new int[] { 2, 4, 3, 2 }, 25);
+	public static final ToolMaterial primordialTool = EnumHelper.addToolMaterial("WG:PRIMORDIALTOOL",4, 1500, 8, 6, 25);
+	public static final ArmorMaterial primordialArmor = EnumHelper.addArmorMaterial("WG:PRIMORDIALARMOR", 40, new int[] {3,7,6,3}, 30);
 	//	public static HashMap<String,Cloak> cloakRegistry = new HashMap<String, Cloak>();
 
 	public static void preInit()
@@ -167,7 +167,7 @@ public class WGContent
 		int l = 3;
 		if(k<128-l)
 			Utilities.extendPotionArray(l);
-		String s = new UUID(109406002307L, 01L).toString();
+		String s = new UUID(109406002307L, 1L).toString();
 		int potionId = WGConfig.getPotionID(32, "Knockback Resistance");
 		if(potionId>0)
 			pot_knockbackRes = new WGPotion(potionId, false, 0x6e6e6e, 0, false, 1).setPotionName("wg.potionKnockbackRes").func_111184_a(SharedMonsterAttributes.knockbackResistance, s, 0.34D, 0);
@@ -302,9 +302,9 @@ public class WGContent
 		ItemMagicFoodstuffs = new ItemMagicFood().setUnlocalizedName("WG_MagicFood");
 		GameRegistry.registerItem(ItemMagicFoodstuffs, ItemMagicFoodstuffs.getUnlocalizedName());
 
-		ItemCloak = (ItemCloak) new ItemCloak().setUnlocalizedName("WG_Cloak");
+		ItemCloak = new ItemCloak().setUnlocalizedName("WG_Cloak");
 		GameRegistry.registerItem(ItemCloak, ItemCloak.getUnlocalizedName());
-		ItemKama = (ItemKama) new ItemKama().setUnlocalizedName("WG_Kama");
+		ItemKama = new ItemKama().setUnlocalizedName("WG_Kama");
 		GameRegistry.registerItem(ItemKama, ItemKama.getUnlocalizedName());
 
 		ItemInfusedGem = new ItemInfusedGem().setUnlocalizedName("WG_InfusedGem");
@@ -556,7 +556,7 @@ public class WGContent
 
 	static void addOreAspects(String ore, AspectList aspects, boolean isRareOre)
 	{
-		if(!OreDictionary.getOres("ore"+ore).isEmpty() && !oreHasAspects("ore"+ore))
+		if(!OreDictionary.getOres("ore"+ore).isEmpty() && oreHasAspects("ore" + ore))
 		{
 			AspectList al = new AspectList().add(Aspect.METAL, Math.max((isRareOre?3:2), (isRareOre?4:3)-aspects.visSize())).add(Aspect.EARTH, 1);
 			for(Aspect aa : aspects.getAspects())
@@ -564,23 +564,23 @@ public class WGContent
 
 			ThaumcraftApi.registerObjectTag("ore"+ore, al);
 		}
-		if(!OreDictionary.getOres("ingot"+ore).isEmpty() && !oreHasAspects("ingot"+ore))
+		if(!OreDictionary.getOres("ingot"+ore).isEmpty() && oreHasAspects("ingot" + ore))
 		{
 			AspectList al = new AspectList().add(Aspect.METAL, Math.max((isRareOre?3:2), (isRareOre?5:4)-aspects.visSize()));
 			for(Aspect aa : aspects.getAspects())
 				al.merge(aa, aspects.getAmount(aa));
 			ThaumcraftApi.registerObjectTag("ingot"+ore, al);
 		}
-		if(!OreDictionary.getOres("nugget"+ore).isEmpty() && !oreHasAspects("nugget"+ore))
+		if(!OreDictionary.getOres("nugget"+ore).isEmpty() && oreHasAspects("nugget" + ore))
 			ThaumcraftApi.registerObjectTag("nugget"+ore, new AspectList().add(Aspect.METAL, 1));
-		if(!OreDictionary.getOres("dust"+ore).isEmpty() && !oreHasAspects("dust"+ore))
+		if(!OreDictionary.getOres("dust"+ore).isEmpty() && oreHasAspects("dust" + ore))
 		{
 			AspectList al = new AspectList().add(Aspect.METAL, Math.max((isRareOre?3:2), (isRareOre?4:3)-aspects.visSize())).add(Aspect.ENTROPY, 1);
 			for(Aspect aa : aspects.getAspects())
 				al.merge(aa, 1);
 			ThaumcraftApi.registerObjectTag("dust"+ore, al);
 		}
-		if(!OreDictionary.getOres("block"+ore).isEmpty() && !oreHasAspects("block"+ore))
+		if(!OreDictionary.getOres("block"+ore).isEmpty() && oreHasAspects("block" + ore))
 		{
 			AspectList al = new AspectList().add(Aspect.METAL, Math.max((isRareOre?6:5), (isRareOre?7:6)-aspects.visSize())).add(Aspect.ENTROPY, 1);
 			for(Aspect aa : aspects.getAspects())
@@ -592,7 +592,7 @@ public class WGContent
 	{
 		for(ItemStack stack : OreDictionary.getOres(ore))
 			if(stack!=null)
-				return ThaumcraftApi.objectTags.get(Arrays.asList(new Object[] { stack.getItem(), Integer.valueOf(stack.getItemDamage()) }))!=null;
-		return false;
+				return ThaumcraftApi.objectTags.get(Arrays.asList(stack.getItem(), stack.getItemDamage())) == null;
+		return true;
 	}
 }

@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 
 public class InventoryPrimordialGlove implements IInventory
 {
-	private Container container;
+	private final Container container;
 	public ItemStack[] stackList;
 
 	public InventoryPrimordialGlove(Container par1Container)

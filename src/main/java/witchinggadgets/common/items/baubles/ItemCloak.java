@@ -49,7 +49,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @Optional.Interface(iface = "vazkii.botania.api.item.ICosmeticAttachable", modid = "Botania")
 public class ItemCloak extends Item implements ITravellersGear, IActiveAbility, IEventGear, vazkii.botania.api.item.ICosmeticAttachable
 {
-	public static String[] subNames = {"standard","spectral","storage","wolf","raven"};
+	public static final String[] subNames = {"standard","spectral","storage","wolf","raven"};
 	int[] defaultColours = {};
 	IIcon iconRaven;
 	IIcon iconWolf;
@@ -192,7 +192,7 @@ public class ItemCloak extends Item implements ITravellersGear, IActiveAbility, 
 				NBTTagCompound tag = inv.getCompoundTagAt(i);
 				int slot = tag.getByte("Slot") & 0xFF;
 
-				if ((slot >= 0) && (slot < stackList.length))
+				if (slot < stackList.length)
 				{
 					stackList[slot] = ItemStack.loadItemStackFromNBT(tag);
 				}
@@ -233,7 +233,7 @@ public class ItemCloak extends Item implements ITravellersGear, IActiveAbility, 
 		{
 			ItemStack cosmetic = getCosmeticItem(stack);
 			if(cosmetic != null)
-				list.add( String.format(StatCollector.translateToLocal("botaniamisc.hasCosmetic"), cosmetic.getDisplayName()).replaceAll("&","\u00a7") );
+				list.add( String.format(StatCollector.translateToLocal("botaniamisc.hasCosmetic"), cosmetic.getDisplayName()).replaceAll("&","§") );
 		}
 	}
 
@@ -400,8 +400,7 @@ public class ItemCloak extends Item implements ITravellersGear, IActiveAbility, 
 	{
 		if(!stack.hasTagCompound())
 			return null;
-		ItemStack cosmetic = ItemStack.loadItemStackFromNBT(stack.getTagCompound().getCompoundTag("botaniaCosmeticOverride"));
-		return cosmetic;
+        return ItemStack.loadItemStackFromNBT(stack.getTagCompound().getCompoundTag("botaniaCosmeticOverride"));
 	}
 	@Optional.Method(modid = "Botania")
 	public void setCosmeticItem(ItemStack stack, ItemStack cosmetic)

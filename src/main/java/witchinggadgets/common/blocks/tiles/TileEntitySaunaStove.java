@@ -22,11 +22,11 @@ import net.minecraftforge.fluids.IFluidHandler;
 
 public class TileEntitySaunaStove extends TileEntityWGBase implements IFluidHandler
 {
-	public static HashMap<Integer,TileEntitySaunaStove> targetedPlayers = new HashMap();
+	public static final HashMap<Integer,TileEntitySaunaStove> targetedPlayers = new HashMap();
 
 	public AxisAlignedBB[] boundingBoxes = new AxisAlignedBB[0];
 
-	public FluidTank tank = new FluidTank(4000);
+	public final FluidTank tank = new FluidTank(4000);
 	public int tick;
 
 	public void prepareAreaCheck()
@@ -53,7 +53,7 @@ public class TileEntitySaunaStove extends TileEntityWGBase implements IFluidHand
 		if(tick>0 && worldObj.getTotalWorldTime()%10==0)
 		{
 			tick--;
-			if(boundingBoxes.length<=0 && !recheck)
+			if(boundingBoxes.length == 0 && !recheck)
 				prepareAreaCheck();
 		}
 		if(!recheck && tick<=0)
@@ -81,9 +81,9 @@ public class TileEntitySaunaStove extends TileEntityWGBase implements IFluidHand
 	}
 
 	boolean recheck = false;
-	List<ChunkCoordinates> openList = new ArrayList();
-	List<ChunkCoordinates> closedList = new ArrayList();
-	List<ChunkCoordinates> checked = new ArrayList();
+	final List<ChunkCoordinates> openList = new ArrayList();
+	final List<ChunkCoordinates> closedList = new ArrayList();
+	final List<ChunkCoordinates> checked = new ArrayList();
 	int outlineMinX=xCoord;
 	int outlineMaxX=xCoord;
 	int outlineMinY=yCoord;
@@ -138,8 +138,8 @@ public class TileEntitySaunaStove extends TileEntityWGBase implements IFluidHand
 		}
 	}
 
-	List<AxisAlignedBB> aabbList = new ArrayList();
-	Set<ChunkCoordinates> aabbUsedBlocks = new HashSet();
+	final List<AxisAlignedBB> aabbList = new ArrayList();
+	final Set<ChunkCoordinates> aabbUsedBlocks = new HashSet();
 	Vec3 start=null;
 	boolean recreate = false;
 	void createAABBs()
@@ -196,8 +196,10 @@ public class TileEntitySaunaStove extends TileEntityWGBase implements IFluidHand
 					boolean row = true;
 					for(int xx=minX;xx<maxX;xx++)
 						//						if(pixels[minY][zz][xx]<0 || usedBlocks.contains(new PixelCoords(xx,minY,zz)))
-						if(!closedList.contains(new ChunkCoordinates(xx,minY,zz)) || aabbUsedBlocks.contains(new ChunkCoordinates(xx,minY,zz)))
-							row=false;
+                        if (!closedList.contains(new ChunkCoordinates(xx, minY, zz)) || aabbUsedBlocks.contains(new ChunkCoordinates(xx, minY, zz))) {
+                            row = false;
+                            break;
+                        }
 					if(!row)
 					{
 						maxZ = zz;
@@ -210,8 +212,10 @@ public class TileEntitySaunaStove extends TileEntityWGBase implements IFluidHand
 					for(int zz=minZ;zz<maxZ;zz++)
 						for(int xx=minX;xx<maxX;xx++)
 							//							if(pixels[yy][zz][xx]<0 || usedBlocks.contains(new PixelCoords(xx,yy,zz)))
-							if(!closedList.contains(new ChunkCoordinates(xx,yy,zz)) || aabbUsedBlocks.contains(new ChunkCoordinates(xx,yy,zz)))
-								layer=false;
+                            if (!closedList.contains(new ChunkCoordinates(xx, yy, zz)) || aabbUsedBlocks.contains(new ChunkCoordinates(xx, yy, zz))) {
+                                layer = false;
+                                break;
+                            }
 					if(!layer)
 					{
 						maxY = yy;

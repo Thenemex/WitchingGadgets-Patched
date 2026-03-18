@@ -7,5 +7,5 @@ public interface IPrimordialCrafting
 	/**
 	 * @return the amount of Primordial Pearls refunded upon crafting
 	 */
-	public int getReturnedPearls(ItemStack stack);
+    int getReturnedPearls(ItemStack stack);
 }

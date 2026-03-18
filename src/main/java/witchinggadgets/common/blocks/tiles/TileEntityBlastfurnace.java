@@ -18,7 +18,6 @@ import thaumcraft.api.aspects.IEssentiaTransport;
 import thaumcraft.api.visnet.VisNetHandler;
 import thaumcraft.common.lib.utils.InventoryUtils;
 import thaumcraft.common.tiles.TileBellows;
-import witchinggadgets.WitchingGadgets;
 import witchinggadgets.common.util.Utilities;
 import witchinggadgets.common.util.Utilities.OreDictStack;
 import witchinggadgets.common.util.recipe.InfernalBlastfurnaceRecipe;
@@ -33,7 +32,7 @@ public class TileEntityBlastfurnace extends TileEntityWGBase implements IEssenti
 	boolean specialFuel;
 	public ForgeDirection facing = ForgeDirection.UNKNOWN;
 	public boolean active = false;
-	List<ItemStack> inputs = new ArrayList();
+	final List<ItemStack> inputs = new ArrayList();
 
 	@Override
 	public void updateEntity()
@@ -147,7 +146,7 @@ public class TileEntityBlastfurnace extends TileEntityWGBase implements IEssenti
 	void outputItem(ItemStack item)
 	{
 		TileEntity inventory = this.worldObj.getTileEntity(this.xCoord+facing.offsetX*2, this.yCoord+1, this.zCoord+facing.offsetZ*2);
-		if ((inventory != null) && ((inventory instanceof IInventory)))
+		if (((inventory instanceof IInventory)))
 			item = InventoryUtils.placeItemStackIntoInventory(item, (IInventory)inventory, this.facing.getOpposite().ordinal(), true);
 
 		if(item != null)
@@ -213,12 +212,11 @@ public class TileEntityBlastfurnace extends TileEntityWGBase implements IEssenti
 
 	public boolean addStackToInputs(ItemStack stack)
 	{
-		for(int i=0;i<inputs.size();i++)
-			if(this.inputs.get(i)!=null && this.inputs.get(i).isItemEqual(stack) && (this.inputs.get(i).stackSize+stack.stackSize <= stack.getMaxStackSize()))
-			{
-				this.inputs.get(i).stackSize+=stack.stackSize;
-				return true;
-			}
+        for (ItemStack input : inputs)
+            if (input != null && input.isItemEqual(stack) && (input.stackSize + stack.stackSize <= stack.getMaxStackSize())) {
+                input.stackSize += stack.stackSize;
+                return true;
+            }
 		this.inputs.add(stack);
 		return true;
 	}
@@ -303,26 +301,7 @@ public class TileEntityBlastfurnace extends TileEntityWGBase implements IEssenti
 			worldObj.markBlockRangeForRenderUpdate(xCoord-1,yCoord,zCoord-1, xCoord+1,yCoord+2,zCoord+1);
 			return true;
 		}
-		if(eventNum==3)
-		{
-			for(int i=0;i<5;i++)
-			{
-				WitchingGadgets.proxy.createFurnaceOutputBlobFx(worldObj, xCoord, yCoord, zCoord, facing);
-				//				float xx = xCoord+.5f+facing.offsetX*1.66f + worldObj.rand.nextFloat()*.3f;
-				//				float zz = zCoord+.5f+facing.offsetZ*1.66f + worldObj.rand.nextFloat()*.3f;
-				//
-				//				EntityLavaFX fb = new EntityLavaFX(worldObj, xx,yCoord+1.3f,zz);
-				//				fb.motionY = .2f*worldObj.rand.nextFloat();
-				//				float mx = facing.offsetX!=0?(worldObj.rand.nextFloat() - worldObj.rand.nextFloat())*.5f : facing.offsetX*worldObj.rand.nextFloat();
-				//				float mz = facing.offsetZ!=0?(worldObj.rand.nextFloat() - worldObj.rand.nextFloat())*.5f : facing.offsetZ*worldObj.rand.nextFloat();
-				//				fb.motionX = (0.15f * mx);
-				//				fb.motionZ = (0.15f * mz);
-				//				FMLClientHandler.instance().getClient().effectRenderer.addEffect(fb);
-			}
-			worldObj.playSound(xCoord+.5f+facing.offsetX*1.66f, yCoord+1.3f, zCoord+.5f+facing.offsetZ*1.66f, "liquid.lavapop", 0.1f, 1f+worldObj.rand.nextFloat()*.8f, false);
-			return true;
-		}
-		if(eventNum==5)
+        if(eventNum==5)
 		{
 			for(int i=0;i<3;i++)
 			{
@@ -402,6 +381,6 @@ public class TileEntityBlastfurnace extends TileEntityWGBase implements IEssenti
 		return icon_bricks;
 	}
 
-	public static Block[] brickBlock = new Block[18];
+	public static final Block[] brickBlock = new Block[18];
 	public static Block stairBlock;
 }

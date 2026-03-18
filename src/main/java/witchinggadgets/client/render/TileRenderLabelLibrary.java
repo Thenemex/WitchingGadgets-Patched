@@ -18,7 +18,7 @@ import witchinggadgets.common.blocks.tiles.TileEntityLabelLibrary;
 
 public class TileRenderLabelLibrary extends TileEntitySpecialRenderer
 {
-	static ModelArcaneWorkbench model = new ModelArcaneWorkbench();
+	static final ModelArcaneWorkbench model = new ModelArcaneWorkbench();
 	static
 	{
 		ModelRenderer bookOut = new ModelRenderer(model, 72,8);

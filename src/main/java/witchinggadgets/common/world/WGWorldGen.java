@@ -121,8 +121,8 @@ public class WGWorldGen implements IWorldGenerator
 	//6==chest
 	//7==nitor
 	//8==lock
-	static int n=-1;
-	static int[][][] tombShape = {
+	static final int n=-1;
+	static final int[][][] tombShape = {
 		{
 			{n,n,n,n,n,n,n,n,n,n,n,n,0},
 			{n,n,n,n,n,n,3,n,n,n,n,n,n},

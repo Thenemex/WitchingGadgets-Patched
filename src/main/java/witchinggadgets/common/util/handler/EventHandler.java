@@ -1,6 +1,5 @@
 package witchinggadgets.common.util.handler;
 
-import java.util.Iterator;
 import java.util.List;
 
 import net.minecraft.block.Block;
@@ -16,7 +15,6 @@ import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.monster.EntityZombie;
@@ -231,8 +229,6 @@ public class EventHandler
 					Item ith = GameRegistry.findItem("IguanaTweaksTConstruct", "skullItem");
 					if(event.entityLiving instanceof EntityEnderman)
 						head = new ItemStack(ith,1, 0);
-					else if(event.entityLiving instanceof EntityPigZombie)
-						head = new ItemStack(ith,1, 1);
 					else if(event.entityLiving instanceof EntityBlaze)
 						head = new ItemStack(ith,1, 2);
 					else if(EntityList.getEntityString(event.entityLiving).equals("Blizz"))
@@ -241,13 +237,10 @@ public class EventHandler
 
 				if(head!=null)
 				{
-					Iterator<EntityItem> i = event.drops.iterator();
-					while (i.hasNext())
-					{
-						EntityItem eitem = i.next();
-						if(eitem!=null && OreDictionary.itemMatches(eitem.getEntityItem(), head, true))
-							return;
-					}
+                    for (EntityItem eitem : event.drops) {
+                        if (eitem != null && OreDictionary.itemMatches(eitem.getEntityItem(), head, true))
+                            return;
+                    }
 					event.entityLiving.worldObj.spawnEntityInWorld(new EntityItem(event.entityLiving.worldObj, event.entityLiving.posX,event.entityLiving.posY,event.entityLiving.posZ, head));
 				}
 			}
@@ -290,7 +283,7 @@ public class EventHandler
 						{
 							AspectList al = ThaumcraftCraftingManager.getObjectTags(event.item.getEntityItem());
 							al = ThaumcraftCraftingManager.getBonusTags(event.item.getEntityItem(), al);
-							if(al!=null && al.size()>=0)
+							if(al.size()>=0)
 							{
 								AspectList primals = ResearchManager.reduceToPrimals(al);
 								Aspect a = primals.getAspects()[event.entityPlayer.getRNG().nextInt(primals.getAspects().length)];

@@ -64,13 +64,13 @@ public class ItemPrimordialSword extends ItemSword implements IPrimordialCraftin
 					if(e.canAttackWithItem() && !e.hitByEntity(player) && !e.equals(player))
 					{
 						float f = (float)player.getEntityAttribute(SharedMonsterAttributes.attackDamage).getAttributeValue();
-						int i = EnchantmentHelper.getKnockbackModifier(player, (EntityLivingBase)e);
-						float f1 = EnchantmentHelper.getEnchantmentModifierLiving(player, (EntityLivingBase)e);
+						int i = EnchantmentHelper.getKnockbackModifier(player, e);
+						float f1 = EnchantmentHelper.getEnchantmentModifierLiving(player, e);
 						if (player.isSprinting())
 							++i;
 						if(f>0 || f1>0)
 						{
-							boolean flag = player.fallDistance > 0.0F && !player.onGround && !player.isOnLadder() && !player.isInWater() && !player.isPotionActive(Potion.blindness) && player.ridingEntity == null && e instanceof EntityLivingBase;
+							boolean flag = player.fallDistance > 0.0F && !player.onGround && !player.isOnLadder() && !player.isInWater() && !player.isPotionActive(Potion.blindness) && player.ridingEntity == null;
 							if(flag && f>0)
 								f *= 1.5F;
 
@@ -90,7 +90,7 @@ public class ItemPrimordialSword extends ItemSword implements IPrimordialCraftin
 							{
 								if(i>0)
 								{
-									e.addVelocity((double)(-MathHelper.sin(player.rotationYaw * (float)Math.PI / 180.0F) * (float)i * 0.5F), 0.1D, (double)(MathHelper.cos(player.rotationYaw * (float)Math.PI / 180.0F) * (float)i * 0.5F));
+									e.addVelocity(-MathHelper.sin(player.rotationYaw * (float)Math.PI / 180.0F) * (float)i * 0.5F, 0.1D, MathHelper.cos(player.rotationYaw * (float)Math.PI / 180.0F) * (float)i * 0.5F);
 									player.motionX *= 0.6D;
 									player.motionZ *= 0.6D;
 									player.setSprinting(false);
@@ -104,7 +104,7 @@ public class ItemPrimordialSword extends ItemSword implements IPrimordialCraftin
 									player.triggerAchievement(AchievementList.overkill);
 
 								player.setLastAttacker(e);
-								EnchantmentHelper.func_151384_a((EntityLivingBase)e, player);
+								EnchantmentHelper.func_151384_a(e, player);
 								EnchantmentHelper.func_151385_b(player, e);
 								player.addStat(StatList.damageDealtStat, Math.round(f * 10.0F));
 								if(j>0)
@@ -169,7 +169,7 @@ public class ItemPrimordialSword extends ItemSword implements IPrimordialCraftin
 	public String getItemStackDisplayName(ItemStack stack)
 	{
 		int ab = getAbility(stack);
-		String add = ab>=0&&ab<6? " "+EnumChatFormatting.DARK_GRAY+"- \u00a7"+Aspect.getPrimalAspects().get(ab).getChatcolor()+Aspect.getPrimalAspects().get(ab).getName()+EnumChatFormatting.RESET : "";
+		String add = ab>=0&&ab<6? " "+EnumChatFormatting.DARK_GRAY+"- §"+Aspect.getPrimalAspects().get(ab).getChatcolor()+Aspect.getPrimalAspects().get(ab).getName()+EnumChatFormatting.RESET : "";
 		return super.getItemStackDisplayName(stack)+add;
 	}
 	@Override

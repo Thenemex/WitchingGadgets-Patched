@@ -16,7 +16,7 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelRobeSkirted extends ModelBiped
 {
-	List<ModelRenderer> parts = new ArrayList();
+	final List<ModelRenderer> parts = new ArrayList();
 
 	static ModelRobeSkirted model;
 	public static ModelRobeSkirted getModel()

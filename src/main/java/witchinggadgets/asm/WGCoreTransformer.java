@@ -46,27 +46,25 @@ public class WGCoreTransformer implements IClassTransformer
 	public byte[] transform(String className, String newClassName, byte[] origCode)
 	{
 		isDeobfEnvironment = (Boolean)Launch.blackboard.get("fml.deobfuscatedEnvironment");
-		if (className.equals("thaumcraft.common.items.armor.ItemBootsTraveller"))
-			return patchBoots(className, origCode, isDeobfEnvironment);
-		if (className.equals("thaumcraft.common.items.wands.ItemFocusPouchBauble"))
-		{
-			byte[] newCode = patchFocusPouch_Interface(className, origCode);
-			return patchFocusPouch_Methods(className, newCode,isDeobfEnvironment);
-		}
-		if (className.equals("thaumcraft.common.lib.world.WorldGenEldritchRing"))
-			return patchThaumcraftWorldgen(origCode, isDeobfEnvironment, "EldritchRing");
-		if (className.equals("thaumcraft.common.lib.world.WorldGenHilltopStones"))
-			return patchThaumcraftWorldgen(origCode, isDeobfEnvironment, "HilltopStones");
+        switch (className) {
+            case "thaumcraft.common.items.armor.ItemBootsTraveller":
+                return patchBoots(className, origCode, isDeobfEnvironment);
+            case "thaumcraft.common.items.wands.ItemFocusPouchBauble":
+                byte[] newCode = patchFocusPouch_Interface(className, origCode);
+                return patchFocusPouch_Methods(className, newCode, isDeobfEnvironment);
+            case "thaumcraft.common.lib.world.WorldGenEldritchRing":
+                return patchThaumcraftWorldgen(origCode, isDeobfEnvironment, "EldritchRing");
+            case "thaumcraft.common.lib.world.WorldGenHilltopStones":
+                return patchThaumcraftWorldgen(origCode, isDeobfEnvironment, "HilltopStones");
+        }
 
-		if(className.equals(isDeobfEnvironment?"net.minecraft.enchantment.EnchantmentHelper":"afv"))
+        if(className.equals(isDeobfEnvironment?"net.minecraft.enchantment.EnchantmentHelper":"afv"))
 		{
-			byte[] newCode = patchGetFortuneModifier(origCode, isDeobfEnvironment);
-			return newCode;
+            return patchGetFortuneModifier(origCode, isDeobfEnvironment);
 		}
 		if(className.equals(isDeobfEnvironment?"net.minecraft.entity.EntityLivingBase":"sv"))
 		{
-			byte[] newCode = patchOnNewPotionEffect(origCode, isDeobfEnvironment);
-			return newCode;
+            return patchOnNewPotionEffect(origCode, isDeobfEnvironment);
 		}
 
 		return origCode;
@@ -114,8 +112,7 @@ public class WGCoreTransformer implements IClassTransformer
 			@Override
 			public void visit(int version, int access, String name, String signature, String superName, String[] interfaces)
 			{
-				Set<String> intf = new HashSet();
-				intf.addAll(Arrays.asList(interfaces));
+                Set<String> intf = new HashSet(Arrays.asList(interfaces));
 				intf.add("travellersgear/api/IActiveAbility");
 				super.visit(version, access, name, signature, superName, intf.toArray(new String[0]));
 			}

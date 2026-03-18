@@ -47,14 +47,14 @@ public class WitchingGadgets
 
 	public PlayerTickHandler playerTickHandler;
 
-	public WGWandManager wgWandManager = new WGWandManager();
+	public final WGWandManager wgWandManager = new WGWandManager();
 
-	public static CreativeTabs tabWG = new WGCreativeTab(CreativeTabs.getNextID(), "witchinggadgets");
+	public static final CreativeTabs tabWG = new WGCreativeTab(CreativeTabs.getNextID(), "witchinggadgets");
 	public static final Logger logger = LogManager.getLogger("WitchingGadgets");
 	public EventHandler eventHandler;
 
 	@Instance("WitchingGadgets")
-	public static WitchingGadgets instance = new WitchingGadgets();	
+	public static final WitchingGadgets instance = new WitchingGadgets();
 
 	@SidedProxy(clientSide="witchinggadgets.client.ClientProxy", serverSide="witchinggadgets.common.CommonProxy")
 	public static CommonProxy proxy;
@@ -133,7 +133,7 @@ public class WitchingGadgets
 									mapping.remap(b);
 								else
 									mapping.remap(Item.getItemFromBlock(b));
-								logger.warn("Remapping "+mapping.name+" to "+b.getUnlocalizedName());
+                                logger.warn("Remapping {} to {}", mapping.name, b.getUnlocalizedName());
 							}
 						}
 				}catch(Exception e){

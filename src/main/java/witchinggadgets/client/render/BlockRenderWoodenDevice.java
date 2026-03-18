@@ -22,7 +22,7 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 public class BlockRenderWoodenDevice implements ISimpleBlockRenderingHandler
 {
 
-	public static int renderID = RenderingRegistry.getNextAvailableRenderId();
+	public static final int renderID = RenderingRegistry.getNextAvailableRenderId();
 
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer)
@@ -35,10 +35,7 @@ public class BlockRenderWoodenDevice implements ISimpleBlockRenderingHandler
 				GL11.glTranslatef(-.5F, 0F, -1F);
 				TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileEntitySpinningWheel(), 0.0D, 0.0D, 0.0D, 0.0F);
 			}
-			if(metadata == 1)
-			{
-			}
-			if(metadata == 2)
+            if(metadata == 2)
 			{
 				GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
 				GL11.glTranslatef(-0.5F, -0.5F, -0.5F);

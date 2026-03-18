@@ -1,7 +1,5 @@
 package witchinggadgets.common.blocks.tiles;
 
-import java.util.Iterator;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayer.EnumStatus;
 import net.minecraft.tileentity.TileEntity;
@@ -24,22 +22,18 @@ public class TileEntityMagicBed extends TileEntity
 			if (isOccupied)
 			{
 				EntityPlayer entityplayer1 = null;
-				Iterator iterator = world.playerEntities.iterator();
 
-				while (iterator.hasNext())
-				{
-					EntityPlayer entityplayer2 = (EntityPlayer)iterator.next();
+                for (Object o : world.playerEntities) {
+                    EntityPlayer entityplayer2 = (EntityPlayer) o;
 
-					if (entityplayer2.isPlayerSleeping())
-					{
-						ChunkCoordinates chunkcoordinates = entityplayer2.playerLocation;
+                    if (entityplayer2.isPlayerSleeping()) {
+                        ChunkCoordinates chunkcoordinates = entityplayer2.playerLocation;
 
-						if (chunkcoordinates.posX == x && chunkcoordinates.posY == y && chunkcoordinates.posZ == z)
-						{
-							entityplayer1 = entityplayer2;
-						}
-					}
-				}
+                        if (chunkcoordinates.posX == x && chunkcoordinates.posY == y && chunkcoordinates.posZ == z) {
+                            entityplayer1 = entityplayer2;
+                        }
+                    }
+                }
 
 				if (entityplayer1 != null)
 				{

@@ -26,12 +26,12 @@ public class TileRenderMagicalTileLock extends TileEntitySpecialRenderer
 		for(int i=0;i<9;i++)
 			if(tile.tiles[i]==1)
 			{
-				ClientUtilities.renderPixelBlock(Tessellator.instance, 1.5+(i%3), 0, 1.5+(i/3), scale, 0,0,1,1);
-				ClientUtilities.renderPixelBlock(Tessellator.instance, 1.5+(i%3), 5, 1.5+(i/3), scale, 0,0,1,1);
-				ClientUtilities.renderPixelBlock(Tessellator.instance, 0, 3.5-(i%3), 1.5+(i/3), scale, 0,0,1,1);
-				ClientUtilities.renderPixelBlock(Tessellator.instance, 5, 3.5-(i%3), 3.5-(i/3), scale, 0,0,1,1);
-				ClientUtilities.renderPixelBlock(Tessellator.instance, 3.5-(i/3), 3.5-(i%3), 0, scale, 0,0,1,1);
-				ClientUtilities.renderPixelBlock(Tessellator.instance, 1.5+(i/3), 3.5-(i%3), 5, scale, 0,0,1,1);
+				ClientUtilities.renderPixelBlock(Tessellator.instance, 1.5+(i%3), 0, 1.5+((double) i /3), scale, 0,0,1,1);
+				ClientUtilities.renderPixelBlock(Tessellator.instance, 1.5+(i%3), 5, 1.5+((double) i /3), scale, 0,0,1,1);
+				ClientUtilities.renderPixelBlock(Tessellator.instance, 0, 3.5-(i%3), 1.5+((double) i /3), scale, 0,0,1,1);
+				ClientUtilities.renderPixelBlock(Tessellator.instance, 5, 3.5-(i%3), 3.5-((double) i /3), scale, 0,0,1,1);
+				ClientUtilities.renderPixelBlock(Tessellator.instance, 3.5-((double) i /3), 3.5-(i%3), 0, scale, 0,0,1,1);
+				ClientUtilities.renderPixelBlock(Tessellator.instance, 1.5+((double) i /3), 3.5-(i%3), 5, scale, 0,0,1,1);
 				}
 		GL11.glEnable(GL11.GL_LIGHTING);
 		GL11.glPopMatrix();

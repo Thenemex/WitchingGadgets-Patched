@@ -15,7 +15,7 @@ public interface IInfusedGem
 	 * @param player
 	 * @return
 	 */
-	public boolean performEffect(String cut, Aspect aspect, int potency, int brittle, EntityPlayer player);
+    boolean performEffect(String cut, Aspect aspect, int potency, int brittle, EntityPlayer player);
 	
 	/**
 	 * Returns the amount of charges consumed upon using a gems effect. This information is important for the Primordial Gauntlet.
@@ -24,7 +24,7 @@ public interface IInfusedGem
 	 * @param player
 	 * @return
 	 */
-	public int getConsumedCharge(String cut, Aspect aspect, EntityPlayer player);
+    int getConsumedCharge(String cut, Aspect aspect, EntityPlayer player);
 
-	public boolean isGemEnchantable(ItemStack stack);
+	boolean isGemEnchantable(ItemStack stack);
 }

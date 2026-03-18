@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 
 public class InventoryBag implements IInventory
 {
-	private Container container;
+	private final Container container;
 	public ItemStack[] stackList;
 
 	public InventoryBag(Container par1Container)

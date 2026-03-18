@@ -78,16 +78,16 @@ public class Utilities
 		AspectList tags = new AspectList();
 
 		ArrayList<Integer> loc = TileNode.locations.get(node);
-		if ((loc != null) && (loc.size() > 0))
+		if ((loc != null) && (!loc.isEmpty()))
 		{
-			int dim = loc.get(0).intValue();
-			int x = loc.get(1).intValue();
-			int y = loc.get(2).intValue();
-			int z = loc.get(3).intValue();
+			int dim = loc.get(0);
+			int x = loc.get(1);
+			int y = loc.get(2);
+			int z = loc.get(3);
 			if (dim == world.provider.dimensionId)
 			{
 				TileEntity tnb = world.getTileEntity(x, y, z);
-				if ((tnb != null) && ((tnb instanceof INode)))
+				if (((tnb instanceof INode)))
 				{
 					AspectList ta = ((INode)tnb).getAspects();
 					for (Aspect a : ta.getAspectsSorted()) {
@@ -154,8 +154,7 @@ public class Utilities
 			}
 		}
 		String phenomena = tag.getString("phenomena");
-		ScanResult scan = new ScanResult(type, blockId, blockMeta, entity, phenomena);
-		return scan;
+        return new ScanResult(type, blockId, blockMeta, entity, phenomena);
 	}
 
 	/**
@@ -176,7 +175,7 @@ public class Utilities
 	}
 
 	/**
-	 * Checks if a research of the given key exists within the given category
+	 * Checks if research of the given key exists within the given category
 	 */
 	public static boolean researchExists(String category, String key)
 	{
@@ -256,15 +255,15 @@ public class Utilities
 		return result.toString();
 	}
 
-	static String[] dyes = new String[]{"dyeBlack","dyeRed","dyeGreen","dyeBrown","dyeBlue","dyePurple","dyeCyan","dyeLightGray","dyeGray","dyePink","dyeLime","dyeYellow","dyeLightBlue","dyeMagenta","dyeOrange","dyeWhite"};
+	static final String[] dyes = new String[]{"dyeBlack","dyeRed","dyeGreen","dyeBrown","dyeBlue","dyePurple","dyeCyan","dyeLightGray","dyeGray","dyePink","dyeLime","dyeYellow","dyeLightBlue","dyeMagenta","dyeOrange","dyeWhite"};
 	public static boolean isDye(ItemStack item)
 	{
 		if(compareToOreName(item,"dye"))
-			return true;
+			return false;
 		for(String d : dyes)
 			if(Utilities.compareToOreName(item, d))
-				return true;
-		return false;
+				return false;
+		return true;
 	}
 	public static int getDamageForDye(ItemStack item)
 	{
@@ -295,8 +294,7 @@ public class Utilities
 	{
 		WitchingGadgets.logger.log(Level.INFO,"Attempting to extend PotionArray by "+extendBy);
 		Potion[] potions = new Potion[Potion.potionTypes.length + extendBy];
-		for (int i = 0; i < Potion.potionTypes.length; i++)
-			potions[i] = Potion.potionTypes[i];
+        System.arraycopy(Potion.potionTypes, 0, potions, 0, Potion.potionTypes.length);
 		try
 		{
 			Field field = null;
@@ -327,7 +325,7 @@ public class Utilities
 	}
 	public static int getNextPotionId(int start)
 	{
-		if ((Potion.potionTypes != null) && (start > 0) && (start < Potion.potionTypes.length) && (Potion.potionTypes[start] == null))
+		if (start > 0 && start < Potion.potionTypes.length && Potion.potionTypes[start] == null)
 			return start;
 
 		start++;
@@ -361,8 +359,7 @@ public class Utilities
 		if(!Aspect.getPrimalAspects().contains(a))
 			return null;
 		int meta = a.equals(Aspect.AIR) ? 0 : a.equals(Aspect.FIRE) ? 1 : a.equals(Aspect.WATER) ? 2 : a.equals(Aspect.EARTH) ? 3 : a.equals(Aspect.ORDER) ? 4 : 5;
-		ItemStack shard = new ItemStack(ConfigItems.itemShard,1,meta);
-		return shard;
+        return new ItemStack(ConfigItems.itemShard,1,meta);
 	}
 
 	public static ItemStack[] getActiveMagicalCloak(EntityPlayer player)
@@ -406,7 +403,7 @@ public class Utilities
 			if(c_tconProjectileWeapon==null)
 				try{
 					c_tconProjectileWeapon = Class.forName("tconstruct.library.weaponry.ProjectileWeapon");
-				}catch(Exception e){}
+				}catch(Exception ignored){}
 			if(c_tconProjectileWeapon!=null && c_tconProjectileWeapon.isAssignableFrom(player.inventory.getCurrentItem().getItem().getClass()))
 				return true;
 		}
@@ -456,8 +453,8 @@ public class Utilities
 	{
 		for(Material m : materials)
 			if(m == mat)
-				return true;
-		return false;
+				return false;
+		return true;
 	}
 
 	public static ItemStack getPickedBlock(World world, int x, int y, int z)

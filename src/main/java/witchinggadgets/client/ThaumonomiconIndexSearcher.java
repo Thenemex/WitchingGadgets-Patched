@@ -3,7 +3,6 @@ package witchinggadgets.client;
 import java.lang.reflect.Field;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
@@ -95,7 +94,7 @@ public class ThaumonomiconIndexSearcher
 			boolean cont = mouseBuffer.hasRemaining();
 			int to=0;
 			if(Mouse.isCreated())
-				while(cont&&to<40)	
+				while(cont)
 				{
 					to++;
 					int mx = Mouse.getEventX() * event.gui.width / event.gui.mc.displayWidth;
@@ -232,7 +231,7 @@ public class ThaumonomiconIndexSearcher
 			keys = ResearchCategories.getResearchList(searchCategory).research.keySet();
 		else
 		{
-			keys = new HashSet<String>();
+			keys = new HashSet<>();
 			for(ResearchCategoryList cat : ResearchCategories.researchCategories.values())
 				keys.addAll(cat.research.keySet());
 		}
@@ -252,16 +251,16 @@ public class ThaumonomiconIndexSearcher
 					{
 						if(page.recipeOutput!=null && page.recipeOutput.getDisplayName().toLowerCase().contains(query))
 						{
-							String dn = "";
+							StringBuilder dn = new StringBuilder();
 							if(page.recipeOutput.getItem() == ConfigItems.itemGolemCore)
 								for(String info : (List<String>)page.recipeOutput.getTooltip(Minecraft.getMinecraft().thePlayer, false))
-									dn+=info+" ";
+									dn.append(info).append(" ");
 							else
-								dn = page.recipeOutput.getDisplayName();
-							if(!usedResearches.contains(dn))
+								dn = new StringBuilder(page.recipeOutput.getDisplayName());
+							if(!usedResearches.contains(dn.toString()))
 							{
 								recipeBased.add(new SearchQuery(key,"Item: "+dn,iPage));
-								usedResearches.add(dn);
+								usedResearches.add(dn.toString());
 							}
 						}
 						iPage++;
@@ -280,7 +279,7 @@ public class ThaumonomiconIndexSearcher
 				if(!rAdded)
 					valids.addAll(recipeBased);
 			}
-		Collections.sort(valids, ResearchSorter.instance);
+		valids.sort(ResearchSorter.instance);
 		searchResults=valids;
 	}
 	static String getActiveCategory()
@@ -295,7 +294,7 @@ public class ThaumonomiconIndexSearcher
 	}
 	static class ResearchSorter implements Comparator<SearchQuery>
 	{
-		static ResearchSorter instance = new ResearchSorter();
+		static final ResearchSorter instance = new ResearchSorter();
 		@Override
 		public int compare(SearchQuery o1, SearchQuery o2)
 		{
@@ -309,7 +308,7 @@ public class ThaumonomiconIndexSearcher
 		public final String research;
 		public final String display;
 		public final int page;
-		String modifier;
+		final String modifier;
 		public SearchQuery(String research, String display, int page)
 		{
 			this.research=research;

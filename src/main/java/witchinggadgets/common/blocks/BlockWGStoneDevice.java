@@ -38,8 +38,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockWGStoneDevice extends BlockContainer
 {
-	public static String[] subNames = {"etherealWall","magicTileLock","obsidianPlate","obsidianDecoration0","obsidianDecoration1","obsidianDecoration2","sarcophagus","timeStone","blastFurnace"};
-	IIcon[] icons = new IIcon[subNames.length];
+	public static final String[] subNames = {"etherealWall","magicTileLock","obsidianPlate","obsidianDecoration0","obsidianDecoration1","obsidianDecoration2","sarcophagus","timeStone","blastFurnace"};
+	final IIcon[] icons = new IIcon[subNames.length];
 
 	public BlockWGStoneDevice()
 	{
@@ -88,7 +88,7 @@ public class BlockWGStoneDevice extends BlockContainer
 
 			if(tile.camoID!=null)
 			{
-				if (tile.camoID != null && tile.isRenderTypeValid(tile.camoID.getRenderType(), tile.camoMeta) )
+				if (tile.isRenderTypeValid(tile.camoID.getRenderType(), tile.camoMeta))
 					return tile.camoID.getIcon(side, tile.camoMeta);
 			}
 		}
@@ -207,10 +207,10 @@ public class BlockWGStoneDevice extends BlockContainer
 			{
 			case 2:
 			case 3:
-				return AxisAlignedBB.getBoundingBox(x-1,y+0,z+0,   x+2,y+1,z+1);
+				return AxisAlignedBB.getBoundingBox(x-1, y, z,   x+2,y+1,z+1);
 			case 4:
 			case 5:
-				return AxisAlignedBB.getBoundingBox(x+0,y+0,z-1,   x+1,y+1,z+2);
+				return AxisAlignedBB.getBoundingBox(x, y,z-1,   x+1,y+1,z+2);
 			}
 		}
 		if(world.getTileEntity(x, y, z) instanceof TileEntityBlastfurnace && ((TileEntityBlastfurnace)world.getTileEntity(x, y, z)).position==22)
@@ -427,7 +427,7 @@ public class BlockWGStoneDevice extends BlockContainer
 							blockMeta = blockMeta & 12 | 2;
 							break;
 						case 3:
-							blockMeta = blockMeta & 12 | 0;
+							blockMeta = blockMeta & 12;
 							break;
 						case 4:
 							blockMeta = blockMeta & 12 | 1;

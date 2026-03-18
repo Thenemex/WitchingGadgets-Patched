@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 
 public class InventoryCloak implements IInventory
 {
-	private Container container;
+	private final Container container;
 	public ItemStack[] stackList;
 
 	public InventoryCloak(Container par1Container)

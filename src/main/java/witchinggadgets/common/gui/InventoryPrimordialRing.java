@@ -8,8 +8,8 @@ import net.minecraft.item.ItemStack;
 public class InventoryPrimordialRing implements IInventory
 {
 
-	private Container container;
-	public ItemStack[] stackList;
+	private final Container container;
+	public final ItemStack[] stackList;
 
 	public InventoryPrimordialRing(Container par1Container)
 	{

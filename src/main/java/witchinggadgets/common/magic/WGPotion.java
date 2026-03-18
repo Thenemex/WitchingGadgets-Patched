@@ -9,7 +9,7 @@ import witchinggadgets.common.WGContent;
 
 public class WGPotion extends Potion
 {
-	static ResourceLocation tex = new ResourceLocation("witchinggadgets","textures/gui/potioneffects.png");
+	static final ResourceLocation tex = new ResourceLocation("witchinggadgets","textures/gui/potioneffects.png");
 	final int tickrate;
 	final boolean halfTickRateWIthAmplifier;
 	public WGPotion(int id, boolean isBad, int colour, int tick, boolean halveTick, int icon)

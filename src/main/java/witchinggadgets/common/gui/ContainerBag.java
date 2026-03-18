@@ -11,12 +11,12 @@ import witchinggadgets.common.items.tools.ItemBag;
 
 public class ContainerBag extends Container
 {
-	private World worldObj;
-	private int blockedSlot;
-	public IInventory input = new InventoryBag(this);
-	ItemStack pouch = null;
-	EntityPlayer player = null;
-	private int pouchSlotAmount = 18;
+	private final World worldObj;
+	private final int blockedSlot;
+	public final IInventory input = new InventoryBag(this);
+	final ItemStack pouch;
+	final EntityPlayer player;
+	private final int pouchSlotAmount = 18;
 
 	public ContainerBag(InventoryPlayer iinventory, World world)
 	{

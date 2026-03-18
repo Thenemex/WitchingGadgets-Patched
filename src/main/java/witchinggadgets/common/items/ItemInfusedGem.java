@@ -51,7 +51,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemInfusedGem extends Item implements IInfusedGem
 {
-	IIcon[] icons = new IIcon[GemCut.values().length];
+	final IIcon[] icons = new IIcon[GemCut.values().length];
 
 	public ItemInfusedGem()
 	{
@@ -101,7 +101,7 @@ public class ItemInfusedGem extends Item implements IInfusedGem
 			return false;
 
 		World world = player.worldObj;
-		if(cut==GemCut.POINT.toString())
+		if(cut.equals(GemCut.POINT.toString()))
 		{
 			int x = (int) Math.floor(player.posX);
 			int y = (int) player.posY + 1;
@@ -120,7 +120,7 @@ public class ItemInfusedGem extends Item implements IInfusedGem
 								world.setBlock(x+xoff, y, z+zoff, WGContent.BlockCustomAiry);
 							world.scheduleBlockUpdate(x+xoff, y, z+zoff, WGContent.BlockCustomAiry, 10);
 							te = world.getTileEntity(x+xoff, y, z+zoff);
-							if(te!=null && te instanceof TileEntityTempLight)
+							if(te instanceof TileEntityTempLight)
 								((TileEntityTempLight)te).tickMax=3600 + potency*800;//3m + Potency*40s
 						}
 				if(world.isAirBlock(x, y+2, z) && world.getBlockLightValue(x, y+2, z)<10)
@@ -129,7 +129,7 @@ public class ItemInfusedGem extends Item implements IInfusedGem
 						world.setBlock(x, y+2, z, WGContent.BlockCustomAiry);
 					world.scheduleBlockUpdate(x, y+2, z, WGContent.BlockCustomAiry, 10);
 					te = world.getTileEntity(x, y+2, z);
-					if(te!=null && te instanceof TileEntityTempLight)
+					if(te instanceof TileEntityTempLight)
 						((TileEntityTempLight)te).tickMax=3600 + potency*800;//3m + Potency*40s
 				}
 			}
@@ -158,7 +158,7 @@ public class ItemInfusedGem extends Item implements IInfusedGem
 
 			return true;
 		}
-		if(cut==GemCut.OVAL.toString())
+		if(cut.equals(GemCut.OVAL.toString()))
 		{
 			MovingObjectPosition mop = EntityUtils.getMovingObjectPositionFromPlayer(world, player, false);
 			int targetX = mop==null?0: mop.blockX+(mop.sideHit==4?-1:mop.sideHit==5?1:0);
@@ -188,7 +188,7 @@ public class ItemInfusedGem extends Item implements IInfusedGem
 						}
 						else
 						{
-							if (!world.isRemote && !world.getBlock(targetX, targetY, targetZ).getMaterial().isSolid() && !!world.getBlock(targetX, targetY, targetZ).getMaterial().isLiquid())
+							if (!world.isRemote && !world.getBlock(targetX, targetY, targetZ).getMaterial().isSolid() && world.getBlock(targetX, targetY, targetZ).getMaterial().isLiquid())
 								world.func_147480_a(targetX, targetY, targetZ, true);
 							world.setBlock(targetX, targetY, targetZ, Blocks.water,0,3);
 						}
@@ -230,7 +230,7 @@ public class ItemInfusedGem extends Item implements IInfusedGem
 					double xOff = fnX - player.posX;
 					double zOff = fnZ - player.posZ;
 					double yOff = fnY - (player.posY + (double)player.getEyeHeight());
-					double d3 = (double)MathHelper.sqrt_double(xOff * xOff + zOff * zOff);
+					double d3 = MathHelper.sqrt_double(xOff * xOff + zOff * zOff);
 					float yaw = (float)(Math.atan2(zOff, xOff) * 180.0D / Math.PI) - 90.0F;
 					float f3 = MathHelper.wrapAngleTo180_float(yaw - player.rotationYaw);
 					yaw = player.rotationYaw + f3;
@@ -313,13 +313,13 @@ public class ItemInfusedGem extends Item implements IInfusedGem
 	@Override
 	public int getConsumedCharge(String cut, Aspect aspect, EntityPlayer player)
 	{
-		if(cut == GemCut.OVAL.toString())
+		if(cut.equals(GemCut.OVAL.toString()))
 			return aspect==Aspect.FIRE||aspect==Aspect.AIR||aspect==Aspect.EARTH?1: aspect==Aspect.WATER||aspect==Aspect.ORDER?2: aspect==Aspect.ENTROPY?(Config.allowMirrors?16:2): 0;
-			return 32;
+		return 32;
 	}
 
 
-	static HashMap<Integer,Object> powerBeams = new HashMap();
+	static final HashMap<Integer,Object> powerBeams = new HashMap();
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean selected)
 	{
@@ -346,21 +346,21 @@ public class ItemInfusedGem extends Item implements IInfusedGem
 			return;
 		if(getCut(stack)==GemCut.OVAL && getAspect(stack)!=null && entity instanceof EntityPlayer && selected && entity.ticksExisted%4==0 && this.getDamage(stack)>0)
 		{
-			if (TileVisRelay.nearbyPlayers.containsKey(Integer.valueOf(entity.getEntityId())))
-				if ((((WeakReference)TileVisRelay.nearbyPlayers.get(Integer.valueOf(entity.getEntityId()))).get() != null) && (((TileVisRelay)((WeakReference)TileVisRelay.nearbyPlayers.get(Integer.valueOf(entity.getEntityId()))).get()).getDistanceFrom(entity.posX, entity.posY, entity.posZ) < 26.0D))
+			if (TileVisRelay.nearbyPlayers.containsKey(entity.getEntityId()))
+				if ((((WeakReference)TileVisRelay.nearbyPlayers.get(entity.getEntityId())).get() != null) && (((TileVisRelay)((WeakReference)TileVisRelay.nearbyPlayers.get(entity.getEntityId())).get()).getDistanceFrom(entity.posX, entity.posY, entity.posZ) < 26.0D))
 				{
 					Aspect aspect = getAspect(stack);
-					int amt = ((TileVisRelay)((WeakReference)TileVisRelay.nearbyPlayers.get(Integer.valueOf(entity.getEntityId()))).get()).consumeVis(aspect, 1);
+					int amt = ((TileVisRelay)((WeakReference)TileVisRelay.nearbyPlayers.get(entity.getEntityId())).get()).consumeVis(aspect, 1);
 					if (amt>0)
 					{
 						this.setDamage(stack, getDamage(stack)-amt);
-						((TileVisRelay)((WeakReference)TileVisRelay.nearbyPlayers.get(Integer.valueOf(entity.getEntityId()))).get()).triggerConsumeEffect(aspect);
+						((TileVisRelay)((WeakReference)TileVisRelay.nearbyPlayers.get(entity.getEntityId())).get()).triggerConsumeEffect(aspect);
 						if(world.isRemote)
 						{
-							ForgeDirection d2 = ForgeDirection.getOrientation(((TileVisRelay)((WeakReference)TileVisRelay.nearbyPlayers.get(Integer.valueOf(entity.getEntityId()))).get()).orientation);
-							double x = ((TileVisRelay)((WeakReference)TileVisRelay.nearbyPlayers.get(Integer.valueOf(entity.getEntityId()))).get()).xCoord+.5 + d2.offsetX*.05;
-							double y = ((TileVisRelay)((WeakReference)TileVisRelay.nearbyPlayers.get(Integer.valueOf(entity.getEntityId()))).get()).yCoord+.5 + d2.offsetY*.05;
-							double z = ((TileVisRelay)((WeakReference)TileVisRelay.nearbyPlayers.get(Integer.valueOf(entity.getEntityId()))).get()).zCoord+.5 + d2.offsetZ*.05;
+							ForgeDirection d2 = ForgeDirection.getOrientation(((TileVisRelay)((WeakReference)TileVisRelay.nearbyPlayers.get(entity.getEntityId())).get()).orientation);
+							double x = ((TileVisRelay)((WeakReference)TileVisRelay.nearbyPlayers.get(entity.getEntityId())).get()).xCoord+.5 + d2.offsetX*.05;
+							double y = ((TileVisRelay)((WeakReference)TileVisRelay.nearbyPlayers.get(entity.getEntityId())).get()).yCoord+.5 + d2.offsetY*.05;
+							double z = ((TileVisRelay)((WeakReference)TileVisRelay.nearbyPlayers.get(entity.getEntityId())).get()).zCoord+.5 + d2.offsetZ*.05;
 							double[] playerPos = ClientUtilities.getPlayerHandPos((EntityPlayer)entity,true);
 							powerBeams.put(entity.getEntityId(), Thaumcraft.proxy.beamPower(world, x, y, z, playerPos[0],playerPos[1],playerPos[2], ((aspect.getColor()>>16)&0xff)/255f, ((aspect.getColor()>>8)&0xff)/255f, (aspect.getColor()&0xff)/255f, false, powerBeams.get(entity.getEntityId())));
 						}
@@ -369,7 +369,7 @@ public class ItemInfusedGem extends Item implements IInfusedGem
 				else
 				{
 					powerBeams.remove(entity.getEntityId());
-					TileVisRelay.nearbyPlayers.remove(Integer.valueOf(entity.getEntityId()));
+					TileVisRelay.nearbyPlayers.remove(entity.getEntityId());
 				}
 		}
 	}
@@ -465,7 +465,7 @@ public class ItemInfusedGem extends Item implements IInfusedGem
 
 		openList.add(new ChunkCoordinates(x,y,z));
 
-		ChunkCoordinates next = null;
+		ChunkCoordinates next;
 		final int closedListMax = 400;
 		while(closedList.size()<closedListMax && !openList.isEmpty())
 		{
@@ -476,7 +476,7 @@ public class ItemInfusedGem extends Item implements IInfusedGem
 				ores.add(next);
 			}
 			for(ChunkCoordinates cc2 : getConnected(next.posX, next.posY, next.posZ))
-				if(!checked.contains(cc2) && !closedList.contains(cc2) && !openList.contains(cc2) && (world.getBlock(cc2.posX,cc2.posY,cc2.posZ).equals(search)||Utilities.isOre( world, cc2.posX,cc2.posY,cc2.posZ))/*.getMaterial()==Material.rock*/)
+				if(!closedList.contains(cc2) && !openList.contains(cc2) && (world.getBlock(cc2.posX, cc2.posY, cc2.posZ).equals(search) || Utilities.isOre(world, cc2.posX, cc2.posY, cc2.posZ))/*.getMaterial()==Material.rock*/)
 					if(cc2.getDistanceSquared(x, y, z)<32)
 						openList.add(cc2);
 			openList.remove(0);

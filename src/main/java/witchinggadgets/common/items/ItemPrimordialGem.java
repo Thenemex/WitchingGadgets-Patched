@@ -25,8 +25,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemPrimordialGem extends Item
 {
-	String[] subNames = {"perfodio","vacuos","sano","aer"};
-	HashMap<String,Object[]> subItems = new HashMap<String,Object[]>();
+	final String[] subNames = {"perfodio","vacuos","sano","aer"};
+	final HashMap<String,Object[]> subItems = new HashMap<>();
 
 	IIcon iconFrame;
 

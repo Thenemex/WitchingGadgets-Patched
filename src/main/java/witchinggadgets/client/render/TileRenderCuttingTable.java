@@ -21,7 +21,7 @@ import witchinggadgets.common.blocks.tiles.TileEntityCuttingTable;
 
 public class TileRenderCuttingTable extends TileEntitySpecialRenderer
 {
-	static ModelCuttingTable model = new ModelCuttingTable();
+	static final ModelCuttingTable model = new ModelCuttingTable();
 
 	@Override
 	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float f)
@@ -75,13 +75,12 @@ public class TileRenderCuttingTable extends TileEntitySpecialRenderer
 
 	static class ModelCuttingTable extends ModelBase
 	{
-		List<ModelRenderer> parts  = new ArrayList();
-		List<ModelRenderer[]> flasks  = new ArrayList();
-		List<ModelRenderer[]> bowls  = new ArrayList();
+		final List<ModelRenderer> parts  = new ArrayList();
+		final List<ModelRenderer[]> flasks  = new ArrayList();
+		final List<ModelRenderer[]> bowls  = new ArrayList();
 		public ModelCuttingTable()
 		{
-			parts.clear();
-			ModelRenderer temp;
+            ModelRenderer temp;
 			//BOTTOM
 			temp = new ModelRenderer(this, 0, 0);
 			temp.addBox(0.0F, 0.0F, 0.0F, 16, 2, 16);

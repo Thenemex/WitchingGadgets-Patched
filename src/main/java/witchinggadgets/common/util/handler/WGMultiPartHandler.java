@@ -28,7 +28,7 @@ import cpw.mods.fml.common.eventhandler.Event;
 
 public class WGMultiPartHandler implements IPartFactory, IPartConverter
 {
-	public static WGMultiPartHandler instance = new WGMultiPartHandler();
+	public static final WGMultiPartHandler instance = new WGMultiPartHandler();
 	public static RayTracer rayTracer = new RayTracer();
 
 	public void init()
@@ -77,15 +77,17 @@ public class WGMultiPartHandler implements IPartFactory, IPartConverter
 	{
 //		if (name.equals("witchingGadgets:vis_relay"))
 //			return new MultipartVisRelay(0);
-		if (name.equals("witchingGadgets:essentia_tube"))
-			return new MultipartEssentiaTube(0);
-		if (name.equals("witchingGadgets:essentia_tube_valve"))
-			return new MultipartEssentiaTube_Valve(0);
-		if (name.equals("witchingGadgets:essentia_tube_filtered"))
-			return new MultipartEssentiaTube_Filtered(0);
-		if (name.equals("witchingGadgets:essentia_buffer"))
-			return new MultipartEssentiaBuffer(0);
-		return null;
+        switch (name) {
+            case "witchingGadgets:essentia_tube":
+                return new MultipartEssentiaTube(0);
+            case "witchingGadgets:essentia_tube_valve":
+                return new MultipartEssentiaTube_Valve(0);
+            case "witchingGadgets:essentia_tube_filtered":
+                return new MultipartEssentiaTube_Filtered(0);
+            case "witchingGadgets:essentia_buffer":
+                return new MultipartEssentiaBuffer(0);
+        }
+        return null;
 	}
 	
 	public static boolean tileIsEssentiaTube(TileEntity tile)

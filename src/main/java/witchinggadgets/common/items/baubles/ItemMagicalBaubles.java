@@ -34,9 +34,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemMagicalBaubles extends Item implements IBauble, ITravellersGear, vazkii.botania.api.item.ICosmeticAttachable
 {
 	//String[] subNames = {"ringSocketed_gold","ringSocketed_thaumium","ringSocketed_silver"};
-	public static String[] subNames = {"shouldersDoublejump","shouldersKnockback","vambraceStrength","vambraceHaste","titleCrimsonCult","ringLuck","ringSniper"};
-	IIcon[] icons = new IIcon[subNames.length];
-	public static HashSet<String> bowSpeedPlayers = new HashSet<String>();
+	public static final String[] subNames = {"shouldersDoublejump","shouldersKnockback","vambraceStrength","vambraceHaste","titleCrimsonCult","ringLuck","ringSniper"};
+	final IIcon[] icons = new IIcon[subNames.length];
+	public static HashSet<String> bowSpeedPlayers = new HashSet<>();
 
 	public ItemMagicalBaubles()
 	{
@@ -76,7 +76,7 @@ public class ItemMagicalBaubles extends Item implements IBauble, ITravellersGear
 		{
 			ItemStack cosmetic = getCosmeticItem(stack);
 			if(cosmetic != null)
-				list.add( String.format(StatCollector.translateToLocal("botaniamisc.hasCosmetic"), cosmetic.getDisplayName()).replaceAll("&","\u00a7") );
+				list.add( String.format(StatCollector.translateToLocal("botaniamisc.hasCosmetic"), cosmetic.getDisplayName()).replaceAll("&","§") );
 		}
 	}
 
@@ -252,8 +252,7 @@ public class ItemMagicalBaubles extends Item implements IBauble, ITravellersGear
 	{
 		if(!stack.hasTagCompound())
 			return null;
-		ItemStack cosmetic = ItemStack.loadItemStackFromNBT(stack.getTagCompound().getCompoundTag("botaniaCosmeticOverride"));
-		return cosmetic;
+        return ItemStack.loadItemStackFromNBT(stack.getTagCompound().getCompoundTag("botaniaCosmeticOverride"));
 	}
 	@Optional.Method(modid = "Botania")
 	public void setCosmeticItem(ItemStack stack, ItemStack cosmetic)

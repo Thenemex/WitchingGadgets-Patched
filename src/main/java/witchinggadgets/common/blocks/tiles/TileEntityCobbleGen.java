@@ -13,7 +13,7 @@ public class TileEntityCobbleGen extends TileEntityWGBase
 {
 	public ForgeDirection facing = ForgeDirection.getOrientation(2);
 	public int tick = 0;
-	int tickGoal = 40;
+	final int tickGoal = 40;
 
 	public void updateEntity()
 	{
@@ -40,17 +40,17 @@ public class TileEntityCobbleGen extends TileEntityWGBase
 	{
 		ItemStack cobble = new ItemStack(Blocks.cobblestone);
 		TileEntity inventory = this.worldObj.getTileEntity(this.xCoord + this.facing.offsetX, this.yCoord + this.facing.offsetY, this.zCoord + this.facing.offsetZ);
-		if ((inventory != null) && ((inventory instanceof IInventory)))
+		if (((inventory instanceof IInventory)))
 			cobble = InventoryUtils.placeItemStackIntoInventory(cobble, (IInventory)inventory, this.facing.getOpposite().ordinal(), true);
 
 		if (cobble != null)
 			if(facing.equals(ForgeDirection.UP)||facing.equals(ForgeDirection.DOWN))
 			{
 				EntityItem ei = new EntityItem(this.worldObj, this.xCoord + 0.5D, this.yCoord + 0.5 + this.facing.offsetY * 0.66D, this.zCoord + 0.5D, cobble.copy());
-				ei.motionX = 0.025000000372529D;;
-				ei.motionY = (0.075F * this.facing.offsetY);
-				ei.motionZ = 0.025000000372529D;;
-				this.worldObj.spawnEntityInWorld(ei);
+				ei.motionX = 0.025000000372529D;
+                ei.motionY = (0.075F * this.facing.offsetY);
+				ei.motionZ = 0.025000000372529D;
+                this.worldObj.spawnEntityInWorld(ei);
 			}
 			else
 			{
@@ -65,7 +65,7 @@ public class TileEntityCobbleGen extends TileEntityWGBase
 	private boolean canOutput()
 	{
 		TileEntity inventory = this.worldObj.getTileEntity(this.xCoord + this.facing.offsetX, this.yCoord + this.facing.offsetY, this.zCoord + this.facing.offsetZ);
-		if ((inventory != null) && ((inventory instanceof IInventory)))
+		if (((inventory instanceof IInventory)))
 			return InventoryUtils.insertStack((IInventory) inventory, new ItemStack(Blocks.cobblestone), this.facing.getOpposite().ordinal(), false) == null;
 		return true;
 	}

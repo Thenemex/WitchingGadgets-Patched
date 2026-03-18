@@ -7,9 +7,6 @@ import net.minecraft.client.particle.EffectRenderer;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MovingObjectPosition;
@@ -101,11 +98,7 @@ public class BlockModifiedAiry extends BlockAiry
 		return 0;
 	}
 
-	public void onBlockHarvested(World par1World, int par2, int par3, int par4, int par5, EntityPlayer par6EntityPlayer)
-	{
-	}
-
-	@SideOnly(Side.CLIENT)
+    @SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World w, int i, int j, int k, Random r)
 	{
 //		int md = w.getBlockMetadata(i, j, k);
@@ -136,11 +129,7 @@ public class BlockModifiedAiry extends BlockAiry
 	{
 	}
 
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack)
-	{
-	}
-
-	public boolean isAirBlock(World world, int x, int y, int z)
+    public boolean isAirBlock(World world, int x, int y, int z)
 	{
 		return true;
 	}

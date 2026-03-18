@@ -12,7 +12,7 @@ import thaumcraft.common.config.ConfigItems;
 
 public class TileEntityLabelLibrary extends TileEntityWGBase implements IInventory
 {
-	ItemStack[] inventory = new ItemStack[2];
+	final ItemStack[] inventory = new ItemStack[2];
 	public Aspect aspect;
 	public int facing = 2;
 

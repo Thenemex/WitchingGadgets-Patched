@@ -80,8 +80,8 @@ public class ItemPrimordialArmor extends ItemFortressArmor implements IActiveAbi
 			{
 				if(player.worldObj.isRemote && !player.isSneaking())
 				{
-					if (!Thaumcraft.instance.entityEventHandler.prevStep.containsKey(Integer.valueOf(player.getEntityId())))
-						Thaumcraft.instance.entityEventHandler.prevStep.put(Integer.valueOf(player.getEntityId()), Float.valueOf(player.stepHeight));
+					if (!Thaumcraft.instance.entityEventHandler.prevStep.containsKey(player.getEntityId()))
+						Thaumcraft.instance.entityEventHandler.prevStep.put(player.getEntityId(), player.stepHeight);
 					player.stepHeight = 1.0F;
 				}
 				if (player.onGround)
@@ -244,7 +244,7 @@ public class ItemPrimordialArmor extends ItemFortressArmor implements IActiveAbi
 	public String getItemStackDisplayName(ItemStack stack)
 	{
 		int ab = getAbility(stack);
-		String add = ab>=0&&ab<6? " "+EnumChatFormatting.DARK_GRAY+"- \u00a7"+Aspect.getPrimalAspects().get(ab).getChatcolor()+Aspect.getPrimalAspects().get(ab).getName()+EnumChatFormatting.RESET : "";
+		String add = ab>=0&&ab<6? " "+EnumChatFormatting.DARK_GRAY+"- §"+Aspect.getPrimalAspects().get(ab).getChatcolor()+Aspect.getPrimalAspects().get(ab).getName()+EnumChatFormatting.RESET : "";
 		return super.getItemStackDisplayName(stack)+add;
 	}
 	@Override
@@ -336,7 +336,7 @@ public class ItemPrimordialArmor extends ItemFortressArmor implements IActiveAbi
 				//				//Nova?
 				//				break;
 				//			case ORDER:
-				//				//Something something Healing?
+				//				//Something Healing?
 				//				break;
 			default:
 				break;

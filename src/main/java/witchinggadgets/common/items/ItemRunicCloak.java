@@ -260,7 +260,7 @@
 //			AspectList al = getCloakFromStack(stack).getVisDiscount();
 //			list.add(EnumChatFormatting.DARK_PURPLE + StatCollector.translateToLocal("tc.visdiscount") + ":");
 //			for(Aspect a:al.getAspects())
-//				list.add("  \u00a7"+a.getChatcolor()+a.getName()+": "+al.getAmount(a) + "%");
+//				list.add("  §"+a.getChatcolor()+a.getName()+": "+al.getAmount(a) + "%");
 //		}
 //		else
 //			list.add(EnumChatFormatting.DARK_PURPLE + StatCollector.translateToLocal("tc.visdiscount") + ": " + getVisDiscount(stack, par2EntityPlayer, Aspect.AIR) + "%");

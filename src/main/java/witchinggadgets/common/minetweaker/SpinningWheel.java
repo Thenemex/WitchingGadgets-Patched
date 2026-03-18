@@ -19,9 +19,7 @@ public class SpinningWheel
 	public static void addRecipe(IItemStack output, IIngredient[] input)
 	{
 		Object[] oInput = WGMinetweaker.toObjects(input);
-		if(oInput==null)
-			return;
-		SpinningRecipe r = new SpinningRecipe(WGMinetweaker.toStack(output), oInput);
+        SpinningRecipe r = new SpinningRecipe(WGMinetweaker.toStack(output), oInput);
 		MineTweakerAPI.apply(new Add(r));
 	}
 

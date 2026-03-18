@@ -17,21 +17,21 @@ import witchinggadgets.common.blocks.tiles.TileEntityWallMirror;
 
 public class TileRenderWallMirror extends TileEntitySpecialRenderer
 {
-	static int[] n = {-1,-1,-1};
-	static int[] g01 = {243,184,56};
+	static final int[] n = {-1,-1,-1};
+	static final int[] g01 = {243,184,56};
 	static int[] g02 = { 99, 69, 6};
-	static int[] g03 = {220,155,14};
-	static int[] g04 = {156,109, 9};
-	static int[] g05 = {132, 92, 8};
-	static int[] g06 = {241,170,14};
-	static int[] g07 = {179,126,11};
-	static int[] g08 = {241,176,36};
-	static int[] g09 = {135, 94, 7};
-	static int[] g10 = {203,143,13};
-	static int[] g11 = {190,134,12};
-	static int[] g12 = {242,181,48};
-	static int[] w ={208,224,248};
-	public static int[][][] shape = {
+	static final int[] g03 = {220,155,14};
+	static final int[] g04 = {156,109, 9};
+	static final int[] g05 = {132, 92, 8};
+	static final int[] g06 = {241,170,14};
+	static final int[] g07 = {179,126,11};
+	static final int[] g08 = {241,176,36};
+	static final int[] g09 = {135, 94, 7};
+	static final int[] g10 = {203,143,13};
+	static final int[] g11 = {190,134,12};
+	static final int[] g12 = {242,181,48};
+	static final int[] w ={208,224,248};
+	public static final int[][][] shape = {
 		/* 1*/{  n,  n,  n,  n,  n,g11,g11,g10},
 		/* 2*/{  n,g04,g09,  n,g07,g01,g10,  n},
 		/* 3*/{g10,  w,  w,g05,g07,  n,  n,  n},

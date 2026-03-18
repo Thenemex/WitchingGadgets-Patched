@@ -19,7 +19,7 @@ import witchinggadgets.common.WGContent;
 
 public class ItemClusters extends Item
 {
-	public static String[] subNames = {
+	public static final String[] subNames = {
 		//TCon
 		"Aluminum", "Cobalt", "Ardite",
 		//ThermalFoundation
@@ -35,10 +35,10 @@ public class ItemClusters extends Item
 
 
 	};
-	public static HashMap<String, Integer[]> materialMap = new HashMap();
+	public static final HashMap<String, Integer[]> materialMap = new HashMap();
 
 	IIcon iconMetal;
-	IIcon[] iconOverlay = new IIcon[3];
+	final IIcon[] iconOverlay = new IIcon[3];
 
 	public ItemClusters()
 	{

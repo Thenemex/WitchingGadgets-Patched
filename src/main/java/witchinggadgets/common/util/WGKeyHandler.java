@@ -22,7 +22,7 @@ public class WGKeyHandler
 	public static KeyBinding thaumcraftFKey;
 	public static KeyBinding jumpKey;
 
-	public boolean[] keyDown = {false,false,false};
+	public final boolean[] keyDown = {false,false,false};
 	public static float gemRadial;
 	public static boolean gemLock = false;
 	private boolean isJumping = false;
@@ -43,7 +43,7 @@ public class WGKeyHandler
 			if(thaumcraftFKey==null)
 			{
 				for(KeyBinding kb : Minecraft.getMinecraft().gameSettings.keyBindings)
-					if(kb.getKeyCategory()=="key.categories.misc" && kb.getKeyDescription()=="Change Wand Focus")
+					if(kb.getKeyCategory().equals("key.categories.misc") && kb.getKeyDescription().equals("Change Wand Focus"))
 						thaumcraftFKey=kb;
 			}
 			if(jumpKey==null)
@@ -60,7 +60,7 @@ public class WGKeyHandler
 						event.player.fallDistance = 0;
 
 						if (event.player.isPotionActive(Potion.jump))
-							event.player.motionY += (double) ((float) (event.player.getActivePotionEffect(Potion.jump).getAmplifier() + 1) * 0.1F);
+							event.player.motionY += (float) (event.player.getActivePotionEffect(Potion.jump).getAmplifier() + 1) * 0.1F;
 						ForgeHooks.onLivingJump(event.player);
 						multiJumps--;
 					}

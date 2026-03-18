@@ -4,6 +4,6 @@ import net.minecraft.item.ItemStack;
 
 public interface IPrimordialGear
 {
-	public void cycleAbilities(ItemStack stack);
-	public int getAbility(ItemStack stack);
+	void cycleAbilities(ItemStack stack);
+	int getAbility(ItemStack stack);
 }
