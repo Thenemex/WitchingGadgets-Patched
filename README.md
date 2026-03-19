@@ -1,9 +1,10 @@
 ![Logo](https://raw.githubusercontent.com/BluSunrize/WitchingGadgets/master/src/main/resources/assets/witchinggadgets/logo.png)
-==============
 
-Thaumcraft Addon for those that still crave more content 
-
-Basically just more stuff to add to Thaumcraft. I've been working on this since 1.6.4, finally feel comfortable with doing a beta release ^^
-Warning: This is built with a TC beta version not available to the public yet. So even if you download and compile, you probably wont be able to run it.
-
-
+Witching Gadgets : Patched (Forked by Thenemex)
+========
+### Patched bugs :
+- Refactor most code with modern syntax
+### New features :
+- Added a new config entry for removing the "WG_" prefix in front of Blocks
+- Added a new config entry for removing the "item.WG_" prefix in front of Items
+- Removed all "[WG]" prefix in front of research descriptions
