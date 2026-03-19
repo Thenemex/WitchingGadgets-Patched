@@ -54,7 +54,7 @@ public class WitchingGadgets
 	public EventHandler eventHandler;
 
 	@Instance("WitchingGadgets")
-	public static final WitchingGadgets instance = new WitchingGadgets();
+	public static WitchingGadgets instance = new WitchingGadgets();
 
 	@SidedProxy(clientSide="witchinggadgets.client.ClientProxy", serverSide="witchinggadgets.common.CommonProxy")
 	public static CommonProxy proxy;
