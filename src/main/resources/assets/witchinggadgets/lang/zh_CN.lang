@@ -33,6 +33,41 @@ tile.WG_MetalDevice.tfFocusMushroom.name=群系核心:蘑菇岛
 tile.WG_RoseVine.name=玫瑰藤
 tile.WG_CustomAir.name=微光
 
+# -- Blocks (w/o prefix)--
+tile.WallMirror.name=Mirror on the Wall
+tile.VoidWalkway.name=Void Walkway
+tile.StoneDevice.etherealWall.name=虚无砖块
+tile.StoneDevice.magicTileLock.name=奇异之锁
+tile.StoneDevice.obsidianPlate.name=黑曜石板
+tile.StoneDevice.obsidianDecoration0.name=黑曜石符文
+tile.StoneDevice.obsidianDecoration1.name=黑曜石符文
+tile.StoneDevice.obsidianDecoration2.name=黑曜石符文
+tile.StoneDevice.sarcophagus.name=石棺
+tile.StoneDevice.timeStone.name=生长之石
+tile.StoneDevice.blastFurnace.name=炼狱高炉
+
+tile.WoodenDevice.spinningWheel.name=纺车
+tile.WoodenDevice.loom.name=织机
+tile.WoodenDevice.cobbleGen.name=神秘造石机
+tile.WoodenDevice.armorStand.name=衣架
+tile.WoodenDevice.cuttingTable.name=切割台
+tile.WoodenDevice.saunaStove.name=神秘桑拿炉
+tile.WoodenDevice.labelLibrary.name=要素标记库
+
+tile.MetalDevice.essentiaPump.name=源质泵
+tile.MetalDevice.terraformer.name=奥术群系转化器
+tile.MetalDevice.tfFocusPlains.name=群系核心:平原
+tile.MetalDevice.tfFocusColdTaiga.name=群系核心:冻原
+tile.MetalDevice.tfFocusDesert.name=群系核心:沙漠
+tile.MetalDevice.tfFocusJungle.name=群系核心:雨林
+tile.MetalDevice.tfFocusHell.name=群系核心:地狱
+tile.MetalDevice.voidmetalBlock.name=虚空金属块
+tile.MetalDevice.tfFocusTaint.name=群系核心:腐化之地
+tile.MetalDevice.tfFocusMushroom.name=群系核心:蘑菇岛
+
+tile.RoseVine.name=玫瑰藤
+tile.CustomAir.name=微光
+
 #
 # -- Items --
 item.WG_Material.threadSimple.name=纱线
@@ -112,15 +147,100 @@ item.WG_Baubles.shouldersKnockback.name=磐石肩铠
 item.WG_Baubles.vambraceStrength.name=狂战士护腕
 item.WG_Baubles.vambraceHaste.name=迅捷护腕
 item.WG_Baubles.titleCrimsonCult.name=称号:血腥教徒
-wg.title.crimsonCultist=血腥信徒
-wg.title.crimsonKnight=血腥骑士
-wg.title.crimsonPraetor=血腥主教
 item.WG_Baubles.ringLuck.name=贪婪指环
 item.WG_Baubles.ringSniper.name=狙击指环
 
 item.WG_ScanCamera.name=神秘相机
 
 item.WG_CrystalFlask.name=水晶容器
+
+# -- Items (w/o prefix)--
+item.Material.threadSimple.name=纱线
+item.Material.threadGold.name=金丝线
+item.Material.threadThaumium.name=神秘丝线
+item.Material.clothSpace.name=宽纺布匹
+item.Material.clothGolden.name=黄金布匹
+item.Material.clothBewitched.name=秘法布匹
+item.Material.wolfPelt.name=狼皮
+item.Material.calculator.name=奥术计算器
+item.Material.cuttingTools.name=宝石切刀
+item.Material.photoPlate.name=成像底片
+item.Material.developedPhoto.name=成像洗片
+item.Material.clusterAluminum.name=铝矿簇
+item.Material.clusterCobalt.name=钴矿簇
+item.Material.clusterArdite.name=阿迪特矿簇
+item.Material.clusterNickel.name=镍矿簇
+item.Material.clusterFZDarkIron.name=玄铁矿簇
+item.Material.guidingString.name=引路线卷
+item.Material.powerlessPearl.name=黯影珍珠
+item.Material.gemstoneDust.name=宝石粉
+
+item.Cluster.name=%1$s矿簇
+
+item.Bag.normal.name=奇术口袋
+item.Bag.void.name=虚空口袋
+item.Bag.ender.name=末影口袋
+item.Bag.hungry.name=饕餮口袋
+
+item.ThaumiumShears.name=神秘剪刀
+item.MagicFood.sweetwart.name=糖渍地狱疣
+item.MagicFood.nethercake.name=地狱蛋糕
+item.MagicFood.brainjerky.name=僵脑肉干
+item.AdvancedRobeChest.name=秘法长袍
+item.AdvancedRobeLegs.name=秘法护腿
+item.AdvancedScribingTools.name=Illuminated Scribing Tools
+
+item.Cloak.standard.name=斗篷
+item.Cloak.storage.name=奇术斗篷
+item.Cloak.raven.name=黑鸦斗篷
+item.Cloak.spectral.name=幽灵斗篷
+item.Cloak.wolf.name=野狼斗篷
+
+item.Kama.standard.name=卡玛短袍
+item.Kama.storage.name=奇术短袍
+item.Kama.raven.name=黑鸦短袍
+item.Kama.spectral.name=幽灵短袍
+item.Kama.wolf.name=野狼短袍
+
+item.EliteArmorHelm.ANGELIC_0.name=Ophanic Helm
+item.EliteArmorChest.ANGELIC_1.name=Seraph's Cuirass
+item.EliteArmorLegs.ANGELIC_2.name=Cherub Greaves
+item.EliteArmorBoots.ANGELIC_3.name=Sabatons of the Valkyrie
+
+item.EliteArmorHelm.DEMONIC_0.name=Helm of Leviathan
+item.EliteArmorChest.DEMONIC_1.name=Asrael's Cuirass
+item.EliteArmorLegs.DEMONIC_2.name=Lycan's Greaves
+item.EliteArmorBoots.DEMONIC_3.name=Claws of the Behemoth
+
+item.InfusedGem.name=蕴魔宝石
+item.InfusedGem.innert.name=惰性宝石
+
+item.PrimordialGlove.name=元始手套
+item.PrimordialHammer.name=元始战锤
+item.PrimordialAxe.name=元始巨斧
+item.PrimordialSword.name=元始巨剑
+
+item.PrimordialHelm.name=元始头盔
+item.PrimordialChest.name=元始胸甲
+item.PrimordialLegs.name=元始护腿
+item.PrimordialBoots.name=元始靴子
+
+item.Baubles.ring_primordial.name=元始指环
+item.Baubles.ring_lifeProtection.name=Ring of Life Protection
+item.Baubles.shouldersDoublejump.name=炽天使肩铠
+item.Baubles.shouldersKnockback.name=磐石肩铠
+item.Baubles.vambraceStrength.name=狂战士护腕
+item.Baubles.vambraceHaste.name=迅捷护腕
+item.Baubles.titleCrimsonCult.name=称号:血腥教徒
+wg.title.crimsonCultist=血腥信徒
+wg.title.crimsonKnight=血腥骑士
+wg.title.crimsonPraetor=血腥主教
+item.Baubles.ringLuck.name=贪婪指环
+item.Baubles.ringSniper.name=狙击指环
+
+item.ScanCamera.name=神秘相机
+
+item.CrystalFlask.name=水晶容器
 
 item.modifiedTC.luckyCoin=幸运金币
 

@@ -27,6 +27,36 @@ tile.WG_MetalDevice.tfFocusJungle.name=Terrestrischer Fokus: Dschungel
 tile.WG_MetalDevice.tfFocusHell.name=Terrestrischer Fokus: H�lle
 tile.WG_RoseVine.name=Rose Vines
 tile.WG_CustomAir.name=Lichtfunkeln
+
+# -- Blocks (w/o prefix)--
+tile.WallMirror.name=Spiegel an der Wand
+tile.VoidWalkway.name=Steg der Leere
+tile.StoneDevice.etherealWall.name=Himmlische Mauer
+tile.StoneDevice.magicTileLock.name=Magisches Schloss
+tile.StoneDevice.obsidianPlate.name=Obsidian Platte
+tile.StoneDevice.obsidianDecoration0.name=Obsidian Rune
+tile.StoneDevice.obsidianDecoration1.name=Obsidian Rune
+tile.StoneDevice.obsidianDecoration2.name=Obsidian Rune
+tile.StoneDevice.sarcophagus.name=Sarkophag
+tile.StoneDevice.timeStone.name=Reifungsstein
+tile.StoneDevice.blastFurnace.name=H�llischer Hochofen
+
+tile.WoodenDevice.spinningWheel.name=Spinnrad
+tile.WoodenDevice.loom.name=Webstuhl
+tile.WoodenDevice.cobbleGen.name=Arkaner Stein Extrudierer
+tile.WoodenDevice.armorStand.name=R�stungsst�nder
+tile.WoodenDevice.cuttingTable.name=Schneidetisch
+tile.WoodenDevice.saunaStove.name=Arkaner Sauna Ofen
+
+tile.MetalDevice.essentiaPump.name=Essentia Pumpe
+tile.MetalDevice.terraformer.name=Arkaner Terrestrischer Erneuerer
+tile.MetalDevice.tfFocusPlains.name=Terrestrischer Fokus: Ebene
+tile.MetalDevice.tfFocusColdTaiga.name=Terrestrischer Fokus: Verschneite Taiga
+tile.MetalDevice.tfFocusDesert.name=Terrestrischer Fokus: W�ste
+tile.MetalDevice.tfFocusJungle.name=Terrestrischer Fokus: Dschungel
+tile.MetalDevice.tfFocusHell.name=Terrestrischer Fokus: H�lle
+tile.RoseVine.name=Rose Vines
+tile.CustomAir.name=Lichtfunkeln
 #
 fluid.fzdarkiron.molten=Geschmolzenes Dunkeleisen
 #
@@ -97,11 +127,82 @@ item.WG_Baubles.shouldersKnockback.name=Unersch�tterliche Schultersch�tzer
 item.WG_Baubles.vambraceStrength.name=Armschienen des Berserkers
 item.WG_Baubles.vambraceHaste.name=Armschienen des stetigen Fortschreiten
 item.WG_Baubles.titleCrimsonCult.name=Title: Crimson Cult Titel: Karmesinkult
-wg.title.crimsonKnight=Karmesin Ritter
-wg.title.crimsonPraetor=Karmesin Pr�tor
 
 item.WG_ScanCamera.name=Thaumischer Ikonograph
 item.WG_CrystalFlask.name=Kristallkapsel
+
+# -- Items (w/o prefix)--
+item.Material.threadSimple.name=Garn
+item.Material.threadGold.name=Goldener Faden
+item.Material.threadThaumium.name=Arkaner Faden
+item.Material.clothSpace.name=Stoff der weitr�umigen Falten
+item.Material.clothGolden.name=Goldener Stoff
+item.Material.clothBewitched.name=Verzauberter Pelz
+item.Material.wolfPelt.name=Wolfpelz
+item.Material.calculator.name=Arkanes Rechenbrett
+item.Material.cuttingTools.name=Edelsteinbearbeiter's Werkzeuge
+item.Material.photoPlate.name=Ikonografische Platte
+item.Material.developedPhoto.name=Entwickelter Ikonograph
+item.Material.clusterAluminum.name=Nativer Aluminumklumpen
+item.Material.clusterCobalt.name=Nativer Kobaltklumpen
+item.Material.clusterArdite.name=Nativer Arditklumpen
+item.Material.clusterNickel.name=Nativer Nickelklumpen
+item.Material.clusterFZDarkIron.name=Nativer Dunkeleisenklumpen
+item.Material.guidingString.name=Wegzeigendes Garn
+item.Material.primordialShard.name=Urspr�ngliche Scherbe
+item.Material.gemstoneDust.name=Edelsteinstaub
+
+item.Cluster.name=Nativer Klumpen
+item.Bag.normal.name=Trick-Beutel
+item.Bag.void.name=Bag Beutel der Leerenverbindung
+item.Bag.ender.name=Beutel der Enderverbindung
+item.ThaumiumShears.name=Thaumium-Schere
+item.MagicFood.sweetwart.name=S��warze
+item.MagicFood.nethercake.name=Netherkuchen
+item.MagicFood.brainjerky.name=Gehirn Trockenfleisch
+item.AdvancedRobeChest.name=Verzauberte Robe
+item.AdvancedRobeLegs.name=Verzauberte Hose
+item.AdvancedScribingTools.name=Leuchtendes Schreibset
+item.Cloak.standard.name=Mantel
+item.Cloak.storage.name=Mantel der volumin�sen Taschen
+item.Cloak.raven.name=Mantel des Raben
+item.Cloak.spectral.name=Geisterhafter Mantel
+item.Cloak.wolf.name=W�lfischer Mantel
+item.Kama.standard.name=Kama
+item.Kama.storage.name=Kama der volumin�sen Taschen
+item.Kama.raven.name=Kama des Raben
+item.Kama.spectral.name=Geisterhafter Kama
+item.Kama.wolf.name=W�lfischer Kama
+
+item.EliteArmorHelm.ANGELIC_0.name=Ophanischer Helm
+item.EliteArmorChest.ANGELIC_1.name=K�rass der Seraphim
+item.EliteArmorLegs.ANGELIC_2.name=Beinschienen des Cheruben
+item.EliteArmorBoots.ANGELIC_3.name=B�rlatsch der Valkyrie
+item.EliteArmorHelm.DEMONIC_0.name=Helm des Levithian
+item.EliteArmorChest.DEMONIC_1.name=K�rass des Asraels
+item.EliteArmorLegs.DEMONIC_2.name=Beinschienen der Lycaner
+item.EliteArmorBoots.DEMONIC_3.name=Klauen des Behemoths
+
+item.InfusedGem.name=Infudierter Edelstein
+item.InfusedGem.innert.name=Inaktiver Edelstein
+
+item.PrimordialGlove.name=Urspr�nglicher Panzerhandschuh
+item.PrimordialHammer.name=Urspr�nglicher Kriegshammer
+item.PrimordialAxe.name=Urspr�ngliche Kriegsaxt
+item.PrimordialSword.name=Urspr�ngliches Breitschwert
+
+item.Baubles.ring_primordial.name=Urspr�nglicher Ring
+item.Baubles.ring_lifeProtection.name=Ring des Lebensschutzes
+item.Baubles.shouldersDoublejump.name=Schultern der Seraphim
+item.Baubles.shouldersKnockback.name=Unersch�tterliche Schultersch�tzer
+item.Baubles.vambraceStrength.name=Armschienen des Berserkers
+item.Baubles.vambraceHaste.name=Armschienen des stetigen Fortschreiten
+item.Baubles.titleCrimsonCult.name=Title: Crimson Cult Titel: Karmesinkult
+wg.title.crimsonKnight=Karmesin Ritter
+wg.title.crimsonPraetor=Karmesin Pr�tor
+
+item.ScanCamera.name=Thaumischer Ikonograph
+item.CrystalFlask.name=Kristallkapsel
 
 # -- Creative --
 itemGroup.witchinggadgets=Witching Gadgets
@@ -155,7 +256,6 @@ wg.chat.infusionWarning.noPartnerItem=Pedestal at %1$s, %2$s, %3$s should have a
 wg.chat.infusionWarning.noPartnerPedestal=Pedestal at %1$s, %2$s, %3$s lacks a symmetrical partner
 wg.chat.infusionWarning.noPartnerStabilizer=Stabilizer at %1$s, %2$s, %3$s lacks a symmetrical partner
 wg.chat.infusionInfo.stabilityTotal=Total Stability booster: %1$s
-				
 wg.potionKnockbackRes=Knockback Res.
 
 # -- Research --
@@ -564,3 +664,16 @@ witchinggadgets_research_page.PRIMORDIALARMOR.2=§l§n     Primal Affinities:   
 witchinggadgets_research_name.EMPOWERPEARL=Pearl Revitalization
 witchinggadgets_research_text.EMPOWERPEARL=120 bpm
 witchinggadgets_research_page.EMPOWERPEARL.1=The power that once pulsed through Primordial Pearl is gone. Well, not gone, just infused into a different item. But not all hope is lost! The pearl itself still exists, you just have to empower it once more, by infusing it...
+
+#tile.WoodenDevice.labelLibrary.name=Aspect Library
+tile.MetalDevice.voidmetalBlock.name=Void metal Block
+tile.MetalDevice.tfFocusTaint.name=Terrestrial Focus: Tainted Lands
+tile.MetalDevice.tfFocusMushroom.name=Terrestrial Focus: Mushroom Island
+item.Material.powerlessPearl.name=Powerless Pearl
+item.Bag.hungry.name=Hungry Bag
+item.PrimordialHelm.name=Primordial Helm
+item.PrimordialChest.name=Primordial Cuirass
+item.PrimordialLegs.name=Primordial Greaves
+item.PrimordialBoots.name=Primordial Boots
+item.Baubles.ringLuck.name=Ring of the Covetous Coin
+item.Baubles.ringSniper.name=Band of the Sniper
