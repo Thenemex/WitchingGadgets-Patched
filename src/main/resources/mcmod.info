@@ -7,10 +7,10 @@
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authors": ["BluSunrize"],
-  "credits": "The Forge guys, Azanor for Thaucmraft, SlimeKnights for the packet system, 'The Skype Guys' and #kihira on IRC for inspiration and criticism",
+  "authors": ["BluSunrize, Thenemex"],
+  "credits": "BluSunrize for making Witching Gadgets in the first place, The Forge guys, Azanor for Thaumcraft, SlimeKnights for the packet system, 'The Skype Guys' and #kihira on IRC for inspiration and criticism",
   "logoFile": "assets/witchinggadgets/logo.png",
   "screenshots": [],
-  "dependencies": ["Thaumcraft","TravellersGear"]
+  "dependencies": ["Thaumcraft", "TravellersGear"]
 }
 ]
