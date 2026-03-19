@@ -11,21 +11,13 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class WGConfig
 {
-	public static int cloakAnimationMode;
-	public static boolean limitBookSearchToCategory;
-	public static boolean allowClusters;
-	public static boolean allowTransmutations;
-	public static String[] tripplingClusterList;
-
-	public static boolean coremod_allowBootsRepair;
-	public static boolean coremod_allowFocusPouchActive;
-	public static boolean coremod_allowEnchantModifications;
-	public static boolean coremod_allowPotionApplicationMod;
-	public static Block[] coremod_worldgenValidBase_HilltopStones;
-	public static Block[] coremod_worldgenValidBase_EldritchRing;
-
-	public static int smelteryResultForClusters;
+	public static int cloakAnimationMode, smelteryResultForClusters;
+	public static boolean limitBookSearchToCategory, allowClusters, allowTransmutations, coremod_allowBootsRepair, coremod_allowFocusPouchActive, coremod_allowEnchantModifications, coremod_allowPotionApplicationMod;
 	public static float radialSpeed;
+	public static String[] tripplingClusterList;
+	public static Block[] coremod_worldgenValidBase_HilltopStones, coremod_worldgenValidBase_EldritchRing;
+
+	public static boolean removeWGPrefixBlocks, removeWGPrefixItems, removeWGPrefixResearch;
 
 	static Configuration config;
 	public static void loadConfig(FMLPreInitializationEvent event)
@@ -61,7 +53,7 @@ public class WGConfig
 		coremod_allowPotionApplicationMod = config.get("Other Options", "Allow modifications to newly applied PotionEffects", true, "Dis-/enable the modification of newly applied PotionEffects. (Primordial Armor affects newly applied Warp Effects)").getBoolean(true);
 
 		String[] cm_allowedSpawnblocks_HilltopStones = config.getStringList("Valid generation bases: HilltopStones", "Other", new String[]{"minecraft:stone","minecraft:sand","minecraft:packed_ice","minecraft:grass","minecraft:gravel","minecraft:dirt"}, "A list of valid blocks that Thaumcraft's hilltop stones can spawn upon");
-		Set<Block> validBlocks = new HashSet();
+		Set<Block> validBlocks = new HashSet<>();
         for (String cmAllowedSpawnblocksHilltopStone : cm_allowedSpawnblocks_HilltopStones) {
             String[] ssA = cmAllowedSpawnblocksHilltopStone.split(":", 2);
             if (ssA.length > 1) {
@@ -73,7 +65,7 @@ public class WGConfig
 		coremod_worldgenValidBase_HilltopStones = validBlocks.toArray(new Block[0]);
 
 		String[] cm_allowedSpawnblocks_EldritchRing = config.getStringList("Valid generation bases: EldritchRing", "Other", new String[]{"minecraft:stone","minecraft:sand","minecraft:packed_ice","minecraft:grass","minecraft:gravel","minecraft:dirt"}, "A list of valid blocks that Thaumcraft's eldritch obelisks can spawn upon");
-		validBlocks = new HashSet();
+		validBlocks = new HashSet<>();
         for (String string : cm_allowedSpawnblocks_EldritchRing) {
             String[] ssA = string.split(":", 2);
             if (ssA.length > 1) {
@@ -83,6 +75,13 @@ public class WGConfig
             }
         }
 		coremod_worldgenValidBase_EldritchRing = validBlocks.toArray(new Block[0]);
+
+		// Patches
+		String patches = "Bug-Patches";
+		config.addCustomCategoryComment(patches, "You'll find here all the new patches from the repost of this mod");
+		removeWGPrefixBlocks = config.get(patches, "removePrefix_blocks", false, "Setting this to true will remove the prefix \"WG.\" in front of blocks IDs").getBoolean(false);
+		removeWGPrefixItems = config.get(patches, "removePrefix_items", false, "Setting this to true will remove the prefix \"item.WG.\" in front of items IDs").getBoolean(false);
+		removeWGPrefixResearch = config.get(patches, "removePrefix_research", false, "Setting this to true will remove the prefix \"[WG]\" in front of research descriptions").getBoolean(false);
 
 		config.save();
 	}
