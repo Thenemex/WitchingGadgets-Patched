@@ -91,6 +91,9 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
+import static witchinggadgets.common.WGConfig.removeWGPrefixBlocks;
+import static witchinggadgets.common.WGConfig.removeWGPrefixItems;
+
 public class WGContent
 {
 	public static Block BlockWallMirror;
@@ -113,7 +116,7 @@ public class WGContent
 	public static Item ItemAdvancedRobeChest;
 	public static Item ItemAdvancedRobeLegs;
 	public static Item ItemMagicFoodstuffs;
-	public static Item ItemMagicBed;
+	//  public static Item ItemMagicBed;
 
 	//  public static Item ItemAdvancedScribingTools;
 	//	public static Item ItemEliteArmorHelm;
@@ -133,7 +136,7 @@ public class WGContent
 	public static Item ItemInfusedGem;
 	public static Item ItemMagicalBaubles;
 	public static Item ItemScanCamera;
-	public static Item ItemRelic;
+	//  public static Item ItemRelic;
 
 	public static Potion pot_knockbackRes;
 	public static Potion pot_dissolve;
@@ -157,7 +160,7 @@ public class WGContent
 		preInitBlocks();
 
 	}
-	final static String UUIDBASE = "424C5553-5747-1694-4452-";
+	//final static String UUIDBASE = "424C5553-5747-1694-4452-";
 	public static void init()
 	{
 		initializeItems();
@@ -209,26 +212,27 @@ public class WGContent
 
 	private static void preInitBlocks()
 	{
-		BlockWallMirror = new BlockWallMirror().setBlockName("WG_WallMirror");
-		GameRegistry.registerBlock(BlockWallMirror, BlockWallMirror.getUnlocalizedName().substring("tile.".length()));
+		final String prefix = "WG_";
+		BlockWallMirror = new BlockWallMirror().setBlockName((removeWGPrefixBlocks ? "" : prefix) + "WallMirror");
+		GameRegistry.registerBlock(BlockWallMirror, BlockWallMirror.getUnlocalizedName().substring(5));
 
-		BlockVoidWalkway = new BlockVoidWalkway().setBlockName("WG_VoidWalkway");
-		GameRegistry.registerBlock(BlockVoidWalkway, BlockVoidWalkway.getUnlocalizedName().substring("tile.".length()));
+		BlockVoidWalkway = new BlockVoidWalkway().setBlockName((removeWGPrefixBlocks ? "" : prefix) + "VoidWalkway");
+		GameRegistry.registerBlock(BlockVoidWalkway, BlockVoidWalkway.getUnlocalizedName().substring(5));
 
-		BlockStoneDevice = new BlockWGStoneDevice().setBlockName("WG_StoneDevice");
-		GameRegistry.registerBlock(BlockStoneDevice, ItemBlockStoneDevice.class, BlockStoneDevice.getUnlocalizedName().substring("tile.".length()));
+		BlockStoneDevice = new BlockWGStoneDevice().setBlockName((removeWGPrefixBlocks ? "" : prefix) + "StoneDevice");
+		GameRegistry.registerBlock(BlockStoneDevice, ItemBlockStoneDevice.class, BlockStoneDevice.getUnlocalizedName().substring(5));
 
-		BlockWoodenDevice = new BlockWGWoodenDevice().setBlockName("WG_WoodenDevice");
-		GameRegistry.registerBlock(BlockWoodenDevice, ItemBlockWoodenDevice.class, BlockWoodenDevice.getUnlocalizedName().substring("tile.".length()));
+		BlockWoodenDevice = new BlockWGWoodenDevice().setBlockName((removeWGPrefixBlocks ? "" : prefix) + "WoodenDevice");
+		GameRegistry.registerBlock(BlockWoodenDevice, ItemBlockWoodenDevice.class, BlockWoodenDevice.getUnlocalizedName().substring(5));
 
-		BlockMetalDevice = new BlockWGMetalDevice().setBlockName("WG_MetalDevice");
-		GameRegistry.registerBlock(BlockMetalDevice, ItemBlockMetalDevice.class, BlockMetalDevice.getUnlocalizedName().substring("tile.".length()));
+		BlockMetalDevice = new BlockWGMetalDevice().setBlockName((removeWGPrefixBlocks ? "" : prefix) + "MetalDevice");
+		GameRegistry.registerBlock(BlockMetalDevice, ItemBlockMetalDevice.class, BlockMetalDevice.getUnlocalizedName().substring(5));
 
-		BlockRoseVine = new BlockRoseVines().setBlockName("WG_RoseVine");
-		GameRegistry.registerBlock(BlockRoseVine, BlockRoseVine.getUnlocalizedName().substring("tile.".length()));
+		BlockRoseVine = new BlockRoseVines().setBlockName((removeWGPrefixBlocks ? "" : prefix) + "RoseVine");
+		GameRegistry.registerBlock(BlockRoseVine, BlockRoseVine.getUnlocalizedName().substring(5));
 
-		BlockCustomAiry = new BlockModifiedAiry().setBlockName("WG_CustomAir");
-		GameRegistry.registerBlock(BlockCustomAiry, BlockCustomAiry.getUnlocalizedName().substring("tile.".length()));
+		BlockCustomAiry = new BlockModifiedAiry().setBlockName((removeWGPrefixBlocks ? "" : prefix) + "CustomAir");
+		GameRegistry.registerBlock(BlockCustomAiry, BlockCustomAiry.getUnlocalizedName().substring(5));
 
 		OreDictionary.registerOre("blockVoid", new ItemStack(BlockMetalDevice,1,7));
 	}
@@ -285,64 +289,65 @@ public class WGContent
 
 	private static void preInitItems()
 	{
-		ItemMaterial = new ItemMaterials().setUnlocalizedName("WG_Material");
-		GameRegistry.registerItem(ItemMaterial, ItemMaterial.getUnlocalizedName());
+		final String prefix = "WG_";
+		ItemMaterial = new ItemMaterials().setUnlocalizedName((removeWGPrefixItems ? "" : prefix) + "Material");
+		GameRegistry.registerItem(ItemMaterial, ItemMaterial.getUnlocalizedName().substring(removeWGPrefixItems ? 5 : 0));
 
-		ItemBag = new ItemBag().setUnlocalizedName("WG_Bag");
-		GameRegistry.registerItem(ItemBag, ItemBag.getUnlocalizedName());
+		ItemBag = new ItemBag().setUnlocalizedName((removeWGPrefixItems ? "" : prefix) + "Bag");
+		GameRegistry.registerItem(ItemBag, ItemBag.getUnlocalizedName().substring(removeWGPrefixItems ? 5 : 0));
 
-		ItemThaumiumShears = new ItemThaumiumShears().setUnlocalizedName("WG_ThaumiumShears");
-		GameRegistry.registerItem(ItemThaumiumShears, ItemThaumiumShears.getUnlocalizedName());
+		ItemThaumiumShears = new ItemThaumiumShears().setUnlocalizedName((removeWGPrefixItems ? "" : prefix) + "ThaumiumShears");
+		GameRegistry.registerItem(ItemThaumiumShears, ItemThaumiumShears.getUnlocalizedName().substring(removeWGPrefixItems ? 5 : 0));
 
-		ItemAdvancedRobeChest = new ItemAdvancedRobes(armorMatSpecialRobe,2,1).setUnlocalizedName("WG_AdvancedRobeChest");
-		GameRegistry.registerItem(ItemAdvancedRobeChest, ItemAdvancedRobeChest.getUnlocalizedName());
-		ItemAdvancedRobeLegs = new ItemAdvancedRobes(armorMatSpecialRobe,2,2).setUnlocalizedName("WG_AdvancedRobeLegs");
-		GameRegistry.registerItem(ItemAdvancedRobeLegs, ItemAdvancedRobeLegs.getUnlocalizedName());
+		ItemAdvancedRobeChest = new ItemAdvancedRobes(armorMatSpecialRobe,2,1).setUnlocalizedName((removeWGPrefixItems ? "" : prefix) + "AdvancedRobeChest");
+		GameRegistry.registerItem(ItemAdvancedRobeChest, ItemAdvancedRobeChest.getUnlocalizedName().substring(removeWGPrefixItems ? 5 : 0));
+		ItemAdvancedRobeLegs = new ItemAdvancedRobes(armorMatSpecialRobe,2,2).setUnlocalizedName((removeWGPrefixItems ? "" : prefix) + "AdvancedRobeLegs");
+		GameRegistry.registerItem(ItemAdvancedRobeLegs, ItemAdvancedRobeLegs.getUnlocalizedName().substring(removeWGPrefixItems ? 5 : 0));
 
-		ItemMagicFoodstuffs = new ItemMagicFood().setUnlocalizedName("WG_MagicFood");
-		GameRegistry.registerItem(ItemMagicFoodstuffs, ItemMagicFoodstuffs.getUnlocalizedName());
+		ItemMagicFoodstuffs = new ItemMagicFood().setUnlocalizedName((removeWGPrefixItems ? "" : prefix) + "MagicFood");
+		GameRegistry.registerItem(ItemMagicFoodstuffs, ItemMagicFoodstuffs.getUnlocalizedName().substring(removeWGPrefixItems ? 5 : 0));
 
-		ItemCloak = new ItemCloak().setUnlocalizedName("WG_Cloak");
-		GameRegistry.registerItem(ItemCloak, ItemCloak.getUnlocalizedName());
-		ItemKama = new ItemKama().setUnlocalizedName("WG_Kama");
-		GameRegistry.registerItem(ItemKama, ItemKama.getUnlocalizedName());
+		ItemCloak = new ItemCloak().setUnlocalizedName((removeWGPrefixItems ? "" : prefix) + "Cloak");
+		GameRegistry.registerItem(ItemCloak, ItemCloak.getUnlocalizedName().substring(removeWGPrefixItems ? 5 : 0));
+		ItemKama = new ItemKama().setUnlocalizedName((removeWGPrefixItems ? "" : prefix) + "Kama");
+		GameRegistry.registerItem(ItemKama, ItemKama.getUnlocalizedName().substring(removeWGPrefixItems ? 5 : 0));
 
-		ItemInfusedGem = new ItemInfusedGem().setUnlocalizedName("WG_InfusedGem");
-		GameRegistry.registerItem(ItemInfusedGem, ItemInfusedGem.getUnlocalizedName());
+		ItemInfusedGem = new ItemInfusedGem().setUnlocalizedName((removeWGPrefixItems ? "" : prefix) + "InfusedGem");
+		GameRegistry.registerItem(ItemInfusedGem, ItemInfusedGem.getUnlocalizedName().substring(removeWGPrefixItems ? 5 : 0));
 
-		ItemMagicalBaubles = new ItemMagicalBaubles().setUnlocalizedName("WG_Baubles");
-		GameRegistry.registerItem(ItemMagicalBaubles, ItemMagicalBaubles.getUnlocalizedName());
+		ItemMagicalBaubles = new ItemMagicalBaubles().setUnlocalizedName((removeWGPrefixItems ? "" : prefix) + "Baubles");
+		GameRegistry.registerItem(ItemMagicalBaubles, ItemMagicalBaubles.getUnlocalizedName().substring(removeWGPrefixItems ? 5 : 0));
 
-		ItemScanCamera = new ItemScanCamera().setUnlocalizedName("WG_ScanCamera");
-		GameRegistry.registerItem(ItemScanCamera, ItemScanCamera.getUnlocalizedName());
+		ItemScanCamera = new ItemScanCamera().setUnlocalizedName((removeWGPrefixItems ? "" : prefix) + "ScanCamera");
+		GameRegistry.registerItem(ItemScanCamera, ItemScanCamera.getUnlocalizedName().substring(removeWGPrefixItems ? 5 : 0));
 
-		ItemPrimordialGlove = new ItemPrimordialGlove().setUnlocalizedName("WG_PrimordialGlove");
-		GameRegistry.registerItem(ItemPrimordialGlove, ItemPrimordialGlove.getUnlocalizedName());
-		ItemPrimordialHammer = new ItemPrimordialHammer(primordialTool).setUnlocalizedName("WG_PrimordialHammer");
-		GameRegistry.registerItem(ItemPrimordialHammer, ItemPrimordialHammer.getUnlocalizedName());
-		ItemPrimordialAxe = new ItemPrimordialAxe(primordialTool).setUnlocalizedName("WG_PrimordialAxe");
-		GameRegistry.registerItem(ItemPrimordialAxe, ItemPrimordialAxe.getUnlocalizedName());
-		ItemPrimordialSword = new ItemPrimordialSword(primordialTool).setUnlocalizedName("WG_PrimordialSword");
-		GameRegistry.registerItem(ItemPrimordialSword, ItemPrimordialSword.getUnlocalizedName());
+		ItemPrimordialGlove = new ItemPrimordialGlove().setUnlocalizedName((removeWGPrefixItems ? "" : prefix) + "PrimordialGlove");
+		GameRegistry.registerItem(ItemPrimordialGlove, ItemPrimordialGlove.getUnlocalizedName().substring(removeWGPrefixItems ? 5 : 0));
+		ItemPrimordialHammer = new ItemPrimordialHammer(primordialTool).setUnlocalizedName((removeWGPrefixItems ? "" : prefix) + "PrimordialHammer");
+		GameRegistry.registerItem(ItemPrimordialHammer, ItemPrimordialHammer.getUnlocalizedName().substring(removeWGPrefixItems ? 5 : 0));
+		ItemPrimordialAxe = new ItemPrimordialAxe(primordialTool).setUnlocalizedName((removeWGPrefixItems ? "" : prefix) + "PrimordialAxe");
+		GameRegistry.registerItem(ItemPrimordialAxe, ItemPrimordialAxe.getUnlocalizedName().substring(removeWGPrefixItems ? 5 : 0));
+		ItemPrimordialSword = new ItemPrimordialSword(primordialTool).setUnlocalizedName((removeWGPrefixItems ? "" : prefix) + "PrimordialSword");
+		GameRegistry.registerItem(ItemPrimordialSword, ItemPrimordialSword.getUnlocalizedName().substring(removeWGPrefixItems ? 5 : 0));
 
-		ItemPrimordialHelm = new ItemPrimordialArmor(primordialArmor, 4, 0).setUnlocalizedName("WG_PrimordialHelm");
-		GameRegistry.registerItem(ItemPrimordialHelm, ItemPrimordialHelm.getUnlocalizedName());
-		ItemPrimordialChest = new ItemPrimordialArmor(primordialArmor, 4, 1).setUnlocalizedName("WG_PrimordialChest");
-		GameRegistry.registerItem(ItemPrimordialChest, ItemPrimordialChest.getUnlocalizedName());
-		ItemPrimordialLegs = new ItemPrimordialArmor(primordialArmor, 4, 2).setUnlocalizedName("WG_PrimordialLegs");
-		GameRegistry.registerItem(ItemPrimordialLegs, ItemPrimordialLegs.getUnlocalizedName());
-		ItemPrimordialBoots = new ItemPrimordialArmor(primordialArmor, 4, 3).setUnlocalizedName("WG_PrimordialBoots");
-		GameRegistry.registerItem(ItemPrimordialBoots, ItemPrimordialBoots.getUnlocalizedName());
+		ItemPrimordialHelm = new ItemPrimordialArmor(primordialArmor, 4, 0).setUnlocalizedName((removeWGPrefixItems ? "" : prefix) + "PrimordialHelm");
+		GameRegistry.registerItem(ItemPrimordialHelm, ItemPrimordialHelm.getUnlocalizedName().substring(removeWGPrefixItems ? 5 : 0));
+		ItemPrimordialChest = new ItemPrimordialArmor(primordialArmor, 4, 1).setUnlocalizedName((removeWGPrefixItems ? "" : prefix) + "PrimordialChest");
+		GameRegistry.registerItem(ItemPrimordialChest, ItemPrimordialChest.getUnlocalizedName().substring(removeWGPrefixItems ? 5 : 0));
+		ItemPrimordialLegs = new ItemPrimordialArmor(primordialArmor, 4, 2).setUnlocalizedName((removeWGPrefixItems ? "" : prefix) + "PrimordialLegs");
+		GameRegistry.registerItem(ItemPrimordialLegs, ItemPrimordialLegs.getUnlocalizedName().substring(removeWGPrefixItems ? 5 : 0));
+		ItemPrimordialBoots = new ItemPrimordialArmor(primordialArmor, 4, 3).setUnlocalizedName((removeWGPrefixItems ? "" : prefix) + "PrimordialBoots");
+		GameRegistry.registerItem(ItemPrimordialBoots, ItemPrimordialBoots.getUnlocalizedName().substring(removeWGPrefixItems ? 5 : 0));
 
-		ItemCapsule = new ItemCrystalCapsule().setUnlocalizedName("WG_CrystalFlask");
-		GameRegistry.registerItem(ItemCapsule, ItemCapsule.getUnlocalizedName());
+		ItemCapsule = new ItemCrystalCapsule().setUnlocalizedName((removeWGPrefixItems ? "" : prefix) + "CrystalFlask");
+		GameRegistry.registerItem(ItemCapsule, ItemCapsule.getUnlocalizedName().substring(removeWGPrefixItems ? 5 : 0));
 		if(WGConfig.allowClusters)
 		{
-			ItemCluster = new ItemClusters().setUnlocalizedName("WG_Cluster");
-			GameRegistry.registerItem(ItemCluster, ItemCluster.getUnlocalizedName());
+			ItemCluster = new ItemClusters().setUnlocalizedName((removeWGPrefixItems ? "" : prefix) + "Cluster");
+			GameRegistry.registerItem(ItemCluster, ItemCluster.getUnlocalizedName().substring(removeWGPrefixItems ? 5 : 0));
 		}
-		//ItemMagicBed = new ItemMagicBed(WGConfig.ItemMagicBedID).setUnlocalizedName("WG_MagicBed");
-		//GameRegistry.registerItem(ItemMagicBed, ItemMagicBed.getUnlocalizedName());
+		//ItemMagicBed = new ItemMagicBed(WGConfig.ItemMagicBedID).setUnlocalizedName((removeWGPrefixItems ? "" : prefix) + "MagicBed");
+		//GameRegistry.registerItem(ItemMagicBed, ItemMagicBed.getUnlocalizedName().substring(removeWGPrefixItems ? 5 : 0));
 		OreDictionary.registerOre("blockVoid", new ItemStack(BlockMetalDevice,1,7));
 		OreDictionary.registerOre("crystalNetherQuartz", new ItemStack(Items.quartz));
 		OreDictionary.registerOre("scribingTools", new ItemStack(ConfigItems.itemInkwell,1,OreDictionary.WILDCARD_VALUE));
