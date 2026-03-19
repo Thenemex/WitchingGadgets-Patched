@@ -218,7 +218,7 @@ witchinggadgets_research_text.VORPALBLADE=SNICKER-SNACK!
 witchinggadgets_research_page.VORPALBLADE.1=§oOne, two! One, two! and through and through<BR>The vorpal blade went snicker-snack!<BR>He left it dead, and with its head<BR>He went galumphing back§r<LINE>A sword of legend. So powerful that it will cleanly cut through any material known to men and is likely to fatally strike and behead most any foe.
 #
 witchinggadgets_research_name.WALLMIRROR=Mirror on the Wall
-witchinggadgets_research_text.WALLMIRROR=[WG] The most magical of all!
+witchinggadgets_research_text.WALLMIRROR=The most magical of all!
 witchinggadgets_research_page.WALLMIRROR.1=Further delving into the magic of the mirrors has lead you to the discovery of a safe haven within the void between worlds.<BR>While this location is brimming with magic, otherwise it appears to be void of anything. It has no visible layer of flooring, yet somehow you can stand there.<BR>This space seems to be an excellent way of traveling. Since it is vast and empty as well, it should be easy to store any of your belongings in this void-between-worlds
 witchinggadgets_research_page.WALLMIRROR.2=§lAccess:§r<BR>Place the mirror wherever you like. When you'd like to open the portal, simply right-click it. The dimension accessed through it is the same from any mirror, but portals out of it are only created where it is entered. This means that you can only leave where another Mirror has been placed in the Overworld.<BR><BR>§lNavigation:§r<BR>An invisible floor will spawn in a 5x5 below you wherever you walk. These blocks can be replaced with normal blocks by right-clicking them, allowing you to build there. Jump to ascend, the floor will follow you. Holding the sneak key will make you descend.
 #
@@ -244,11 +244,11 @@ witchinggadgets_research_text.AGEINGSTONE=[WG]时光流逝
 witchinggadgets_research_page.AGEINGSTONE.1=每一个年轻的神秘使都想要快点长大!但那也会让你错失许多宝贵的经验和阅历.因此你将影响时间的魔法用在了另一种奥术石块上.<BR>生长之石会加速大部分常见生物的成长,让幼年阶段的羊,牛和猪在其魔法能量的影响下长得更快.<BR>加速生长效果的作用范围是它周边7x7x5的区域,石块越多效果也会越强.
 #
 witchinggadgets_research_name.THAUMICAPPLICATOR=
-witchinggadgets_research_text.THAUMICAPPLICATOR=[WG] 
+witchinggadgets_research_text.THAUMICAPPLICATOR=
 witchinggadgets_research_page.THAUMICAPPLICATOR.1=
 #
 witchinggadgets_research_name.SPINNINGWHEEL=纺织工艺
-witchinggadgets_research_text.SPINNINGWHEEL=[WG] Don't prick yourself
+witchinggadgets_research_text.SPINNINGWHEEL=Don't prick yourself
 witchinggadgets_research_page.SPINNINGWHEEL.1=有不少巫师会忽视纺织的重要性,但那也只是因为他们低估了它的实力.魔法制品中不乏纺织产物,比如每个神秘使的法袍.一些巫师将会证明在法袍上印刻符文与纺织有着极为相似之处,两者都需要谨慎对待所用的原料,不管是纯生的要素还是纤细的丝线.
 witchinggadgets_research_page.SPINNINGWHEEL.2=对每个初入纺织的实践者而言,都要先做出自己的§l纺车§r.你可以用它来纺出各种纱线,普通的,精致的或是赋予魔法的.然后再将它们织成布匹,做成各种装备或魔法制品-
 witchinggadgets_research_page.SPINNINGWHEEL.r1=<IMG>witchinggadgets:textures/gui/research/spinningRecipes1.png:0:0:255:255:0.5</IMG>§l纱线§r
@@ -265,12 +265,12 @@ witchinggadgets_research_page.ARCANEAUTOCRAFTER.1=那些发现了永生秘密的
 witchinggadgets_research_page.ARCANEAUTOCRAFTER.2=只需要设定好想要的配方(普通配方或奥术合成),提供原料,必要的话还要一根充能的法杖,然后就可以让它为你工作了.要注意的是,合成的研究知识需求受限于放置方块的那个玩家.
 #
 witchinggadgets_research_name.CALCULATOR=奥术计算器
-witchinggadgets_research_text.CALCULATOR=[WG] 3-4 = 扭曲?
+witchinggadgets_research_text.CALCULATOR=3-4 = 扭曲?
 witchinggadgets_research_page.CALCULATOR.1=作为一名杰出的神秘使,那些邪术知识可谓唾手可得,你也算是研究混沌的专家了. ...或许也是因为你缺乏数学方面的知识.但是既然有魔法能为你解决,又有谁会去自找麻烦地研究科学呢?<BR>奥术计算器能帮你解决诸多常见的计算问题.对一个有复合要素的节点使用,它就会计算其所含有的元始要素值.用在注魔矩阵上则可以获取稳定性,稳定物位置,当前注魔风险以及源质额外消耗的相关信息..
 witchinggadgets_research_page.CALCULATOR.2=§o已知最高的注魔风险来自*咳*神秘工匠*咳*,不稳定性高达15.将你的祭坛稳定性控制在那之上将会显得毫无意义.
 #
 witchinggadgets_research_name.LABYRINTHSTRING=引路线卷
-witchinggadgets_research_text.LABYRINTHSTRING=[WG] Ariadne would be proud
+witchinggadgets_research_text.LABYRINTHSTRING=Ariadne would be proud
 witchinggadgets_research_page.LABYRINTHSTRING.1=迷宫一直以来都被用于从入侵者的手中守护秘密.那其中真正的危险便是再也找不到回去的路.<BR>为了解决那个问题,你发明了引路线卷.当你在暗中摸索前行时,它会在你所经之处留下一道光径.右击就可以激活或者关闭.激活时它会记录你转过的每一个弯.只有手持线卷时才能看见光径,潜行时右击可以清除记录.
 #
 witchinggadgets_research_name.LABELLIB=要素标记库
@@ -299,12 +299,12 @@ witchinggadgets_research_text.CLOAK_STORAGE=[WG]我丢了这里的钥匙...
 witchinggadgets_research_page.CLOAK_STORAGE.1=将奇术口袋和炫酷的斗篷相结合,你就有了更多的储存空间!斗篷也有了50%的额外容量.
 #
 witchinggadgets_research_name.CLOAK_RAVEN=Mantle of the Raven
-witchinggadgets_research_text.CLOAK_RAVEN=[WG] CA-CAW!
+witchinggadgets_research_text.CLOAK_RAVEN=CA-CAW!
 witchinggadgets_research_page.CLOAK_RAVEN.1=On your travels throughout the Twilight Forest, you have come across the most fascinating Forest Raven. This remarkable bird displays high agility and maneuverability in the air, a feat to be envious of.<BR>Instead of being envious you could also just adorne your cloak with their feathers and imbue it with magical power...<BR>While wearing this cloak, your speed while flying increases noticeably. And should you not be flying, the cloak will allow you to glide instead. Gliding can be disabled in the ActiveAbility menu.
 # OLD witchinggadgets_research_page.CLOAK_RAVEN.1=On your travels throughout the Twilight Forest, you have come across the most fascinating Forest Raven. This remarkable bird appears to always find back to his nesting place, even within the dense and dark forest it calls home.<BR>Plucking a feather from it, you have discovered that it, albeit in small scale, inherits this ability. Now you just have to amplify this ability with your thaumic capabilities and infuse your garment with it. The result is the §lMantle of the Raven§r which allows you to set and return to your nesting place at the cost of a raven's feather. You may substitute three chicken feathers.
 #
 witchinggadgets_research_name.CLOAK_SPECTRAL=幽灵斗篷
-witchinggadgets_research_text.CLOAK_SPECTRAL=[WG] Now you see me...
+witchinggadgets_research_text.CLOAK_SPECTRAL=Now you see me...
 witchinggadgets_research_page.CLOAK_SPECTRAL.1=The plane of the spectral beings is a mystery to most common men. Fortunately, you are not most men. After infusing a cloak with eldritch and spectral energies it will grant you the ability to 'shift' yourself to that plane. While walking among it, you are invisble to those that walk along the normal plane. Enemies will not see or target you unless they are creatures of eldritch, posses exemptual powers or are wearing Goggles of Revealing.<BR>This ability comes at the cost of being unable to interact with the physical world. You cannot attack, use items, break or activate blocks. Furthermore it will drain 1 aer vis from you inventory every 5 seconds.
 witchinggadgets_research_page.CLOAK_SPECTRAL.2=§oDisclaimer: Creatures that can still see you include: Eldritch Guardians, Eldritch Wardens, Eldritch Golems, Cultist Praetors, as well as boss mobs like the Wither or the Enderdragon. For reasons unknown to even the most cunning Thaumaturges, Spiders and Slimes seem to be able to detect you by different means. Any other user of this cloak will also be able to see you.§r
 #Creating a cloak that is invisible is an easy task for a thaumaturge, but applying the effect to it's wearer was the hard task. After tedious research however, you have created the §lCloak of Invisibility§r, a garment that renders you invisible to the naked eye. The cloak itself lost a bit of his magic in the process, now only turning mostly transparent, leaving a slight shimmer. Other armor pieces or items that you are holding in your hand are not affected.
@@ -347,40 +347,40 @@ witchinggadgets_research_text.ALCHEMICALTRANSMOGRIFY=[WG]绿草生长,孢子纷�
 witchinggadgets_research_page.ALCHEMICALTRANSMOGRIFY.1=扩展你的炼金学知识,让你能进一步活化泥土,粉碎圆石,或是纯化砂砾.
 #
 witchinggadgets_research_name.PURECINNABAR=晶簇化:朱砂
-witchinggadgets_research_text.PURECINNABAR=[WG] Purification of cinnabar into native clusters
+witchinggadgets_research_text.PURECINNABAR=Purification of cinnabar into native clusters
 witchinggadgets_research_page.PURECINNABAR.1=矿簇是稀有的纯金属凝聚物.现在你也能提纯并凝聚朱砂矿中的金属从而获取朱砂矿簇了.<BR>冶炼这些矿簇可获得双倍产量的水银.
 #
 witchinggadgets_research_name.METALLURGICPERFECTION_CLUSTERS=通用炼金:晶簇化
-witchinggadgets_research_text.METALLURGICPERFECTION_CLUSTERS=[WG] Purifying most ores into native clusters
+witchinggadgets_research_text.METALLURGICPERFECTION_CLUSTERS=Purifying most ores into native clusters
 witchinggadgets_research_page.METALLURGICPERFECTION_CLUSTERS.1=晶簇化的过程似乎对你至今发现的所有金属都适用.<BR>遵循这个逻辑,你创造了通用的提纯理论,让你能将大部分已知矿物中的金属凝聚,从而提纯为矿簇.
 #
 witchinggadgets_research_name.METALLURGICPERFECTION_TRANSMUTATION=通用炼金:嬗变
-witchinggadgets_research_text.METALLURGICPERFECTION_TRANSMUTATION=[WG] Transforming most metals into others
+witchinggadgets_research_text.METALLURGICPERFECTION_TRANSMUTATION=Transforming most metals into others
 witchinggadgets_research_page.METALLURGICPERFECTION_TRANSMUTATION.1=金属嬗变术似乎对你至今发现的所有金属都适用.<BR>遵循这个逻辑,你创造了通用的嬗变理论,让你能利用§5metallum§0以及相应的源质获取额外的金属粒.
 #
 witchinggadgets_research_name.PUREALUMINUM=晶簇化:铝
-witchinggadgets_research_text.PUREALUMINUM=[WG] Purification of aluminum into native clusters
+witchinggadgets_research_text.PUREALUMINUM=Purification of aluminum into native clusters
 witchinggadgets_research_page.PUREALUMINUM.1=矿簇是稀有的纯金属凝聚物.你已发现了从铝矿中提纯并凝出铝矿簇的方法.<BR>这些矿簇熔炼后会产出通常产量两倍的铝锭.
 #
 witchinggadgets_research_name.PURECOBALT=晶簇化:钴
-witchinggadgets_research_text.PURECOBALT=[WG] Purification of cobalt into native clusters
+witchinggadgets_research_text.PURECOBALT=Purification of cobalt into native clusters
 witchinggadgets_research_page.PURECOBALT.1=矿簇是稀有的纯金属凝聚物.你已发现了从钴矿中提纯并凝出钴矿簇的方法.<BR>这些矿簇熔炼后会产出通常产量两倍的钴锭.
 #
 witchinggadgets_research_name.PUREARDITE=晶簇化:阿迪特
-witchinggadgets_research_text.PUREARDITE=[WG] Purification of ardite into native clusters
+witchinggadgets_research_text.PUREARDITE=Purification of ardite into native clusters
 witchinggadgets_research_page.PUREARDITE.1=矿簇是稀有的纯金属凝聚物.你已发现了从阿迪特矿中提纯并凝出阿迪特矿簇的方法.<BR>这些矿簇熔炼后会产出通常产量两倍的阿迪特锭.
 #
 witchinggadgets_research_name.PURENICKEL=晶簇化:镍
-witchinggadgets_research_text.PURENICKEL=[WG] Purification of nickel into native clusters
+witchinggadgets_research_text.PURENICKEL=Purification of nickel into native clusters
 witchinggadgets_research_page.PURENICKEL.1=矿簇是稀有的纯金属凝聚物.你已发现了从镍矿中提纯并凝出镍矿簇的方法.<BR>这些矿簇熔炼后会产出通常产量两倍的镍锭.
 #
 witchinggadgets_research_name.PUREFZDARKIRON=晶簇化:玄铁
-witchinggadgets_research_text.PUREFZDARKIRON=[WG] Purification of dark iron into native clusters
+witchinggadgets_research_text.PUREFZDARKIRON=Purification of dark iron into native clusters
 witchinggadgets_research_page.PUREFZDARKIRON.1=矿簇是稀有的纯金属凝聚物.你已发现了从玄铁矿中提纯并凝出玄铁矿簇的方法.<BR>这些矿簇熔炼后会产出通常产量两倍的玄铁锭.
 
 #
 witchinggadgets_research_name.TRANSALUMINUM=嬗变术:铝
-witchinggadgets_research_text.TRANSALUMINUM=[WG] Transformation of metals into aluminum
+witchinggadgets_research_text.TRANSALUMINUM=Transformation of metals into aluminum
 witchinggadgets_research_page.TRANSALUMINUM.1=你发现了一种方法让你能利用从其他金属中提取的§5metallum§0源质实现铝的增产.
 
 #INFERNALBLASTFURNACE
@@ -392,7 +392,7 @@ witchinggadgets_research_page.INFERNALBLASTFURNACE.3=§o魔导手册中对于建
 
 #TERRAFORMER
 witchinggadgets_research_name.TERRAFORMER=奥术群系转化器
-witchinggadgets_research_text.TERRAFORMER=[WG] Slartibartfast!
+witchinggadgets_research_text.TERRAFORMER=Slartibartfast!
 witchinggadgets_research_page.TERRAFORMER.1=当普通的园艺不再足够,当你想要将那苦闷的雨变为美丽的雪,当你那该死的蜜蜂们不愿在当前的气候下工作:是时候用上奥术群系转化器了.<BR>在它的顶端放上核心,就会设定需求的要素.这个装置会消耗指定的要素源质以及§2Terra§0要素魔力.每消耗4单位源质和4点魔力,它就会改变周围16格以内某一处的生物群系.
 witchinggadgets_research_page.TERRAFORMER.2=最基础的群系核心当属平原群系的.它的运行需要供应§2Herba§0源质.
 
@@ -474,16 +474,16 @@ witchinggadgets_research_page.GEMCUTTING.7.noMirrors=§e§lAer:§r§0风之力�
 
 #
 witchinggadgets_research_name.GEMCUT_TABLE=Table Cut
-witchinggadgets_research_text.GEMCUT_TABLE=[WG] Bling
+witchinggadgets_research_text.GEMCUT_TABLE=Bling
 witchinggadgets_research_page.GEMCUT_TABLE.1=<IMG>witchinggadgets:textures/gui/research/gemcuts.png:80:0:80:80:1</IMG>The table cut is
 witchinggadgets_research_name.GEMCUT_STEP=Step Cut
-witchinggadgets_research_text.GEMCUT_STEP=[WG] Shwing
+witchinggadgets_research_text.GEMCUT_STEP=Shwing
 witchinggadgets_research_page.GEMCUT_STEP.1=<IMG>witchinggadgets:textures/gui/research/gemcuts.png:160:0:80:80:1</IMG>The table cut is
 witchinggadgets_research_name.GEMCUT_ROSE=Rose Cut
-witchinggadgets_research_text.GEMCUT_ROSE=[WG] Sparkle
+witchinggadgets_research_text.GEMCUT_ROSE=Sparkle
 witchinggadgets_research_page.GEMCUT_ROSE.1=<IMG>witchinggadgets:textures/gui/research/gemcuts.png:0:80:80:80:1</IMG>The table cut is
 witchinggadgets_research_name.GEMCUT_OVAL=Oval Cut
-witchinggadgets_research_text.GEMCUT_OVAL=[WG] Gleam
+witchinggadgets_research_text.GEMCUT_OVAL=Gleam
 witchinggadgets_research_page.GEMCUT_OVAL.1=<IMG>witchinggadgets:textures/gui/research/gemcuts.png:80:80:80:80:1</IMG>The oval cut is the perfection in gemcutting. It is used in the creation of baubles but can also be affixed to most armorpieces and tools, giving them socketed effects. See the following pages for a list.
 
 #-----------------------#
@@ -495,7 +495,7 @@ witchinggadgets_research_page.WGELDRITCHBASE.1=你的研究表明虚空金属是
 
 #PRIMORDIALGLOVE
 witchinggadgets_research_name.PRIMORDIALGLOVE=元始手套
-witchinggadgets_research_text.PRIMORDIALGLOVE=[WG] Other items sold seperately
+witchinggadgets_research_text.PRIMORDIALGLOVE=Other items sold seperately
 witchinggadgets_research_page.PRIMORDIALGLOVE.1=元始珍珠的研究让你开始进一步破解先前所遇到的邪术文字.其中包括了一套装备的设计,它们似乎能通过宝石引导虚空之力.可惜的是,只有手套部分的文本勉强可以辨别出.<BR>该手套内置一个§5节点换能器§0,它一旦抓取到节点,就再也不会将其释放出来,新的节点会替代现有的.<BR>在上面的5个接口安装蕴魔宝石后,你就能引导出宝石的力量了.宝石的充能速度取决于手套中节点的要素含量.
 witchinggadgets_research_page.PRIMORDIALGLOVE.2=接口会稳定其中的宝石,因此一旦安装,宝石就不会粉碎而是再充能<BR>若要选择激活的宝石,只需使用切换法杖核心的键位即可.潜行时按切换键可以打开它的界面,在这里就可以添加或取出宝石.<BR>制作过程不会消耗珍珠.
 
@@ -526,20 +526,20 @@ witchinggadgets_research_text.PRIMORDIALGREATAXE=[WG]将它们撕碎
 witchinggadgets_research_page.PRIMORDIALGREATAXE.1=元始巨斧可以轻而易举地破坏树叶和木头.但它那锋利的边缘可不是只能用来砍树的.
 
 witchinggadgets_research_name.PRIMORDIALARMOR=元始护甲
-witchinggadgets_research_text.PRIMORDIALARMOR=[WG] Bipedal tank
+witchinggadgets_research_text.PRIMORDIALARMOR=Bipedal tank
 witchinggadgets_research_page.PRIMORDIALARMOR.1=元始护甲能为你提供绝佳的保护.它不仅能抵御许多伤害,还能接受符文附魔,让你能进一步强化它.它们的特殊效果取决于其元始亲和,这些效果也能在激活能力的菜单中开关.§o(默认键位:R)§r<BR>和要塞盔甲一样,它也能装上揭示之护目镜和其他的面具.
 witchinggadgets_research_page.PRIMORDIALARMOR.2=§l§n     元始亲和:     §r<BR>§nAer:§r射向你的任何抛射物都会被风所捕获然后推回射击者.<BR>§nTerra:§r增强护甲对穿透伤害的保护力.<BR>§nIgnis:§r极大地减少来自火焰和爆炸的伤害,必要时还能熄灭你身上的火.<BR>§nAqua:§r<BR>能治愈(腐)毒,失明,凋零和恶心这类轻微的不适症状.对扭曲效果无效.<BR>§nOrdo:§r所有基于扭曲的状态效果的程度和持续时间都会被减少.<BR>§nPerditio:§r对使用者的大部分攻击都会让攻击者陷入失明和缓慢的效果. 
 #witchinggadgets_research_name.PRIMORDIALHELMET=元始头盔
-#witchinggadgets_research_text.PRIMORDIALHELMET=[WG] 
+#witchinggadgets_research_text.PRIMORDIALHELMET=
 #witchinggadgets_research_page.PRIMORDIALHELMET.1=
 #witchinggadgets_research_name.PRIMORDIALCUIRASS=元始胸甲
-#witchinggadgets_research_text.PRIMORDIALCUIRASS=[WG] 
+#witchinggadgets_research_text.PRIMORDIALCUIRASS=
 #witchinggadgets_research_page.PRIMORDIALCUIRASS.1=
 #witchinggadgets_research_name.PRIMORDIALGREAVES=元始护腿
-#witchinggadgets_research_text.PRIMORDIALGREAVES=[WG] 
+#witchinggadgets_research_text.PRIMORDIALGREAVES=
 #witchinggadgets_research_page.PRIMORDIALGREAVES.1=
 #witchinggadgets_research_name.PRIMORDIALBOOTS=元始靴子
-#witchinggadgets_research_text.PRIMORDIALBOOTS=[WG] 
+#witchinggadgets_research_text.PRIMORDIALBOOTS=
 #witchinggadgets_research_page.PRIMORDIALBOOTS.1=
 
 #EMPOWERPEARL
@@ -556,46 +556,46 @@ witchinggadgets_research_page.VOIDBAG.1=你难道不讨厌那些没用的圆石�
 
 # ADVANCED SCRIBING TOOLS
 witchinggadgets_research_name.ADVANCEDSCRIBINGTOOLS=Advanced Inscription
-witchinggadgets_research_text.ADVANCEDSCRIBINGTOOLS=[WG] Mightier than the sword
+witchinggadgets_research_text.ADVANCEDSCRIBINGTOOLS=Mightier than the sword
 witchinggadgets_research_page.ADVANCEDSCRIBINGTOOLS.1=Every thaumaturge knows the pain of aquiring the ink necessary to further his studies. More often than not, he has to hunt for squids himself! To avoid these troubles in future, you have thought up a much more potent set of scribing tools. They might be expensive in their creation, but their pool of magical ink is ten times the size of normal scribing tools. And to top that, it is not refilled by ink sacks cut out from slimey squids, but from purest light and some small quantities of gold.
 # ELITE RUNIC ARMOR
 witchinggadgets_research_name.ELITERUNICARMOR=Elite Runic Armor
-witchinggadgets_research_text.ELITERUNICARMOR=[WG] Overshield!
+witchinggadgets_research_text.ELITERUNICARMOR=Overshield!
 witchinggadgets_research_page.ELITERUNICARMOR.1=While runic armor is an excellent form of protection, you have come to realize that you can also apply these runes to actual armor. With that you are not only granted normal armor, the bigger surface also allows more runes, increasing the pool of runes this armor provides. A wise mage would use the newly aquired set of scribing tools, because this procedure drains a hundred units of ink and a standard pen would break from this.
 #
 # ELITE ARMOR SETS
 witchinggadgets_research_name.DEMONIC_HELM=Helm of Leviathan
-witchinggadgets_research_text.DEMONIC_HELM=[WG] A beast rising from the sea, with ten horns and seven heads
+witchinggadgets_research_text.DEMONIC_HELM=A beast rising from the sea, with ten horns and seven heads
 witchinggadgets_research_page.DEMONIC_HELM.1=The depths that are home to the beast shall be easily traversed when you wear this helm. You shall find air to breath even down there and be able to see even through the densest darkness.
 #
 witchinggadgets_research_name.DEMONIC_CHEST=Asrael's Cuirass
-witchinggadgets_research_text.DEMONIC_CHEST=[WG] And behold, a pale horse! And its rider's name was Death.
+witchinggadgets_research_text.DEMONIC_CHEST=And behold, a pale horse! And its rider's name was Death.
 witchinggadgets_research_page.DEMONIC_CHEST.1=And his victims fell before his feet. While one is wearing this cuirass, they are not only granted the power of flight, but health leeching abilities as well. Upon killing any living creature, the wearer of this infernal armor absorbs part of their very life-force This allows the aforementioned wearer to add twenty percent of the killed creatures health to its own, appearing as absorption hitpoints. These extra units of health last only ten minutes. Only creatures with 10 hearts or more are valid prey for this spell. If that wasn't enough, the wearer is granted twenty seconds of heightened saturation upon killing any creature
 #witchinggadgets_research_page.DEMONIC_CHEST.1=And his victims fell before his feet. While one is wearing this cuirass, they are granted the power of flight. Furthermore, they, upon killing any other living creature, absorb a part of their health. This adds 20% of the creature's health as absorption hitpoints which last for 10 minutes. Only targets with 10 hearts or more are valid. These hitpoints stack up to 10 extra hearts and the timer is reset each time. Furthermore, upon killing any living creature the wearer is granted 20 seconds of saturation.
 #
 witchinggadgets_research_name.DEMONIC_LEGS=Lycan's Greaves
-witchinggadgets_research_text.DEMONIC_LEGS=[WG] These paws were made for pouncing!
+witchinggadgets_research_text.DEMONIC_LEGS=These paws were made for pouncing!
 witchinggadgets_research_page.DEMONIC_LEGS.1=Werewolves are ferocious beasts. Even more so when provoked. These greaves, imbued with the aspects that represent them, grant you their immense speed. Should you be attacked, they send you into a blood rage, drastically increasing your damage. While sprinting, hold the assigned key (default: Ctrl) to gain a haste buff.
 #
 witchinggadgets_research_name.DEMONIC_BOOTS=Claws of the Behemoth
-witchinggadgets_research_text.DEMONIC_BOOTS=[WG] And where he tread, he laid waste upon the land
+witchinggadgets_research_text.DEMONIC_BOOTS=And where he tread, he laid waste upon the land
 witchinggadgets_research_page.DEMONIC_BOOTS.1=These clawed feet will allow you to run at higher speed, and wont take damage on falling. It's claws also allow you to scale walls. Crouching before you jump will allow you to jump higher, but this might result in damage to the blocks below you.
 #
 #
 witchinggadgets_research_name.ANGELIC_HELM=Ophanic Helm
-witchinggadgets_research_text.ANGELIC_HELM=[WG] Lights will guide you home
+witchinggadgets_research_text.ANGELIC_HELM=Lights will guide you home
 witchinggadgets_research_page.ANGELIC_HELM.1=Even in the deepest dark, a light will shine for you. Whereever you go, a shimmer of magical light acompanies you. It vanishes shortly after you depart and only appears in dark areas.
 #
 witchinggadgets_research_name.ANGELIC_CHEST=Seraph's Cuirass
-witchinggadgets_research_text.ANGELIC_CHEST=[WG] Blinded by the light!
+witchinggadgets_research_text.ANGELIC_CHEST=Blinded by the light!
 witchinggadgets_research_page.ANGELIC_CHEST.1=While wearing this cuirass, the Thaumaturge is strengthened by the powers of light. They are granted the ability to fly and get strengthened by the light. The brighter the light you're standing in, the higher your chance to regenerate some health. Finally, this cuirass contains otherworldly pockets allowing you to store items in it. Open them with the keybinding for using cloaks (default: 'G').
 #
 witchinggadgets_research_name.ANGELIC_LEGS=Cherub Greaves
-witchinggadgets_research_text.ANGELIC_LEGS=[WG] Green...kneecap?
+witchinggadgets_research_text.ANGELIC_LEGS=Green...kneecap?
 witchinggadgets_research_page.ANGELIC_LEGS.1=When you sneak over the fields on which the independant Thaumaturge grows his supplies, dirt will be tilled and farmland will be hydrated. Also, should you ever be in a tight spot, try crouching and jumping. You will be propelled high into the air and all creatures around you will be paralyzed for a short moment.
 #
 witchinggadgets_research_name.ANGELIC_BOOTS=Sabatons of the Valkyrie
-witchinggadgets_research_text.ANGELIC_BOOTS=[WG] Feathered steps
+witchinggadgets_research_text.ANGELIC_BOOTS=Feathered steps
 witchinggadgets_research_page.ANGELIC_BOOTS.1=By the magic of these boots you move at higher speed, and wont take damage on falling.<BR>Furthermore, you are granted the power of walking upon the surface of any liquid. This includes water and lava. Should you crouch you will sink.
 
 #
