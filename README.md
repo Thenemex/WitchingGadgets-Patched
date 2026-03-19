@@ -8,3 +8,4 @@ Witching Gadgets : Patched (Forked by Thenemex)
 - Added a new config entry for removing the "WG_" prefix in front of Blocks
 - Added a new config entry for removing the "item.WG_" prefix in front of Items
 - Removed all "[WG]" prefix in front of research descriptions
+
