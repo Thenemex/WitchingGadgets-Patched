@@ -17,8 +17,6 @@ public class WGConfig
 	public static String[] tripplingClusterList;
 	public static Block[] coremod_worldgenValidBase_HilltopStones, coremod_worldgenValidBase_EldritchRing;
 
-	public static boolean removeWGPrefixBlocks, removeWGPrefixItems;
-
 	static Configuration config;
 	public static void loadConfig(FMLPreInitializationEvent event)
 	{
@@ -79,9 +77,6 @@ public class WGConfig
 		// Patches
 		String patches = "Bug-Patches";
 		config.addCustomCategoryComment(patches, "You'll find here all the new patches from the repost of this mod");
-		removeWGPrefixBlocks = config.get(patches, "removePrefix_blocks", false, "Setting this to true will remove the prefix \"WG.\" in front of blocks IDs").getBoolean(false);
-		removeWGPrefixItems = config.get(patches, "removePrefix_items", false, "Setting this to true will remove the prefix \"item.WG.\" in front of items IDs").getBoolean(false);
-
 		config.save();
 	}
 	
