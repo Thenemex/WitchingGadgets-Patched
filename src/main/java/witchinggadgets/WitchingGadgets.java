@@ -3,6 +3,8 @@ package witchinggadgets;
 import nemexlib.api.util.Logger;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -32,6 +34,10 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.VillagerRegistry;
 import cpw.mods.fml.relauncher.Side;
+
+import static cpw.mods.fml.common.registry.GameRegistry.Type.BLOCK;
+import static cpw.mods.fml.common.registry.GameRegistry.Type.ITEM;
+import static witchinggadgets.common.WGContent.*;
 
 @Mod(modid = WitchingGadgets.MODID, name = WitchingGadgets.MODNAME, version = WitchingGadgets.VERSION, dependencies="required-after:Thaumcraft;required-after:TravellersGear@[1.16.4,);required-after:NemexLib@[1.8.1.1,);after:TwilightForest;after:Mystcraft;after:TConstruct;after:MagicBees;after:ForgeMultipart")
 public class WitchingGadgets
@@ -109,21 +115,38 @@ public class WitchingGadgets
 
 	@Mod.EventHandler
 	public void missingMappings(FMLMissingMappingsEvent event) {
-		logger.info("Amount of blocks :", WGContent.blockList.length);
-		for (Block block : WGContent.blockList)
-			logger.info(block.getUnlocalizedName());
-		logger.info("- Missing Mappings :");
+		boolean related = false;
+		int cptBlock = 0, cptItem = 0, cptItemBlock = 0;
+		String prefix = MODID.concat(":");
 		for (MissingMapping mapping : event.get())
-			if (mapping.name.startsWith(MODID.concat(":")))
+			if (mapping.name.startsWith(prefix))
 				try {
-					String s = mapping.name.substring("WitchingGadgets:".length());
-					logger.info(s);
-					for (Block block : WGContent.blockList)
-						if (block != null && s.equals(block.getLocalizedName()));
-					logger.info(s);
-				} catch (Exception e) {
-					logger.error("Exception" + e.getClass().getSimpleName() + "when re-mapping missing entries");
-				}
-
+					related = true;
+					String s = mapping.name.substring(prefix.length());
+					// Blocks
+					if (mapping.type.equals(BLOCK))
+						for (Block block : blockList)
+                            if (s.substring(3).equals(block.getUnlocalizedName().substring(5))) {
+								mapping.remap(block);
+								cptBlock++;
+							}
+					// Items
+					if (mapping.type.equals(ITEM))
+						for (Item item : itemList)
+							if (s.substring(8).equals(item.getUnlocalizedName().substring(5))) {
+								mapping.remap(item);
+								cptItem++;
+							}
+					// ItemBlocks
+					if (mapping.type.equals(ITEM))
+						for (ItemBlock itemBlock : itemBlockList) {
+							logger.info(s, "MATCHES?", itemBlock.getUnlocalizedName());
+							if (s.substring(3).equals(itemBlock.getUnlocalizedName().substring(5))) {
+								mapping.remap(itemBlock);
+								cptItemBlock++;
+							}
+						}
+				} catch (Exception ignored) {}
+		if (related) logger.info("Successfully remapped", cptBlock, "Blocks,", cptItemBlock, "ItemBlocks and", cptItem, "Items !");
 	}
 }

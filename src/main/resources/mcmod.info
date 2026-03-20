@@ -1,7 +1,7 @@
 [
 {
   "modid": "WitchingGadgets",
-  "name": "Witching Gadgets",
+  "name": "Witching Gadgets : Patched",
   "description": "It's a kind of magic",
   "version": "${version}",
   "mcversion": "${mcversion}",
