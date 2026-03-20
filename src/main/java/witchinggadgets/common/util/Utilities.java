@@ -29,8 +29,6 @@ import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
-import org.apache.logging.log4j.Level;
-
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.nodes.INode;
@@ -292,7 +290,7 @@ public class Utilities
 
 	public static void extendPotionArray(int extendBy)
 	{
-		WitchingGadgets.logger.log(Level.INFO,"Attempting to extend PotionArray by "+extendBy);
+		WitchingGadgets.logger.info("Attempting to extend PotionArray by "+extendBy);
 		Potion[] potions = new Potion[Potion.potionTypes.length + extendBy];
         System.arraycopy(Potion.potionTypes, 0, potions, 0, Potion.potionTypes.length);
 		try
@@ -314,8 +312,8 @@ public class Utilities
 
 			field.set(null, potions);
 
-			WitchingGadgets.logger.log(Level.INFO,"Variable "+Potion.potionTypes.length);
-			WitchingGadgets.logger.log(Level.INFO,"Reflection "+((Potion[])Potion.class.getFields()[0].get(null)).length);
+			// WitchingGadgets.logger.info("Variable "+Potion.potionTypes.length);
+			// WitchingGadgets.logger.info("Reflection "+((Potion[])Potion.class.getFields()[0].get(null)).length);
 
 		}
 		catch (Exception e)

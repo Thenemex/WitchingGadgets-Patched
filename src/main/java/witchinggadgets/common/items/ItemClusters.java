@@ -139,9 +139,8 @@ public class ItemClusters extends Item
 
 							materialMap.put(ore, new Integer[]{colour, clustertype} );
 						}
-					}catch(Exception e)
-					{
-						WitchingGadgets.logger.log(Level.ERROR, "Error setting up cluster for "+ore);
+					} catch(Exception e) {
+						WitchingGadgets.logger.error("Error setting up cluster for "+ore);
 					}
 				}
 	}

@@ -1,14 +1,10 @@
 package witchinggadgets;
 
+import nemexlib.api.util.Logger;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.MinecraftForge;
-
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import witchinggadgets.common.CommonProxy;
 import witchinggadgets.common.WGConfig;
@@ -34,23 +30,22 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import cpw.mods.fml.common.registry.GameRegistry.Type;
 import cpw.mods.fml.common.registry.VillagerRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-@Mod(modid = WitchingGadgets.MODID, name = WitchingGadgets.MODNAME, version = WitchingGadgets.VERSION, dependencies="required-after:Thaumcraft;required-after:TravellersGear@[1.16.4,);after:TwilightForest;after:Mystcraft;after:TConstruct;after:MagicBees;after:ForgeMultipart")
+@Mod(modid = WitchingGadgets.MODID, name = WitchingGadgets.MODNAME, version = WitchingGadgets.VERSION, dependencies="required-after:Thaumcraft;required-after:TravellersGear@[1.16.4,);required-after:NemexLib@[1.8.1.1,);after:TwilightForest;after:Mystcraft;after:TConstruct;after:MagicBees;after:ForgeMultipart")
 public class WitchingGadgets
 {
 	public static final String MODID = "WitchingGadgets";
-	public static final String MODNAME = "Witching Gadgets";
-	public static final String VERSION = "${version}";
+	public static final String MODNAME = "Witching Gadgets : Patched";
+	public static final String VERSION = "1.1.11.1";
 
 	public PlayerTickHandler playerTickHandler;
 
 	public final WGWandManager wgWandManager = new WGWandManager();
 
 	public static final CreativeTabs tabWG = new WGCreativeTab(CreativeTabs.getNextID(), "witchinggadgets");
-	public static final Logger logger = LogManager.getLogger("WitchingGadgets");
+	public static final Logger logger = new Logger("WG");
 	public EventHandler eventHandler;
 
 	@Instance("WitchingGadgets")
@@ -62,9 +57,8 @@ public class WitchingGadgets
 	public static SimpleNetworkWrapper packetHandler;
 
 	@Mod.EventHandler
-	public void preInit(FMLPreInitializationEvent event)
-	{
-		logger.log(Level.INFO, "Setting up 'WitchingGadgets'");
+	public void preInit(FMLPreInitializationEvent event) {
+		logger.info("Setting up 'WitchingGadgets'");
 
 		WGConfig.loadConfig(event);
 		WGContent.preInit();
@@ -85,13 +79,12 @@ public class WitchingGadgets
 		}
 		catch (Exception e)
 		{
-			logger.log(Level.ERROR, "Photographer's Workshop not added to Villages");
+			logger.error("Photographer's Workshop not added to Villages");
 		}
 	}
 
 	@Mod.EventHandler
-	public void init(FMLInitializationEvent event)
-	{
+	public void init(FMLInitializationEvent event) {
 		proxy.registerRenders();
 		//		WGPacketPipeline.INSTANCE.initialise();
 
@@ -108,37 +101,29 @@ public class WitchingGadgets
 	}
 
 	@Mod.EventHandler
-	public void postInit(FMLPostInitializationEvent event)
-	{
+	public void postInit(FMLPostInitializationEvent event) {
 		WGModCompat.init();
 		WGContent.postInit();
 		//		WGPacketPipeline.INSTANCE.postInitialise();
 	}
 
 	@Mod.EventHandler
-	public void missingMappings(FMLMissingMappingsEvent event)
-	{
-		Block[] wgBlocks = {WGContent.BlockWallMirror,WGContent.BlockVoidWalkway,WGContent.BlockPortal,WGContent.BlockStoneDevice,WGContent.BlockWoodenDevice,WGContent.BlockMetalDevice,WGContent.BlockMagicBed,WGContent.BlockRoseVine,WGContent.BlockCustomAiry};
-		for(MissingMapping mapping : event.get())
-			if(mapping.name.startsWith("WitchingGadgets:"))
-			{
-				try{
+	public void missingMappings(FMLMissingMappingsEvent event) {
+		logger.info("Amount of blocks :", WGContent.blockList.length);
+		for (Block block : WGContent.blockList)
+			logger.info(block.getUnlocalizedName());
+		logger.info("- Missing Mappings :");
+		for (MissingMapping mapping : event.get())
+			if (mapping.name.startsWith(MODID.concat(":")))
+				try {
 					String s = mapping.name.substring("WitchingGadgets:".length());
-					for(Block b : wgBlocks)
-						if(b!=null)
-						{
-							if(s.equalsIgnoreCase(b.getLocalizedName()))
-							{
-								if(mapping.type==Type.BLOCK)
-									mapping.remap(b);
-								else
-									mapping.remap(Item.getItemFromBlock(b));
-                                logger.warn("Remapping {} to {}", mapping.name, b.getUnlocalizedName());
-							}
-						}
-				}catch(Exception e){
-					e.printStackTrace();
+					logger.info(s);
+					for (Block block : WGContent.blockList)
+						if (block != null && s.equals(block.getLocalizedName()));
+					logger.info(s);
+				} catch (Exception e) {
+					logger.error("Exception" + e.getClass().getSimpleName() + "when re-mapping missing entries");
 				}
-			}
+
 	}
 }

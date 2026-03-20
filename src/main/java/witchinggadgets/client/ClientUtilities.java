@@ -476,7 +476,7 @@ public class ClientUtilities
 		}
 		catch(Exception e)
 		{
-			WitchingGadgets.logger.log(Level.ERROR, "Error on attempt to load model: "+domain+","+path);
+			WitchingGadgets.logger.error("Error on attempt to load model: "+domain+","+path);
 			e.printStackTrace();
 			return null;
 		}

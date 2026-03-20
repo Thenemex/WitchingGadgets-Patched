@@ -43,7 +43,7 @@ public class WGResearchItem extends ResearchItem
 		for(String p:par)
 			if(ResearchCategories.getResearch(p) == null)
 			{
-				WitchingGadgets.logger.log(Level.ERROR, "Invalid Parent for Item "+this.key+". Parent "+p+"doesn't exist!");
+				WitchingGadgets.logger.error("Invalid Parent for Item "+this.key+". Parent "+p+"doesn't exist!");
 				return null;
 			}
 
@@ -57,7 +57,7 @@ public class WGResearchItem extends ResearchItem
 		for(String p:par)
 			if(ResearchCategories.getResearch(p) == null)
 			{
-				WitchingGadgets.logger.log(Level.ERROR, "Invalid HiddenParent for Item "+this.key+". Parent "+p+"doesn't exist!");
+				WitchingGadgets.logger.error("Invalid HiddenParent for Item "+this.key+". Parent "+p+"doesn't exist!");
 				return null;
 			}
 		this.parentsHidden = par;
