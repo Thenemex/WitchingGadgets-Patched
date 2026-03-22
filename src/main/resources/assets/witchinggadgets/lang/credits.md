@@ -1,7 +1,7 @@
 Localization credit
 ----
-* Yulife - de_DE.lang
-
+* de_DE : Yulife
+* ru_RU : neverwindy
 
 Code credit
 ----
