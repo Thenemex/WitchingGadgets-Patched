@@ -9,3 +9,5 @@ Witching Gadgets : Patched (Forked by Thenemex)
 - Removed the prefixes "WG_" and "item.WG_" in front of item IDs
 - Switching from official Witching Gagdets to this one will automatically remap the already existing items in your world and won't delete them !
 - Removed all "[WG]" prefix in front of research descriptions
+### Helpers :
+- Thanks to neverwindy for translating the mod in Russian ! (ru_RU)
