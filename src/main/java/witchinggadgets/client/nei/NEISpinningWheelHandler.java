@@ -64,7 +64,7 @@ public class NEISpinningWheelHandler extends TemplateRecipeHandler
 	@Override
 	public String getRecipeName()
 	{
-		return StatCollector.translateToLocal("tile.WG_WoodenDevice.spinningWheel.name");
+		return StatCollector.translateToLocal("tile.WoodenDevice.spinningWheel.name");
 	}
 	@Override
 	public String getGuiTexture()

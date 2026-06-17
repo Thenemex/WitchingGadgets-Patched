@@ -84,7 +84,7 @@ public class NEIInfernalBlastfurnaceHandler extends TemplateRecipeHandler
 	@Override
 	public String getRecipeName()
 	{
-		return StatCollector.translateToLocal("tile.WG_StoneDevice.blastFurnace.name");
+		return StatCollector.translateToLocal("tile.StoneDevice.blastFurnace.name");
 	}
 	@Override
 	public String getGuiTexture()
