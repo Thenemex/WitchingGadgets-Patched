@@ -10,4 +10,5 @@ Witching Gadgets : Patched (Forked by Thenemex)
 - Switching from official Witching Gagdets to this one will automatically remap the already existing items in your world and won't delete them !
 - Removed all "[WG]" prefix in front of research descriptions
 ### Helpers :
+- Thanks to setokaiba218, for finding the main solution for patching the Bag of Tricks !
 - Thanks to neverwindy for translating the mod in Russian ! (ru_RU)
