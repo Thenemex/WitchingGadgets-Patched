@@ -92,12 +92,16 @@ public class ContainerBag extends Container
 	}
 
 	@Override
-	public ItemStack slotClick(int par1, int par2, int par3, EntityPlayer par4EntityPlayer)
+	public ItemStack slotClick(int slotId, int clickedButton, int mode, EntityPlayer player)
 	{
-		if(par1 == this.blockedSlot || (par2==0&&par3==blockedSlot)) return null;		
-		((ItemBag)this.pouch.getItem()).setStoredItems(this.pouch, ((InventoryBag)this.input).stackList);
+		// Code for blocking slot from clicking (mode 0)
+		// mode 2 = hotbar number-key swap.
+		// This stops the player pressing 1-9 to move/swap items while the bag GUI is open :D.
+		if (slotId == this.blockedSlot || (clickedButton == 0 && mode == blockedSlot) || mode == 2) return null;
 
-		return super.slotClick(par1, par2, par3, par4EntityPlayer);
+		((ItemBag) this.pouch.getItem()).setStoredItems(this.pouch, ((InventoryBag) this.input).stackList);
+		// Let every other normal click work as usual so normal minecraft can play.
+		return super.slotClick(slotId, clickedButton, mode, player);
 	}
 
 	@Override
@@ -106,10 +110,14 @@ public class ContainerBag extends Container
 		super.onContainerClosed(par1EntityPlayer);
 		if (!this.worldObj.isRemote)
 		{
+			// Save the items inside the bag GUI back onto the pouch ItemStack.
 			((ItemBag)this.pouch.getItem()).setStoredItems(this.pouch, ((InventoryBag)this.input).stackList);
 
+			// Give the item (pouch) back if it disappeared from the inventory
 			if (this.player.getCurrentEquippedItem() == null || !this.player.getCurrentEquippedItem().equals(this.pouch))
 				this.player.setCurrentItemOrArmor(0, this.pouch);
+
+			// Tell Minecraft the player's inventory changed and should be saved/synced correctly.
 			this.player.inventory.markDirty();
 		}
 	}
