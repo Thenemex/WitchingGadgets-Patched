@@ -108,7 +108,7 @@ public class ContainerBag extends Container
 		{
 			((ItemBag)this.pouch.getItem()).setStoredItems(this.pouch, ((InventoryBag)this.input).stackList);
 
-			if (!this.player.getCurrentEquippedItem().equals(this.pouch))
+			if (this.player.getCurrentEquippedItem() == null || !this.player.getCurrentEquippedItem().equals(this.pouch))
 				this.player.setCurrentItemOrArmor(0, this.pouch);
 			this.player.inventory.markDirty();
 		}
