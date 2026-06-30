@@ -95,9 +95,11 @@ public class ContainerBag extends Container
 	public ItemStack slotClick(int slotId, int clickedButton, int mode, EntityPlayer player)
 	{
 		// Code for blocking slot from clicking (mode 0)
+		if (slotId == this.blockedSlot || (clickedButton == 0 && mode == blockedSlot)) return null;
+
 		// mode 2 = hotbar number-key swap.
 		// This stops the player pressing 1-9 to move/swap items while the bag GUI is open :D.
-		if (slotId == this.blockedSlot || (clickedButton == 0 && mode == blockedSlot) || mode == 2) return null;
+		if (mode == 2 && clickedButton == player.inventory.currentItem) return null;
 
 		((ItemBag) this.pouch.getItem()).setStoredItems(this.pouch, ((InventoryBag) this.input).stackList);
 		// Let every other normal click work as usual so normal minecraft can play.
