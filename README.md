@@ -3,6 +3,7 @@
 Witching Gadgets : Patched (Forked by Thenemex)
 ========
 ### Patched bugs :
+- Removed duplication glitches and crashes from using Bag of Tricks
 - Refactor most code with modern syntax
 - Using the new prefix system should* remove the crash happening when using items from this mod with scripts from MineTweaker
 ### New features :
