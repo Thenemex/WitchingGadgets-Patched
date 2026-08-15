@@ -42,11 +42,11 @@ public class ItemBag extends Item {
 
 	@Override
 	public int getColorFromItemStack(ItemStack stack, int pass) {
-		return getBagColorFromItemStack(stack,pass);
+		return getBagColorFromItemStack(stack, pass);
 	}
 
 	public int getBagColorFromItemStack(ItemStack stack, int pass) {
-		if (pass>0) return 0xffffff;
+		if (pass > 0) return 0xffffff;
 		NBTTagCompound tag = stack.getTagCompound();
 		if (tag == null) return getDefaultBagColour(stack.getItemDamage());
 		NBTTagCompound tagDisplay = tag.getCompoundTag("display");
