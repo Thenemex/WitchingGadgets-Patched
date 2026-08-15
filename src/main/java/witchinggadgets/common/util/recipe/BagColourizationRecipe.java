@@ -1,7 +1,7 @@
 package witchinggadgets.common.util.recipe;
 
-import java.util.ArrayList;
-
+import nemexlib.api.util.ColorUtils;
+import net.minecraft.block.BlockColored;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -10,38 +10,24 @@ import net.minecraft.world.World;
 import witchinggadgets.common.items.tools.ItemBag;
 import witchinggadgets.common.util.Utilities;
 
-public class BagColourizationRecipe implements IRecipe
-{
+public class BagColourizationRecipe implements IRecipe {
+
 	@Override
-	public boolean matches(InventoryCrafting par1InventoryCrafting, World par2World)
-	{
+	public boolean matches(InventoryCrafting par1InventoryCrafting, World par2World) {
 		ItemStack itemstack = null;
-		ArrayList<ItemStack> arraylist = new ArrayList<>();
-
-		for(int i = 0; i < par1InventoryCrafting.getSizeInventory(); i++)
-		{
+		for (int i = 0; i < par1InventoryCrafting.getSizeInventory(); i++) {
 			ItemStack itemstack1 = par1InventoryCrafting.getStackInSlot(i);
-
-			if(itemstack1 != null)
-			{
-				if(itemstack1.getItem() instanceof ItemBag)
-				{
+			if (itemstack1 != null)
+				if (itemstack1.getItem() instanceof ItemBag) {
 					Item itembag = itemstack1.getItem();
-
-					if( !(itembag instanceof ItemBag) || itemstack!=null)
+					if (!(itembag instanceof ItemBag) || itemstack != null)
 						return false;
-
 					itemstack = itemstack1;
-				}
-				else
-				{
-					if(Utilities.isDye(itemstack1))
+				} else {
+					if (Utilities.isDye(itemstack1))
 						return false;
-					arraylist.add(itemstack1);
 				}
-			}
 		}
-
 		return itemstack!=null;
 	}
 
@@ -55,15 +41,12 @@ public class BagColourizationRecipe implements IRecipe
 		ItemBag itembag = null;
 		boolean revert = true;
 
-		for(int k = 0; k < par1InventoryCrafting.getSizeInventory(); k++)
-		{
+		for (int k = 0; k < par1InventoryCrafting.getSizeInventory(); k++) {
 			ItemStack itemstack1 = par1InventoryCrafting.getStackInSlot(k);
 
-			if(itemstack1 != null)
-			{
-				if(itemstack1.getItem() instanceof ItemBag)
-				{
-					if(itemstack!=null)
+			if (itemstack1 != null) {
+				if (itemstack1.getItem() instanceof ItemBag) {
+					if (itemstack != null)
 						return null;
 					itembag = (ItemBag) itemstack1.getItem();
 
@@ -78,16 +61,13 @@ public class BagColourizationRecipe implements IRecipe
 					aint[0] = ((int)(aint[0] + f * 255.0F));
 					aint[1] = ((int)(aint[1] + f1 * 255.0F));
 					aint[2] = ((int)(aint[2] + f2 * 255.0F));
-					j++;
-				}
-				else
-				{
-					if(Utilities.isDye(itemstack1))
+                } else {
+					if (Utilities.isDye(itemstack1))
 						return null;
-
-					if(revert)
-						revert=false;
-					float[] afloat = net.minecraft.entity.passive.EntitySheep.fleeceColorTable[net.minecraft.block.BlockColored.func_150032_b(Utilities.getDamageForDye(itemstack1))];
+					if (revert)
+						revert = false;
+					// float[] afloat = net.minecraft.entity.passive.EntitySheep.fleeceColorTable[net.minecraft.block.BlockColored.func_150032_b(Utilities.getDamageForDye(itemstack1))];
+					float[] afloat = ColorUtils.getIntenseDyeColors(BlockColored.func_150032_b(Utilities.getDamageForDye(itemstack1)));
 					int j1 = (int)(afloat[0] * 255.0F);
 					int k1 = (int)(afloat[1] * 255.0F);
 					int i1 = (int)(afloat[2] * 255.0F);
@@ -95,18 +75,17 @@ public class BagColourizationRecipe implements IRecipe
 					aint[0] += j1;
 					aint[1] += k1;
 					aint[2] += i1;
-					j++;
-				}
-			}
+                }
+                j++;
+            }
 		}
 
-		if(revert)
-		{
+		if (revert && itembag != null) {
 			itembag.modifyColorOnItemStack(itemstack, ItemBag.getDefaultBagColour(itemstack.getItemDamage()));
 			return itemstack;
 		}
 
-		if(itembag == null)
+		if (itembag == null)
 			return null;
 
 		int k = aint[0] / j;
@@ -124,14 +103,12 @@ public class BagColourizationRecipe implements IRecipe
 	}
 
 	@Override
-	public int getRecipeSize()
-	{
+	public int getRecipeSize() {
 		return 10;
 	}
 
 	@Override
-	public ItemStack getRecipeOutput()
-	{
+	public ItemStack getRecipeOutput() {
 		return null;
 	}
 }
