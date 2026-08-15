@@ -37,7 +37,7 @@ import cpw.mods.fml.relauncher.Side;
 
 import static cpw.mods.fml.common.registry.GameRegistry.Type.BLOCK;
 import static cpw.mods.fml.common.registry.GameRegistry.Type.ITEM;
-import static nemexlib.NemexLib.dependencies;
+import static witchinggadgets.WitchingGadgets.dependencies;
 import static witchinggadgets.common.WGContent.*;
 
 @Mod(modid = WitchingGadgets.MODID, name = WitchingGadgets.MODNAME, version = WitchingGadgets.VERSION, dependencies = dependencies)
@@ -151,7 +151,7 @@ public class WitchingGadgets
 		if (related) logger.info("Successfully remapped", cptBlock, "Blocks,", cptItemBlock, "ItemBlocks and", cptItem, "Items !");
 	}
 
-	private static final String dependencies =
+	public static final String dependencies =
 			"required-after:Thaumcraft;" +
 			"required-after:TravellersGear@[1.16.4,);" +
 			"required-after:NemexLib@[1.11.4,);" +
