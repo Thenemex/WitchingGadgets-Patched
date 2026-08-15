@@ -37,9 +37,10 @@ import cpw.mods.fml.relauncher.Side;
 
 import static cpw.mods.fml.common.registry.GameRegistry.Type.BLOCK;
 import static cpw.mods.fml.common.registry.GameRegistry.Type.ITEM;
+import static nemexlib.NemexLib.dependencies;
 import static witchinggadgets.common.WGContent.*;
 
-@Mod(modid = WitchingGadgets.MODID, name = WitchingGadgets.MODNAME, version = WitchingGadgets.VERSION, dependencies="required-after:Thaumcraft;required-after:TravellersGear@[1.16.4,);required-after:NemexLib@[1.8.1.1,);after:TwilightForest;after:Mystcraft;after:TConstruct;after:MagicBees;after:ForgeMultipart")
+@Mod(modid = WitchingGadgets.MODID, name = WitchingGadgets.MODNAME, version = WitchingGadgets.VERSION, dependencies = dependencies)
 public class WitchingGadgets
 {
 	public static final String MODID = "WitchingGadgets";
@@ -149,4 +150,14 @@ public class WitchingGadgets
 				} catch (Exception ignored) {}
 		if (related) logger.info("Successfully remapped", cptBlock, "Blocks,", cptItemBlock, "ItemBlocks and", cptItem, "Items !");
 	}
+
+	private static final String dependencies =
+			"required-after:Thaumcraft;" +
+			"required-after:TravellersGear@[1.16.4,);" +
+			"required-after:NemexLib@[1.11.4,);" +
+			"after:TwilightForest;" +
+			"after:Mystcraft;" +
+			"after:TConstruct;" +
+			"after:MagicBees;" +
+			"after:ForgeMultipart";
 }
