@@ -93,6 +93,13 @@ public class BagColourizationRecipe implements IRecipe {
 		int l = aint[2] / j;
 		float f = (float) i / j;
 		float f1 = Math.max(k, Math.max(l1, l));
+
+		// Saturation boost
+		float saturationBoost = 1.05F;
+		k = (int) Math.min(255, k * f / f1 * saturationBoost);
+		l1 = (int) Math.min(255, l1 * f / f1 * saturationBoost);
+		l = (int) Math.min(255, l * f / f1 * saturationBoost);
+
 		k = (int)(k * f / f1);
 		l1 = (int)(l1 * f / f1);
 		l = (int)(l * f / f1);
