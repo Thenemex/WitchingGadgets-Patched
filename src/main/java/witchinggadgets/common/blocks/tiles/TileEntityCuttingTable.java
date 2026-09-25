@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -17,13 +16,14 @@ import witchinggadgets.common.items.ItemInfusedGem;
 import witchinggadgets.common.items.ItemInfusedGem.GemCut;
 import witchinggadgets.common.util.handler.InfusedGemHandler;
 
-public class TileEntityCuttingTable extends TileEntityWGBase implements IInventory, ISidedInventory {
+public class TileEntityCuttingTable extends TileEntityWGBase implements ISidedInventory {
 
     int tick = 0;
-    int tickMax = 20 * 20;
+    // int tickMax = 20 * 20; // Not used
     final ItemStack[] inventory = new ItemStack[5];
     public int facing = 2;
     public byte targetGemCut = 0;
+	private static final int[] emptySlots = new int[0];
 
     public void updateEntity() {
         if (!this.worldObj.isRemote)
@@ -140,8 +140,7 @@ public class TileEntityCuttingTable extends TileEntityWGBase implements IInvento
         return stack;
     }
 
-    @Override
-    public void setInventorySlotContents(int slot, ItemStack stack) {
+    @Override public void setInventorySlotContents(int slot, ItemStack stack) {
         inventory[slot] = stack;
         if (stack != null && stack.stackSize > getInventoryStackLimit())
             stack.stackSize = getInventoryStackLimit();
@@ -168,7 +167,21 @@ public class TileEntityCuttingTable extends TileEntityWGBase implements IInvento
 
     @Override public void closeInventory() {}
 
-    @Override public boolean isItemValidForSlot(int i, ItemStack itemstack) {
-        return true;
-    }
+	// ISidedInventory methods
+
+	@Override public int[] getAccessibleSlotsFromSide(int side) {
+		return emptySlots;
+	}
+
+	@Override public boolean canInsertItem(int slot, ItemStack item, int side) {
+		return false;
+	}
+
+	@Override public boolean canExtractItem(int slot, ItemStack item, int side) {
+		return false;
+	}
+
+	@Override public boolean isItemValidForSlot(int i, ItemStack itemstack) {
+		return false;
+	}
 }
